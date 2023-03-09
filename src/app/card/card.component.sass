@@ -1,0 +1,45 @@
+.container
+  display: flex
+  justify-content: center
+  align-items: center
+
+.card
+  width: 300px
+  border-radius: 10px
+  height: 265px
+  margin: 2px
+  width: 22rem!important
+  border: 1px solid #000000
+
+h5
+  margin: 5px
+
+.caixa
+  display: grid
+  grid-template-columns: repeat(5, 1fr)
+  row-gap: 1em
+  margin-top: 50px
+
+img
+  margin-top: 10px
+
+img:hover
+  margin-top: -10px
+  z-index: 90
+  cursor: pointer
+  zoom: 1
+
+@media screen and (max-width: 900px)
+  .card
+    display: flex
+    margin: 0px
+    width: 18rem!important
+    // height: 250px
+
+  .caixa
+    display: grid
+    grid-template-columns: repeat(2, 1fr)
+    column-gap: 5px
+    row-gap: 1em
+    margin-top:30px
+

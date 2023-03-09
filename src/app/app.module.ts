@@ -3,13 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
-import { HomeComponent } from './screens/home/home.component';
-import { CarouselComponent } from './components/carousel/carousel.component';
-import { CardComponent } from './components/carousel/card/card.component';
-import { LoginComponent } from './screens/login/login.component';
-import { FooterComponent } from './components/footer/footer.component';
+import { HeaderComponent } from './header/header.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { HomeComponent } from './home/home.component';
+import { CarouselComponent } from './carousel/carousel.component';
+import { CardComponent } from './card/card.component';
+import { LoginComponent } from './login/login.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
