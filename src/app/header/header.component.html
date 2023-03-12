@@ -5,9 +5,13 @@
     </a>
   </div>
   <div class="loginn">
-    <a class="routes" href="login">
-      <h2 class="loginText">Login</h2>
-    </a>
+    <div *ngIf="name; else elseBlock" class="mensageError">{{name}}</div>
+    <ng-template #elseBlock>
+      <a class="routes" href="login">
+        <h2 class="loginText">Login</h2>
+      </a>
+    </ng-template>
+
   </div>
 </nav>
 

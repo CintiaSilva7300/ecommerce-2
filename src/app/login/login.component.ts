@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { environment } from "../../environments/environment"
 import { HttpClient } from '@angular/common/http';
 import jwt_decode from 'jwt-decode';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UserService } from '../services/user.service';
 
-import {ThemePalette} from '@angular/material/core';
-import {ProgressSpinnerMode} from '@angular/material/progress-spinner';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,8 +13,13 @@ import {ProgressSpinnerMode} from '@angular/material/progress-spinner';
 export class LoginComponent implements OnInit {
   loading: any;
   messageError: any;
+  // userId: any;
 
-  constructor( private http: HttpClient ){
+  constructor(
+    private http: HttpClient,
+    private route: ActivatedRoute,
+  private router: Router,
+    ){
    this.loading = false;
    this.messageError = "";
   }
@@ -39,6 +44,9 @@ export class LoginComponent implements OnInit {
 
         this.loading = false;
 
+        if(decodedToken){
+          this.router.navigate(['']);
+        }
       }, err => {
         console.log(err.error.message)
         this.messageError = err.error.message
