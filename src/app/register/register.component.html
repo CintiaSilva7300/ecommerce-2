@@ -4,6 +4,8 @@
       <h1 class="ls-login-logo text-center">Registrar-se</h1>
       <form method="post" #form="ngForm" (ngSubmit)="save(form.value)">
 
+        <div *ngIf="messageError; else elseBlock" class="mensageError">{{messageError}}</div>
+        <ng-template #elseBlock></ng-template>
 
           <div class="form-group ls-login-user">
             <label for="userLogin">Nome</label>
@@ -35,7 +37,9 @@
             <input class="form-control"  type="password" placeholder="confirmar senha" name="confirmPassword" ngModel>
           </div>
 
-          <input type="submit" value="Entrar" style="background-color: black;" class="btn btn-primary btn-darck btn-block">
+          <input type="submit" value="Entrar" style="background-color: black;" class="btn btn-primary btn-darck btn-block"
+          [value]='loading ? "carregando..." : "entrar"' [disabled]="loading"
+          >
 
           <p class="txt-center ls-login-signup">Ja possui conta conosco no Grupohvn?
             <a href="login"> entrar</a>

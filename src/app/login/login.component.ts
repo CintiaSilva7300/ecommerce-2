@@ -1,27 +1,51 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from "../../environments/environment"
-import { HttpClient, HttpHandler, HttpRequest } from '@angular/common/http';
-import { UserLogin } from '../interface/userLogin';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { UserService } from '../services/user.service';
+import { HttpClient } from '@angular/common/http';
+import jwt_decode from 'jwt-decode';
 
+import {ThemePalette} from '@angular/material/core';
+import {ProgressSpinnerMode} from '@angular/material/progress-spinner';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.sass']
 })
 export class LoginComponent implements OnInit {
+  loading: any;
+  messageError: any;
 
-  constructor(
-    private http: HttpClient,
-    private router: Router,
-    private userService: UserService,
-    public fb: FormBuilder,
-    ){;
-    }
+  constructor( private http: HttpClient ){
+   this.loading = false;
+   this.messageError = "";
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+  }
 
 
-}
+  public loginJWT(data: any) {
+      this.loading = true;
+
+      this.http.post(`${environment.API_TESTE}/login`, data).subscribe((result:any) => {
+        console.log('result',result);
+        const decodedToken: any = jwt_decode(result.token)
+
+        console.log('decodedToken', decodedToken);
+        localStorage.setItem('token', result.token);
+        localStorage.setItem('email', decodedToken.email);
+        localStorage.setItem('name', decodedToken.name);
+        localStorage.setItem('id', decodedToken.id);
+
+        this.loading = false;
+
+      }, err => {
+        console.log(err.error.message)
+        this.messageError = err.error.message
+        this.loading = false;
+      });
+  }
+  }
+
+
+

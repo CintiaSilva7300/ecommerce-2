@@ -11,12 +11,16 @@
   <div class="box-parent-login">
     <div class="well bg-white box-login">
       <h1 class="ls-login-logo text-center">Logar</h1>
-      <form method="post" #form="ngForm" >
+      <form method="post" #form="ngForm">
+
+        <div *ngIf="messageError; else elseBlock" class="mensageError">{{messageError}}</div>
+        <ng-template #elseBlock></ng-template>
+
         <fieldset>
 
           <div class="form-group ls-login-user">
             <label for="userLogin">Usuário</label>
-            <input class="form-control " type="text" aria-label="Usuário" placeholder="Usuário" name="name" ngModel>
+            <input class="form-control " type="text" aria-label="Usuário" placeholder="Usuário" name="email" ngModel>
           </div>
 
           <div class="form-group ls-login-password">
@@ -26,7 +30,9 @@
 
           <a href="#" class="ls-login-forgot">Esqueci minha senha</a>
 
-          <input type="button"  value="Entrar" style="background-color: black;" class="btn btn-primary btn-darck btn-block">
+          <input type="submit" (click)="loginJWT(form.value)" [value]='loading ? "carregando..." : "entrar"' [disabled]="loading"
+            style="background-color: black;" class="btn btn-primary btn-darck btn-block"
+            >
 
           <p class="txt-center ls-login-signup">Não possui um usuário no Grupohvn?
             <a href="/register"> Cadastre-se agora</a>
