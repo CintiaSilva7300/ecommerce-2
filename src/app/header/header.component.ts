@@ -9,13 +9,17 @@ import jwt_decode from 'jwt-decode';
   styleUrls: ['./header.component.sass']
 })
 export class HeaderComponent implements OnInit {
-name: any
+token: any
   constructor(private http: HttpClient,){
-    this.name = '';
+    this.token = '';
   }
 
   ngOnInit(){
-      this.name = localStorage.getItem('name');
+      this.token = localStorage.getItem('token');
+    }
 
+    logout(){
+      localStorage.clear();
+      window.location.reload();
     }
 }

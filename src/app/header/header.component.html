@@ -1,11 +1,14 @@
-<nav class="nav">
+<!-- <div *ngIf="name; else elseBlock" class="mensageError">{{name}} -->
+<!-- <nav class="nav">
   <div class="container">
     <a class="routes" href="">
       <h2 class="logo">Grupohvn</h2>
     </a>
   </div>
   <div class="loginn">
-    <div *ngIf="name; else elseBlock" class="mensageError">{{name}}</div>
+    <div *ngIf="name; else elseBlock" class="mensageError">
+      <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Avatar" class="avatar">
+    </div>
     <ng-template #elseBlock>
       <a class="routes" href="login">
         <h2 class="loginText">Login</h2>
@@ -13,5 +16,38 @@
     </ng-template>
 
   </div>
+</nav> -->
+
+<!-- teste -->
+<nav class="nav navbar-expand-sm">
+  <div class="container">
+    <a class="routes" href="">
+      <h2 class="logo">Grupohvn</h2>
+    </a>
+  </div>
+
+  <div class="collapse navbar-collapse" id="navbar-list-4">
+    <div *ngIf="token; else elseBlock">
+      <ul class="navbar-nav" >
+        <!-- <p class="nomeUser">teste</p> -->
+          <li class="dropdown">
+          <a href="#" id="navbarDropdownMenuLink"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" class="avatar">
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="">Home</a>
+            <a class="dropdown-item" href="#">Profile</a>
+            <a class="dropdown-item" href="#" (click)="logout()">Sair</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <ng-template #elseBlock>
+    <a class="routes" href="login">
+      <h2 class="loginText">Login</h2>
+    </a>
+  </ng-template>
 </nav>
+<!-- teste -->
 
