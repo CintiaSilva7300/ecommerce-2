@@ -4,7 +4,6 @@
   height: 60px
   width: 100%
   border: none
-  flex-wrap: nowrap!important
   padding: 10px
 
 .loginText
@@ -48,6 +47,7 @@ a
   color: #050505
   cursor: pointer
 
+
 .dropdown-item
   color: #ffffff
 
@@ -66,6 +66,8 @@ a:hover
 
 .collapse
   display: inline-flex!important
+  margin-top: -4px!important
+  z-index: 200!important
 
 @media screen and (max-width: 900px)
   h2
@@ -75,12 +77,16 @@ a:hover
     margin-left: 1px
 
   .avatar
-    margin-right: 10px
+    // margin-right: 10px
 
   .collapse
-    margin-top: 10px
     position: sticky
+    margin-right: -50px!important
+    margin-top: -11px!important
 
-// teste
+  .nav
+    display: flex
+    flex-wrap: nowrap
+
 
 
