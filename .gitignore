@@ -5,6 +5,8 @@
 /tmp
 /out-tsc
 /bazel-out
+/email.html
+.email.html
 # Node
 /node_modules
 npm-debug.log
@@ -35,7 +37,6 @@ yarn-error.log
 /libpeerconnection.log
 testem.log
 /typings
-
 # System files
 .DS_Store
 Thumbs.db

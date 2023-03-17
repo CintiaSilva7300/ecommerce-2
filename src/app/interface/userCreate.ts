@@ -5,4 +5,5 @@ export interface UserCreate {
   "cpf": string,
   "password": string,
   "confirmPassword": string
+  "genre": string
 }

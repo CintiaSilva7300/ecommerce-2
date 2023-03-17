@@ -6,15 +6,22 @@
   </div>
 
   <div class="collapse" id="navbar-list-4">
-    <div *ngIf="token; else elseBlock" >
-      <ul class="navbar-nav" >
-          <li class="dropdown">
-          <a  href="#" id="navbarDropdownMenuLink"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" class="avatar">
+    <div *ngIf="token; else elseBlock">
+      <ul class="navbar-nav">
+        <li class="dropdown">
+          <a href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+            <div *ngIf="genre === 'F'; else elseTeste">
+              <img src="https://cdn-icons-png.flaticon.com/512/219/219969.png" class="avatar F">
+            </div>
+            <ng-template #elseTeste>
+                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" class="avatar M">
+            </ng-template>
+
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" routerLink="perfil/{{id}}">Profile</a>
             <a class="dropdown-item" href="">Home</a>
-            <a class="dropdown-item" href="#">Profile</a>
             <a class="dropdown-item" href="#" (click)="logout()">Sair</a>
           </div>
         </li>
@@ -23,34 +30,9 @@
   </div>
   <ng-template #elseBlock>
     <a class="routes" href="login">
-      <h2  class="loginText">Login</h2>
+      <h2 class="loginText">Login</h2>
     </a>
   </ng-template>
 </nav>
 
-
-
-
-
-
-<!-- <ul class="nav nav-tabs">
-  <div class="container">
-    <a class="routes" href="">
-      <h2 class="logo">Grupohvn</h2>
-    </a>
-  </div>
-
-  <li class="nav-item dropdown">
-    <a class="nav-link " data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-      <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" class="avatar">
-    </a>
-    <div class="dropdown-menu">
-      <a class="dropdown-item" href="#">Action</a>
-      <a class="dropdown-item" href="#">Another action</a>
-      <a class="dropdown-item" href="#">Something else here</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="#">Separated link</a>
-    </div>
-  </li>
-
-</ul> -->
+<!-- https://cdn-icons-png.flaticon.com/512/847/847969.png -->

@@ -16,7 +16,7 @@ export class UserService {
 
   create(user: UserCreate): Observable<UserCreate> {
     return this.http
-      .post<UserCreate>(`${environment.API_TESTE}`, user)
+      .post<UserCreate>(`${environment.API_TESTE}/register`, user)
   }
 
   login(user: UserLogin): Observable<any> {

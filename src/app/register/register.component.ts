@@ -12,6 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class RegisterComponent implements OnInit{
 loading: any;
 messageError: any;
+genre:any
 
   constructor(
     private http: HttpClient,
@@ -20,28 +21,31 @@ messageError: any;
     ){
     this.loading = false;
     this.messageError = "";
+    this.genre = ''
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   save(data: any) {
     this.loading = true;
 
-    console.log("form data", data);
+    // console.log("form data", data);
 
-    this.http.post(`${environment.API_TESTE}`, data).subscribe((result: any) => {
-      console.log('result',result);
-      console.log('birthDate', data.birthDate);
+    this.http.post(`${environment.API_TESTE}/register`, data).subscribe((result: any) => {
+      // console.log('result',result);
+      // console.log('birthDate', data.birthDate);
 
       const decodedToken: any = jwt_decode(result.token)
 
         console.log('decodedToken', decodedToken);
+
         localStorage.setItem('token', result.token);
         localStorage.setItem('email', decodedToken.email);
         localStorage.setItem('name', decodedToken.name);
         localStorage.setItem('id', decodedToken.id);
-
-      this.loading = false;
+        localStorage.setItem('genre', data.genre);
+        this.loading = false;
 
       if(decodedToken){
         this.router.navigate(['']);
@@ -51,7 +55,7 @@ messageError: any;
       this.messageError = err.error.message
       this.loading = false;
     });
-    console.log('data',data);
+    // console.log('data',data);
   }
 
 }
