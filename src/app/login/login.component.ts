@@ -32,15 +32,15 @@ export class LoginComponent implements OnInit {
   public loginJWT(data: any) {
       this.loading = true;
 
-      this.http.post(`${environment.API_TESTE}/login`, data).subscribe((result:any) => {
+      this.http.post(`${environment.API_TESTE}/user/login`, data).subscribe((result:any) => {
         console.log('result',result);
         const decodedToken: any = jwt_decode(result.token)
 
         console.log('decodedToken', decodedToken);
-        localStorage.setItem('token', result.token);
-        localStorage.setItem('email', decodedToken.email);
         localStorage.setItem('name', decodedToken.name);
         localStorage.setItem('id', decodedToken.id);
+        localStorage.setItem('email', decodedToken.email);
+        localStorage.setItem('token', result.token);
 
         this.loading = false;
 

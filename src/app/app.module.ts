@@ -14,9 +14,10 @@ import { RegisterComponent } from './register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PerfilComponent } from './perfil/perfil.component';
+import { AuthInterceptor } from './services/AuthInterceptor';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,9 @@ import { PerfilComponent } from './perfil/perfil.component';
     ReactiveFormsModule,
     BrowserAnimationsModule,
   ],
-  providers: [HttpClient],
+  providers: [HttpClient,
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
