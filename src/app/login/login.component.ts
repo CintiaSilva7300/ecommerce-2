@@ -41,6 +41,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('id', decodedToken.id);
         localStorage.setItem('email', decodedToken.email);
         localStorage.setItem('token', result.token);
+        localStorage.setItem('genre', decodedToken.genre);
 
         this.loading = false;
 

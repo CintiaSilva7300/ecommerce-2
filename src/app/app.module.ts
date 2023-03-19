@@ -18,6 +18,7 @@ import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PerfilComponent } from './perfil/perfil.component';
 import { AuthInterceptor } from './services/AuthInterceptor';
+import { MenuPerfilComponent } from './menu-perfil/menu-perfil.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { AuthInterceptor } from './services/AuthInterceptor';
     FooterComponent,
     RegisterComponent,
     PerfilComponent,
+    MenuPerfilComponent,
   ],
   imports: [
     BrowserModule,

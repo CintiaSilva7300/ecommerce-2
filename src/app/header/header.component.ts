@@ -13,20 +13,27 @@ export class HeaderComponent implements OnInit {
 token: any;
 id: any;
 genre: any;
-  constructor(private route: ActivatedRoute,){
+
+  constructor(private http: HttpClient,){
     this.token = '';
-    this.id = ''
-    this.genre = ''
+    this.genre = '';
   }
 
   ngOnInit(){
       this.token = localStorage.getItem('token');
       this.id = localStorage.getItem('id');
       this.genre = localStorage.getItem('genre');
-    }
 
-    logout(){
-      localStorage.clear();
-      window.location.reload();
-    }
+    // this.http.get(`${environment.API_TESTE}/user/userData`).subscribe((res: any) => {
+    // this.genre = res.genre;
+    // console.log(res)
+    // })
+  }
+
+  logout(){
+    localStorage.clear();
+    window.location.reload();
+  }
+
+
 }
