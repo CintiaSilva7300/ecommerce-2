@@ -10,6 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./perfil.component.sass']
 })
 export class PerfilComponent implements OnInit {
+[x: string]: any;
 
 email!: any;
 name!: any;
@@ -18,9 +19,9 @@ genre: any;
 birthDate: any
 cpf: any
 registerDate: any
-
 loading: any;
 messageError: any;
+showModal:any
 
   constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router){
     this.id = '';
@@ -33,6 +34,8 @@ messageError: any;
 
     this.loading = false;
     this.messageError = "";
+
+    this.showModal = false;
   }
 
   ngOnInit(): void {
@@ -63,4 +66,26 @@ messageError: any;
     });
   }
 
+  openModal() {
+    this.showModal = true;
+  }
+
+  atualizarPerfil(data: any) {
+    // this.loading = true;
+
+    // this.http.put(`${environment.API_TESTE}/user/userData`, data).subscribe((result: any) => {
+    //   const decodedToken: any = jwt_decode(result.token)
+
+    //     this.loading = false;
+
+    //     if(decodedToken){
+    //       this.router.navigate(['']);
+    //     }
+
+    // },err => {
+    //   console.log(err.error.message)
+    //   this.messageError = err.error.message
+    //   this.loading = false;
+    // });
+  }
 }

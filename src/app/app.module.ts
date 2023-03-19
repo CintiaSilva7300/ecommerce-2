@@ -19,6 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PerfilComponent } from './perfil/perfil.component';
 import { AuthInterceptor } from './services/AuthInterceptor';
 import { MenuPerfilComponent } from './menu-perfil/menu-perfil.component';
+import { ModalAddressComponent } from './modal-address/modal-address.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { MenuPerfilComponent } from './menu-perfil/menu-perfil.component';
     RegisterComponent,
     PerfilComponent,
     MenuPerfilComponent,
+    ModalAddressComponent,
   ],
   imports: [
     BrowserModule,

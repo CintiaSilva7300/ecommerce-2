@@ -28,24 +28,20 @@ address: any
       this.city = '';
       this.uf = '';
       this.complement = '';
-
   }
 
   ngOnInit(): void {
     this.http
     .get(`${environment.API_TESTE}/address/user` ).subscribe((res: any) => {
-      // this.name = res[1].name;
-      // this.zipCode = res.zipCode;
-      // this.street = res.street;
-      // this.number = res.number;
-      // this.neighborhood = res.neighborhood;
-      // this.city = res.city;
-      // this.uf = res.uf;
-      // this.complement = res.complement;
-
       this.address = res
-
       console.log('enderecos',res)
+    })
+  }
+
+  selectCardsEndereco(id: any){
+    this.http.put(`${environment.API_TESTE}/address/setMainAddress`, {addressId: id}).subscribe((res: any) => {
+      window.location.reload();
+      console.log('put',res)
     })
   }
 }
