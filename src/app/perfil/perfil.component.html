@@ -8,11 +8,12 @@
       <div class="d-flex flex-column align-items-center text-center p-3 py-5" *ngIf="genre === 'F'; else elseTeste">
         <img class="rounded-circle mt-5" width="150px" src="https://cdn-icons-png.flaticon.com/512/219/219969.png">
         <span class="font-weight-bold">{{name}}</span><span class="text-black-50">{{email}}</span><br>
+      </div>
 
-        <button (click)="openModal()" type="button" class="btn profile-button btn-primary" >
+      <div class="container">
+        <button (click)="openModal()" type="button" class="btn profile-button btn-dark" >
           cadastrar novo endereço
         </button>
-
       </div>
 
       <ng-template #elseTeste>
@@ -54,8 +55,8 @@
               </div>
         </div>
 
-        <input type="submit" value="Entrar" style="background-color: black;" class="btn btn-primary btn-darck btn-block"
-          [value]='loading ? "carregando..." : "cadastrar"'
+        <input type="submit" value="Entrar" style="background-color: black; margin-top:10px" class="btn btn-primary btn-darck btn-block"
+          [value]='loading ? "carregando..." : "atualizar"'
            >
 
       </div>
