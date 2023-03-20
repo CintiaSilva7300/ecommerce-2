@@ -4,26 +4,25 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from "../../environments/environment"
 import jwt_decode from 'jwt-decode';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Token } from '@angular/compiler';
 @Component({
   selector: 'app-perfil',
   templateUrl: './perfil.component.html',
   styleUrls: ['./perfil.component.sass']
 })
 export class PerfilComponent implements OnInit {
-[x: string]: any;
+  email!: any;
+  name!: any;
+  id: any
+  genre: any;
+  birthDate: any
+  cpf: any
+  registerDate: any
+  loading: any;
+  messageError: any;
+  showModal: any
 
-email!: any;
-name!: any;
-id: any
-genre: any;
-birthDate: any
-cpf: any
-registerDate: any
-loading: any;
-messageError: any;
-showModal:any
-
-  constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router){
+  constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router) {
     this.id = '';
     this.name = '';
     this.email = '';
@@ -41,16 +40,16 @@ showModal:any
   ngOnInit(): void {
     console.log('aquiii')
     this.http
-    .get(`${environment.API_TESTE}/user/userData`).subscribe((resData: any) => {
-    this.name = resData.name;
-    this.id = resData.id;
-    this.email = resData.email;
-    this.genre = resData.genre;
-    this.birthDate = new Date(resData.birthDate);
-    this.cpf = resData.cpf;
-    this.registerDate = resData.registerDate;
-    console.log('teste',resData)
-    })
+      .get(`${environment.API_TESTE}/user/userData`).subscribe((resData: any) => {
+        this.name = resData.name;
+        this.id = resData.id;
+        this.email = resData.email;
+        this.genre = resData.genre;
+        this.birthDate = new Date(resData.birthDate);
+        this.cpf = resData.cpf;
+        this.registerDate = resData.registerDate;
+        console.log('teste', resData)
+      })
 
   }
 
@@ -58,8 +57,8 @@ showModal:any
   save(data: any) {
     this.loading = true;
     this.http.post(`${environment.API_TESTE}/address/register`, data).subscribe((result: any) => {
-        this.loading = false;
-    },err => {
+      this.loading = false;
+    }, err => {
       console.log(err.error.message)
       this.messageError = err.error.message
       this.loading = false;
@@ -70,22 +69,22 @@ showModal:any
     this.showModal = true;
   }
 
+  closeModal() {
+    this.showModal = false;
+  }
+
   atualizarPerfil(data: any) {
-    // this.loading = true;
-
-    // this.http.put(`${environment.API_TESTE}/user/userData`, data).subscribe((result: any) => {
-    //   const decodedToken: any = jwt_decode(result.token)
-
-    //     this.loading = false;
-
-    //     if(decodedToken){
-    //       this.router.navigate(['']);
-    //     }
-
-    // },err => {
-    //   console.log(err.error.message)
-    //   this.messageError = err.error.message
-    //   this.loading = false;
-    // });
+    {
+      this.loading = true;
+      this.http.put(`${environment.API_TESTE}/user/userData`, data).subscribe((result: any) => {
+        console.log('result ->', result)
+        this.loading = false;
+        window.location.reload();
+      }, err => {
+        this.messageError = err.error.message
+        this.loading = false;
+      });
+      console.log('data ->',data);
+    }
   }
 }

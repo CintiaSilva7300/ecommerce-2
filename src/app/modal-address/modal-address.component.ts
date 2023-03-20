@@ -35,5 +35,6 @@ messageError: any;
 
   closeModal() {
     this.showModal = false;
+    return window.location.reload();
   }
 }

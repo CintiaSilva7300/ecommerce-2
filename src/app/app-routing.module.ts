@@ -14,7 +14,7 @@ const routes: Routes = [
     path: 'register', component: RegisterComponent
   },
   {
-    path: 'perfil/:id', component: PerfilComponent
+    path: 'perfil', component: PerfilComponent
   },
 
   {
