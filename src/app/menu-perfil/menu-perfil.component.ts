@@ -34,14 +34,12 @@ address: any
     this.http
     .get(`${environment.API_TESTE}/address/user` ).subscribe((res: any) => {
       this.address = res
-      console.log('enderecos',res)
     })
   }
 
   selectCardsEndereco(id: any){
     this.http.put(`${environment.API_TESTE}/address/setMainAddress`, {addressId: id}).subscribe((res: any) => {
       window.location.reload();
-      console.log('put',res)
     })
   }
 }

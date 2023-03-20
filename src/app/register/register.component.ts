@@ -29,12 +29,9 @@ genre:any
 
   save(data: any) {
     this.loading = true;
-    // console.log("form data", data);
 
     this.http.post(`${environment.API_TESTE}/user/register`, data).subscribe((result: any) => {
       const decodedToken: any = jwt_decode(result.token)
-
-        console.log('decodedToken', decodedToken);
 
         localStorage.setItem('token', result.token);
         localStorage.setItem('email', decodedToken.email);
@@ -52,7 +49,6 @@ genre:any
       this.messageError = err.error.message
       this.loading = false;
     });
-    // console.log('data',data);
   }
 
 }

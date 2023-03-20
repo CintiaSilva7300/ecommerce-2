@@ -5,34 +5,52 @@
 
 <!-- <section>Footer Example 3</section> -->
 
-		<footer class="footer-distributed">
+<footer class="footer-distributed">
 
-			<div class="footer-right">
+  <div class="">
+    <a href="#"><img src="https://img.icons8.com/plasticine/256/github.png" height="30px" width="30px" alt=""></a>
+    <a href="#"><img src="https://img.icons8.com/fluency/256/linkedin-circled.png" height="30px" width="30px"
+        alt=""></a>
+    <img class="iconEmail" src="https://img.icons8.com/bubbles/256/apple-mail.png"
+      onclick="document.getElementById('id01').style.display='block'" height="30px" width="30px" alt=""
+      id="myBtn"><!-- modal dialog email -->
+  </div>
 
-				<a href="#"><i class="fa fa-facebook"></i></a>
-				<a href="#"><i class="fa fa-twitter"></i></a>
-				<a href="#"><i class="fa fa-linkedin"></i></a>
-				<a href="#"><i class="fa fa-github"></i></a>
+  <div class="footer-left">
 
-			</div>
+    <p class="footer-links">
+      <a class="link-1" href="">Home </a>
+      <a href="perfil"> Perfil</a>
+    </p>
 
-			<div class="footer-left">
+    <p>Copyright - Grupohvn™ 2023 © </p>
+    <p>Desenvolvedora <a href="https://github.com/CintiaSilva7300">cintia silva</a></p>
+  </div>
 
-				<p class="footer-links">
-					<a class="link-1" href="#">Home</a>
+</footer>
 
-					<a href="#">Blog</a>
+  <div id="id01" class="modal">
+    <form class="modal-content">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
+      <div class="container">
+        <h1>Delete Account</h1>
+        <p>Are you sure you want to delete your account?</p>
 
-					<a href="#">Pricing</a>
+        <div class="clearfix">
+          <button type="button" onclick="document.getElementById('id01').style.display='none'"
+            class="cancelbtn">Cancel</button>
+          <button type="button" onclick="document.getElementById('id01').style.display='none'"
+            class="deletebtn">Delete</button>
+        </div>
+      </div>
+    </form>
+  </div>
 
-					<a href="#">About</a>
-
-					<a href="#">Faq</a>
-
-					<a href="#">Contact</a>
-				</p>
-
-				<p>Copyright 2022 © - Grupohvn™ 2023</p>
-			</div>
-
-		</footer>
+<script>
+  var modal = document.getElementById('id01');
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>

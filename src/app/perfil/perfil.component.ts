@@ -38,7 +38,6 @@ export class PerfilComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('aquiii')
     this.http
       .get(`${environment.API_TESTE}/user/userData`).subscribe((resData: any) => {
         this.name = resData.name;
@@ -48,7 +47,6 @@ export class PerfilComponent implements OnInit {
         this.birthDate = new Date(resData.birthDate);
         this.cpf = resData.cpf;
         this.registerDate = resData.registerDate;
-        console.log('teste', resData)
       })
 
   }
@@ -59,7 +57,6 @@ export class PerfilComponent implements OnInit {
     this.http.post(`${environment.API_TESTE}/address/register`, data).subscribe((result: any) => {
       this.loading = false;
     }, err => {
-      console.log(err.error.message)
       this.messageError = err.error.message
       this.loading = false;
     });
@@ -74,17 +71,13 @@ export class PerfilComponent implements OnInit {
   }
 
   atualizarPerfil(data: any) {
-    {
       this.loading = true;
       this.http.put(`${environment.API_TESTE}/user/userData`, data).subscribe((result: any) => {
-        console.log('result ->', result)
         this.loading = false;
         window.location.reload();
       }, err => {
         this.messageError = err.error.message
         this.loading = false;
       });
-      console.log('data ->',data);
-    }
   }
 }
