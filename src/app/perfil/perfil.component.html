@@ -30,27 +30,26 @@
           <h4 class="text-right">Profile Settings</h4>
         </div>
 
-        <label for="userLogin">Nome</label>
+        <label class="labels" for="userLogin">Nome</label>
         <input class="form-control " type="text" placeholder="name" name="name" value="{{name}}" ngModel>
 
-        <label for="userLogin">Email</label>
-        <input class="form-control " type="text" placeholder="name" name="email" value="{{email}}" ngModel>
+        <label class="labels" for="userLogin">Email</label>
+        <input class="form-control " type="text" placeholder="name" name="email" value="{{email}}" disabled="" ngModel>
 
         <label class="labels" for="userGenre">Sexo</label>
         <select class="form-control" value="{{genre}}" name="genre">
           <option value="F" selected>Feminino</option>
           <option value="M" selected>Masculino</option>
-          <!-- <option value="não informado" selected>não informado</option> -->
         </select>
 
         <label class="labels">Data de nascimento</label>
         <input type="date" class="form-control" [ngModel]="birthDate | date:'yyyy-MM-dd'" name="birthDate"
           placeholder="surname">
 
-        <label class="labels">cpf</label>
+        <label class="labels">Cpf</label>
         <input type="text" class="form-control" value="{{cpf}}" placeholder="cpf" name="cpf" disabled="" ngModel>
 
-        <label class="labels">entrou em</label>
+        <label class="labels">Entrou em: </label>
         <input type="text" class="form-control" placeholder="surname" disabled="" value="{{registerDate}}"
           [ngModel]="registerDate | date :'short'" name="registerDate">
 

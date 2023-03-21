@@ -18,7 +18,6 @@
             <p class="card-text">{{add.number}} - {{add.neighborhood}}</p>
             <p class="card-text">{{add.city}} - {{add.uf}}</p>
             <p class="card-text">{{add.complement}} </p>
-            <!-- <input type="radio" [checked]="add.isMain" (click)="selectCardsEndereco(add._id)" style=""> -->
 
             <mat-chip-listbox aria-label="Fish selection">
               <mat-chip-option class="matOption" [selected]="add.isMain" (click)="selectCardsEndereco(add._id)">select</mat-chip-option>
