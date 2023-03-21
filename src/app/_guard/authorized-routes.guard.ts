@@ -1,9 +1,7 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
-import { AuthorizationRoutesService } from '../services/authorization-routes.service';
+import { UserService } from '../services/user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +9,7 @@ import { AuthorizationRoutesService } from '../services/authorization-routes.ser
 export class AuthorizedRoutesGuard implements CanActivate {
   token: any;
 
-  constructor(private router: Router, private authorizationRoutesService: AuthorizationRoutesService){}
+  constructor(private router: Router, private authorizationRoutesService: UserService){}
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -21,7 +19,6 @@ export class AuthorizedRoutesGuard implements CanActivate {
     return true
   }else {
     this.router.navigate(['login']);
-
     return false;
   }
   }

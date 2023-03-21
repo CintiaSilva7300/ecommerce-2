@@ -37,4 +37,6 @@ requestOptions = { headers: this.headers };
   getUserToken(){
     return this.http.get<any[]>(`${environment.API_TESTE}/user/userData`);
   }
+
+  statusLogin = () => !!localStorage.getItem('token')
 }
