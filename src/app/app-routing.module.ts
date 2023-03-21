@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { RegisterComponent } from './register/register.component';
 import { PerfilComponent } from './perfil/perfil.component';
+import { AuthorizedRoutesGuard } from './_guard/authorized-routes.guard';
 
 const routes: Routes = [
   {
@@ -14,7 +15,8 @@ const routes: Routes = [
     path: 'register', component: RegisterComponent
   },
   {
-    path: 'perfil', component: PerfilComponent
+    path: 'perfil', component: PerfilComponent,
+    canActivate:[AuthorizedRoutesGuard]
   },
 
   {
