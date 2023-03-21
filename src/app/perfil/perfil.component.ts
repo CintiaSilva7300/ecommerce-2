@@ -21,6 +21,7 @@ export class PerfilComponent implements OnInit {
   loading: any;
   messageError: any;
   showModal: any
+  iconSettings: any;
 
   constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router) {
     this.id = '';
@@ -35,6 +36,8 @@ export class PerfilComponent implements OnInit {
     this.messageError = "";
 
     this.showModal = false;
+
+    this.iconSettings = '/assets/img/settings.png';
   }
 
   ngOnInit(): void {
