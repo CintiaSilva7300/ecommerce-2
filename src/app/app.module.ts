@@ -21,6 +21,9 @@ import { AuthInterceptor } from './services/AuthInterceptor';
 import { MenuPerfilComponent } from './menu-perfil/menu-perfil.component';
 import { ModalAddressComponent } from './modal-address/modal-address.component';
 
+// angular material
+import {MatChipsModule} from '@angular/material/chips';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,6 +48,7 @@ import { ModalAddressComponent } from './modal-address/modal-address.component';
     CommonModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    MatChipsModule
   ],
   providers: [HttpClient,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }

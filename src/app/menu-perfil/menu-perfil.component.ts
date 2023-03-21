@@ -19,7 +19,6 @@ complement: any;
 address: any
 
   constructor(private http: HttpClient){
-
       this.name = '';
       this.zipCode = '';
       this.street = '';
@@ -41,5 +40,6 @@ address: any
     this.http.put(`${environment.API_TESTE}/address/setMainAddress`, {addressId: id}).subscribe((res: any) => {
       window.location.reload();
     })
+    // console.log('address selecionado -> ',id)
   }
 }
