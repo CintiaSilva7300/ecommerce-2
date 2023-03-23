@@ -50,8 +50,7 @@ export class PerfilComponent implements OnInit {
         this.birthDate = new Date(resData.birthDate);
         this.cpf = resData.cpf;
         this.registerDate = resData.registerDate;
-      })
-
+    })
   }
 
 
@@ -77,7 +76,7 @@ export class PerfilComponent implements OnInit {
       this.loading = true;
       this.http.put(`${environment.API_TESTE}/user/userData`, data).subscribe((result: any) => {
         this.loading = false;
-        window.location.reload();
+        this.ngOnInit()
       }, err => {
         this.messageError = err.error.message
         this.loading = false;

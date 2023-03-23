@@ -38,8 +38,7 @@ address: any
 
   selectCardsEndereco(id: any){
     this.http.put(`${environment.API_TESTE}/address/setMainAddress`, {addressId: id}).subscribe((res: any) => {
-      window.location.reload();
+      this.ngOnInit()
     })
-    // console.log('address selecionado -> ',id)
   }
 }

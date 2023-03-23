@@ -33,5 +33,8 @@ iconMenu: any;
     window.location.reload();
   }
 
-
+  // darkMod(){
+  //   document.body.classList.toggle('dark-theme');
+  //   console.log('teste ok --------')
+  // }
 }

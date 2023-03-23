@@ -16,16 +16,15 @@ messageError: any;
     this.showModal = false;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   save(data: any) {
     this.loading = true;
     this.http.post(`${environment.API_TESTE}/address/register`, data).subscribe((result: any) => {
         this.loading = false;
         this.showModal = false
-
         window.location.reload();
-
     },err => {
       console.log(err.error.message)
       this.messageError = err.error.message
