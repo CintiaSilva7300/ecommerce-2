@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { HomeComponent } from './home/home.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { RegisterComponent } from './register/register.component';
-import { PerfilComponent } from './perfil/perfil.component';
-import { AuthorizedRoutesGuard } from './components/_guard/authorized-routes.guard';
+import { NotFoundComponent } from './screens/not-found/not-found.component';
+import { RegisterComponent } from './screens/register/register.component';
+import { PerfilComponent } from './screens/perfil/perfil.component';
+import { AuthorizedRoutesGuard } from './_guard/authorized-routes.guard';
+import { HomeComponent } from './screens/home/home.component';
+import { LoginComponent } from './screens/login/login.component';
 
 const routes: Routes = [
   {

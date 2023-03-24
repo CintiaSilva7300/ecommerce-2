@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { environment } from "../../environments/environment"
 import { HttpClient } from '@angular/common/http';
 import jwt_decode from 'jwt-decode';
 import { ActivatedRoute, Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
