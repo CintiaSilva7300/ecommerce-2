@@ -23,6 +23,8 @@ import { ModalAddressComponent } from './modal-address/modal-address.component';
 
 // angular material
 import {MatChipsModule} from '@angular/material/chips';
+import {MatButtonModule} from '@angular/material/button';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ import {MatChipsModule} from '@angular/material/chips';
     CommonModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatChipsModule
+    MatChipsModule,
+    MatButtonModule,
+    MatDialogModule
   ],
   providers: [HttpClient,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }

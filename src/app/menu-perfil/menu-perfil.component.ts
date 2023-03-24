@@ -41,4 +41,12 @@ address: any
       this.ngOnInit()
     })
   }
+
+  atualizarEndereco(data: any) {
+    this.http.put(`${environment.API_TESTE}/:idAddress`, data).subscribe((result: any) => {
+      this.ngOnInit()
+    }, error => {
+     console.log('ERROR',error)
+    });
+  }
 }

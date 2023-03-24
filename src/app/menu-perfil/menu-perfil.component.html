@@ -11,6 +11,10 @@
   <div class="tab-content">
     <div id="endereco" class="tab-pane fade in active">
       <div class="cards">
+        <!-- <form action="post" #form="ngForm" (ngSubmit)="atualizarEndereco(form.value)">
+
+        </form> -->
+
         <div class="card bg-light" style="height:22rem" *ngFor="let add of address">
           <div class="card-header">{{add.name}}</div>
           <div class="card-body">
@@ -21,6 +25,11 @@
 
             <mat-chip-listbox aria-label="Fish selection">
               <mat-chip-option class="matOption" [selected]="add.isMain" (click)="selectCardsEndereco(add._id)">select</mat-chip-option>
+
+              <button mat-raised-button color="primary">Editar</button>
+
+
+
             </mat-chip-listbox>
 
           </div>
