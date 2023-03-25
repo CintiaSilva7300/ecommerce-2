@@ -7,6 +7,8 @@ import { AuthorizedRoutesGuard } from './_guard/authorized-routes.guard';
 import { LoginComponent } from './screens/login/login.component';
 import { EditarEnderecoComponent } from './screens/editar-endereco/editar-endereco.component';
 import { HomeComponent } from './screens/home/home.component';
+import { HomeAdminComponent } from './admin/screens/home-admin/home-admin.component';
+import { CardAdminComponent } from './admin/componets/card-admin/card-admin.component';
 
 const routes: Routes = [
   {
@@ -15,9 +17,16 @@ const routes: Routes = [
   {
     path: 'register', component: RegisterComponent
   },
+  {
+    path: 'admin/users', component: HomeAdminComponent
+  },
+   {
+    path: 'admin/home', component: CardAdminComponent
+  },
   // {
-  //   path: 'admin', component: HomeComponent
+  //   path: '', component:
   // },
+
   {
     path: 'perfil', component: PerfilComponent,
     canActivate:[AuthorizedRoutesGuard]

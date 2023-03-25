@@ -27,7 +27,12 @@ import { HomeComponent } from './screens/home/home.component';
 import { LoginComponent } from './screens/login/login.component';
 import { EditarEnderecoComponent } from './screens/editar-endereco/editar-endereco.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-
+import { HomeAdminComponent } from './admin/screens/home-admin/home-admin.component';
+import { SidebarComponent } from './admin/componets/sidebar/sidebar.component';
+import { TabelaUserComponent } from './admin/componets/tabela-user/tabela-user.component';
+import {MatTableModule} from '@angular/material/table';
+import { CardAdminComponent } from './admin/componets/card-admin/card-admin.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
 //admin
 @NgModule({
   declarations: [
@@ -44,6 +49,10 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MenuPerfilComponent,
     ModalAddressComponent,
     EditarEnderecoComponent,
+    HomeAdminComponent,
+    SidebarComponent,
+    TabelaUserComponent,
+    CardAdminComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,7 +66,9 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatChipsModule,
     MatButtonModule,
     MatDialogModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [HttpClient,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }

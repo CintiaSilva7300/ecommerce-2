@@ -1,0 +1,41 @@
+<div class="table-reponsive box">
+  <table id="example" class="table table-bordered">
+          <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Cpf</th>
+                <th>Genre</th>
+                <th>BirthDate</th>
+                <th>RegisterDate</th>
+                <th>Açãoes</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let user of usersPaginated">
+                  <td>{{user.name}}</td>
+                  <td>{{user.email}}</td>
+                  <td>{{user.cpf}}</td>
+                  <td>{{user.genre}}</td>
+                  <td>{{user.birthDate}}</td>
+                  <td>{{user.registerDate}}</td>
+                  <img (click)="alertWithSuccess(user._id)" class="acao" src="https://img.icons8.com/ios-glyphs/256/filled-trash.png" alt="">
+
+                </tr>
+          </tbody>
+      </table>
+
+      <mat-paginator #paginator
+               class="demo-paginator"
+               (page)="handlePageEvent($event)"
+               [length]="length"
+               [pageSize]="pageSize"
+               [pageSizeOptions]="pageSizeOptions"
+               [pageIndex]="pageIndex"
+               aria-label="Select page">
+</mat-paginator>
+  </div>
+
+
+
+
