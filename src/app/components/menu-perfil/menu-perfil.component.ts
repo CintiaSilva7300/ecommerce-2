@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./menu-perfil.component.sass']
 })
 export class MenuPerfilComponent implements OnInit {
+
 name: any;
 zipCode: any;
 street: any;
@@ -17,8 +18,11 @@ city: any;
 uf: any;
 complement: any;
 address: any
+messageError: any;
 
-  constructor(private http: HttpClient){
+  constructor(
+    private http: HttpClient,
+    ){
       this.name = '';
       this.zipCode = '';
       this.street = '';
@@ -27,6 +31,8 @@ address: any
       this.city = '';
       this.uf = '';
       this.complement = '';
+
+      this.messageError = "";
   }
 
   ngOnInit(): void {
@@ -42,11 +48,20 @@ address: any
     })
   }
 
-  atualizarEndereco(data: any) {
-    this.http.put(`${environment.API_TESTE}/:idAddress`, data).subscribe((result: any) => {
+  excluirCardsEndereco(id: any): void {
+    this.http.delete(`${environment.API_TESTE}/address/${id}`).subscribe((res: any) => {
       this.ngOnInit()
-    }, error => {
-     console.log('ERROR',error)
-    });
+      console.log('testeeeeeeeeeeeee ',res)
+    }, err => {
+      this.messageError = err.error.message
+      console.log('errroooo',err)
+    })
   }
+
+  // excluirCardsEnderecott(id: any): void {
+  //   this.http.put(`${environment.API_TESTE}/address/${id}`).subscribe((res: any) => {
+  //     this.ngOnInit()
+  //     console.log('testeeeeeeeeeeeee ',res)
+  //   })
+  // }
 }

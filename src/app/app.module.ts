@@ -25,7 +25,10 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatDialogModule} from '@angular/material/dialog';
 import { HomeComponent } from './screens/home/home.component';
 import { LoginComponent } from './screens/login/login.component';
+import { EditarEnderecoComponent } from './screens/editar-endereco/editar-endereco.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
+//admin
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +43,7 @@ import { LoginComponent } from './screens/login/login.component';
     PerfilComponent,
     MenuPerfilComponent,
     ModalAddressComponent,
+    EditarEnderecoComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,7 +56,8 @@ import { LoginComponent } from './screens/login/login.component';
     BrowserAnimationsModule,
     MatChipsModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSnackBarModule
   ],
   providers: [HttpClient,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }

@@ -1,3 +1,5 @@
+<h1 *ngIf="messageError">mensagem de erro ao apagar endereço principal {{messageError}}</h1>
+
 <div class=" col-md-12">
   <h2>Mais informações de perfil</h2>
 
@@ -11,9 +13,6 @@
   <div class="tab-content">
     <div id="endereco" class="tab-pane fade in active">
       <div class="cards">
-        <!-- <form action="post" #form="ngForm" (ngSubmit)="atualizarEndereco(form.value)">
-
-        </form> -->
 
         <div class="card bg-light" style="height:22rem" *ngFor="let add of address">
           <div class="card-header">{{add.name}}</div>
@@ -24,13 +23,14 @@
             <p class="card-text">{{add.complement}} </p>
 
             <mat-chip-listbox aria-label="Fish selection">
-              <mat-chip-option class="matOption" [selected]="add.isMain" (click)="selectCardsEndereco(add._id)">select</mat-chip-option>
+              <mat-chip-option class="" [selected]="add.isMain" style="background-color: black; width: 100px;" (click)="selectCardsEndereco(add._id)">select</mat-chip-option>
 
-              <button mat-raised-button color="primary">Editar</button>
-
-
+              <a routerLink="/editarEndereco">
+                <input type="button" value="Editar" style="background-color: black; width: 100px;border-radius: 47px; height: 33px; margin-left: 70px;" class="btn-primary btn-darck btn-block mt-1" >
+              </a>
 
             </mat-chip-listbox>
+            <button (click)="excluirCardsEndereco(add._id)">Excluir</button>
 
           </div>
         </div>
