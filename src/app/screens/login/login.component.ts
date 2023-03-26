@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('email', decodedToken.email);
         localStorage.setItem('token', result.token);
         localStorage.setItem('genre', decodedToken.genre);
+        localStorage.setItem('permission', decodedToken.permission);
 
         this.loading = false;
 

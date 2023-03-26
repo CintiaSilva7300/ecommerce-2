@@ -33,6 +33,9 @@ import { TabelaUserComponent } from './admin/componets/tabela-user/tabela-user.c
 import {MatTableModule} from '@angular/material/table';
 import { CardAdminComponent } from './admin/componets/card-admin/card-admin.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 //admin
 @NgModule({
   declarations: [
@@ -68,7 +71,9 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatDialogModule,
     MatSnackBarModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatTooltipModule,
+    MatProgressSpinnerModule
   ],
   providers: [HttpClient,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }

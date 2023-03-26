@@ -1,41 +1,56 @@
+<div *ngIf="!this.users; else loading" class="container spinner">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div class="container">
+  <h1 class="titulo">Listar usuarios </h1>
+
+    <div class="buscar">
+      <input (ngModelChange)="getSearch($event)" class="form-control form-control-lg" type="text" placeholder="Buscar...">
+      <img class="iconeBuca" src="https://img.icons8.com/windows/256/search-more.png">
+    </div>
+</div>
+
+
 <div class="table-reponsive box">
   <table id="example" class="table table-bordered">
-          <thead>
-              <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Cpf</th>
-                <th>Genre</th>
-                <th>BirthDate</th>
-                <th>RegisterDate</th>
-                <th>Açãoes</th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr *ngFor="let user of usersPaginated">
-                  <td>{{user.name}}</td>
-                  <td>{{user.email}}</td>
-                  <td>{{user.cpf}}</td>
-                  <td>{{user.genre}}</td>
-                  <td>{{user.birthDate}}</td>
-                  <td>{{user.registerDate}}</td>
-                  <img (click)="alertWithSuccess(user._id)" class="acao" src="https://img.icons8.com/ios-glyphs/256/filled-trash.png" alt="">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Cpf</th>
+        <th>Genre</th>
+        <th>BirthDate</th>
+        <th>RegisterDate</th>
+        <th>Admin</th>
+        <th>Açãoes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of usersPaginated">
+        <td>{{user.name}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.cpf}}</td>
+        <td>{{user.genre?.includes('M') ? 'Masculino' : 'Feminino'}}</td>
+        <td>{{user.birthDate}}</td>
+        <td>{{user.registerDate}}</td>
+        <td>{{user?.permission?.includes('ADMIN') ? 'Sim' : 'Não'}}</td>
 
-                </tr>
-          </tbody>
-      </table>
+        <td style="display: flex;margin-top: 10px; border: none;">
+          <img (click)="alertWithSuccessTornarAdminUser(user._id)" matTooltip="tornar usuario admin"
+            aria-label="Button that displays a tooltip when focused or hovered over" class="tornarAdiminIcon"
+            src="https://img.icons8.com/ios-filled/256/circled-chevron-up.png" alt="">
 
-      <mat-paginator #paginator
-               class="demo-paginator"
-               (page)="handlePageEvent($event)"
-               [length]="length"
-               [pageSize]="pageSize"
-               [pageSizeOptions]="pageSizeOptions"
-               [pageIndex]="pageIndex"
-               aria-label="Select page">
-</mat-paginator>
-  </div>
+          <img (click)="alertWithSuccessExcluirUser(user._id)" matTooltip="excluir usuario"
+            aria-label="Button that displays a tooltip when focused or hovered over" class="excluirIcon"
+            src="https://img.icons8.com/ios-glyphs/256/filled-trash.png" alt="">
+        </td>
 
+      </tr>
+    </tbody>
+  </table>
 
-
-
+  <mat-paginator #paginator class="demo-paginator" (page)="handlePageEvent($event)" [length]="length"
+    [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" [pageIndex]="pageIndex" aria-label="Select page">
+  </mat-paginator>
+</div>

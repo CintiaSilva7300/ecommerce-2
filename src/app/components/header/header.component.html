@@ -24,6 +24,7 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" href="perfil">Profile</a>
             <a class="dropdown-item" href="">Home</a>
+            <a class="dropdown-item" href="admin/home" *ngIf="permission;">Admin</a>
             <a class="dropdown-item" href="#" (click)="logout()">Sair</a>
           </div>
         </li>

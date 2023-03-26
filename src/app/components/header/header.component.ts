@@ -1,8 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { environment } from 'src/environments/environment';
-import jwt_decode from 'jwt-decode';
-import { ActivatedRoute, Route } from '@angular/router';
 
 @Component({
   selector: 'header',
@@ -14,10 +11,12 @@ token: any;
 id: any;
 genre: any;
 iconMenu: any;
+permission: any
 
   constructor(private http: HttpClient,){
     this.token = '';
     this.genre = '';
+    this.permission = 'permission';
 
     this.iconMenu = '/assets/img/icons8-cardápio-78.png';
   }
@@ -26,6 +25,8 @@ iconMenu: any;
       this.token = localStorage.getItem('token');
       this.id = localStorage.getItem('id');
       this.genre = localStorage.getItem('genre');
+
+      this.permission = localStorage.getItem('permission')?.includes('ADMIN');
   }
 
   logout(){

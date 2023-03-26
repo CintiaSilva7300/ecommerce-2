@@ -3,6 +3,8 @@ import { Component, OnInit, Type } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import {PageEvent} from '@angular/material/paginator';
 import Swal from 'sweetalert2';
+import { FormControl } from '@angular/forms';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-tabela-user',
@@ -19,8 +21,9 @@ pageSize = 10;
 pageIndex = 0;
 pageSizeOptions = [5, 10, 25];
 pageEvent!: PageEvent;
-
-
+permission: any;
+loading: any;
+disabled = new FormControl(false);
 
 handlePageEvent(e: PageEvent) {
   this.pageEvent = e;
@@ -29,16 +32,27 @@ handlePageEvent(e: PageEvent) {
   this.usersPaginated = this.users.slice(this.pageIndex * this.pageSize, this.pageIndex * this.pageSize + this.pageSize)
 }
 
-  constructor(private http: HttpClient){
+  constructor(
+    private http: HttpClient,
+    public userService: UserService
+    ){
+    this.loading = false;
     this.messageError = '';
   }
 
 ngOnInit(): void {
+  this.loading = true;
+
   this.http
     .get(`${environment.API_TESTE}/user` ).subscribe((resposta: any) => {
       this.users = resposta
+
+
       this.length = this.users.length
       this.usersPaginated = this.users.slice(this.pageIndex * this.pageSize, this.pageIndex * this.pageSize + this.pageSize)
+      this.loading = false;
+
+      // this.permission = localStorage.getItem('permission')?.includes('ADMIN');
     })
 }
 
@@ -52,7 +66,42 @@ async excluirUsuario(id: any) {
   })
 }
 
-alertWithSuccess(id: any){
+async tonarUserAdmin(id: any) {
+  this.http.post(`${environment.API_TESTE}/user/setAdminInUser/${id}`, id).subscribe((result: any) => {
+    console.log('result -> ',result)
+    this.ngOnInit()
+  }, err => {
+    this.messageError = err.error.message
+  });
+}
+
+alertWithSuccessExcluirUser(id: any){
+  Swal.fire({
+    title: 'Esse usuario será excluirdo?',
+    text: 'Essa ação não será revertida!',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Yes, delete it!',
+    cancelButtonText: 'No, keep it'
+  }).then(async (result) => {
+    if (result.value) {
+      await this.excluirUsuario(id)
+      Swal.fire(
+        'Deletado!',
+        'Esee usuario foi deletado',
+        'success'
+      )
+    } else if (result.dismiss === Swal.DismissReason.cancel) {
+      Swal.fire(
+        'Cancelled',
+        'Esee usuario permanecera ativo!',
+        'error'
+      )
+    }
+  })
+}
+
+alertWithSuccessTornarAdminUser(id: any){
   Swal.fire({
     title: 'Are you sure want to remove?',
     text: 'You will not be able to recover this file!',
@@ -62,7 +111,7 @@ alertWithSuccess(id: any){
     cancelButtonText: 'No, keep it'
   }).then(async (result) => {
     if (result.value) {
-      await this.excluirUsuario(id)
+      await this.tonarUserAdmin(id)
       Swal.fire(
         'Deleted!',
         'Your imaginary file has been deleted.',
@@ -76,5 +125,14 @@ alertWithSuccess(id: any){
       )
     }
   })
+}
+
+getSearch(value: any) {
+  const filter = this.users.filter((res: any) => {
+    return res.name.includes(value)
+  })
+  console.log('testeeeeeeeeeeeee ',filter)
+  this.users = filter;
+
 }
 }
