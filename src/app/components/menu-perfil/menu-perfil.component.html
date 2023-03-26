@@ -22,16 +22,28 @@
             <p class="card-text">{{add.city}} - {{add.uf}}</p>
             <p class="card-text">{{add.complement}} </p>
 
-            <mat-chip-listbox aria-label="Fish selection">
-              <mat-chip-option class="" [selected]="add.isMain" style="background-color: black; width: 100px;" (click)="selectCardsEndereco(add._id)">select</mat-chip-option>
 
-              <a routerLink="/editarEndereco">
-                <input type="button" value="Editar" style="background-color: black; width: 100px;border-radius: 47px; height: 33px; margin-left: 70px;" class="btn-primary btn-darck btn-block mt-1" >
-              </a>
+              <mat-chip-listbox aria-label="Fish selection">
+                <mat-chip-option class="" [selected]="add.isMain" style="background-color: black; width: 40px;"
+                  (click)="selectCardsEndereco(add._id)"></mat-chip-option>
 
-            </mat-chip-listbox>
-            <button (click)="excluirCardsEndereco(add._id)">Excluir</button>
+                <a href="/editarEndereco">
+                  <img class=""
+                    style="
+                    width: 40px;
+                    height: 40px;
+                    cursor: pointer;"
+                    src="https://img.icons8.com/sf-black-filled/256/pencil.png" alt="">
+                </a>
 
+                <img class=""
+                  style="
+                  width: 35px;
+                  height: 35px;
+                  cursor: pointer;"
+                (click)="excluirCardsEndereco(add._id)" src="https://img.icons8.com/ios-glyphs/256/filled-trash.png" alt="">
+
+              </mat-chip-listbox>
           </div>
         </div>
       </div>
@@ -51,4 +63,3 @@
     </div>
   </div>
 </div>
-
