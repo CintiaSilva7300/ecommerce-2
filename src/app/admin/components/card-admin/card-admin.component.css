@@ -1,0 +1,11 @@
+.card {
+  width: 25rem;
+  height: 10rem;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  text-align: center;
+  border: 1px solid #000;
+  background: #0a0909;
+  border-radius: 5px;
+  color: white;
+}/*# sourceMappingURL=card-admin.component.css.map */

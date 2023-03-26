@@ -8,7 +8,9 @@ import { LoginComponent } from './screens/login/login.component';
 import { EditarEnderecoComponent } from './screens/editar-endereco/editar-endereco.component';
 import { HomeComponent } from './screens/home/home.component';
 import { HomeAdminComponent } from './admin/screens/home-admin/home-admin.component';
-import { CardAdminComponent } from './admin/componets/card-admin/card-admin.component';
+import { CardAdminComponent } from './admin/components/card-admin/card-admin.component';
+import { ListarProdutosComponent } from './admin/screens/screens/listar-produtos/listar-produtos.component';
+import { CadastrarProdutoComponent } from './admin/screens/screens/cadastrar-produto/cadastrar-produto.component';
 
 const routes: Routes = [
   {
@@ -23,9 +25,12 @@ const routes: Routes = [
    {
     path: 'admin/home', component: CardAdminComponent
   },
-  // {
-  //   path: '', component:
-  // },
+  {
+    path: 'admin/listarProdutos', component: ListarProdutosComponent
+  },
+  {
+    path: 'admin/cadastrarProduto', component: CadastrarProdutoComponent
+  },
 
   {
     path: 'perfil', component: PerfilComponent,

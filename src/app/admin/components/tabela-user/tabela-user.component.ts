@@ -25,6 +25,8 @@ permission: any;
 loading: any;
 disabled = new FormControl(false);
 
+inputPesquisa: string = '';
+
 handlePageEvent(e: PageEvent) {
   this.pageEvent = e;
   this.pageIndex = e.pageIndex;
@@ -127,12 +129,19 @@ alertWithSuccessTornarAdminUser(id: any){
   })
 }
 
-getSearch(value: any) {
-  const filter = this.users.filter((res: any) => {
-    return res.name.includes(value)
-  })
-  console.log('testeeeeeeeeeeeee ',filter)
-  this.users = filter;
-
+getSearch() {
+  if (this.inputPesquisa.length > 1) {
+    this.users = this.users.filter((search: any) => {
+      search.name.toLowerCase().includes(this.inputPesquisa.toLowerCase())
+      console.log(search)
+    }
+    );
+  } else {
+    this.http
+    .get(`${environment.API_TESTE}/user` ).subscribe((resposta: any) => {
+      this.users = resposta
+    })
+  }
 }
+
 }

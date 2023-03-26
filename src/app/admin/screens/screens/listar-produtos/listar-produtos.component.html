@@ -1,0 +1,65 @@
+<header></header>
+<app-sidebar/>
+
+<div class="container">
+  <div *ngIf="!this.product; else loading" class="container spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <div class="container">
+    <h1 class="titulo">Listar prodtos </h1>
+
+      <div class="buscar">
+        <input class="form-control form-control-lg" type="text" placeholder="Buscar...">
+
+        <img class="iconeBuca" src="https://img.icons8.com/windows/256/search-more.png">
+      </div>
+
+      <a href="admin/cadastrarProduto">
+        <button class="btn btn-primary">Cadastrar produtos</button>
+      </a>
+  </div>
+
+
+  <div class="table-reponsive box">
+    <table id="example" class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Code</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>RegisterDate</th>
+          <th>Status</th>
+          <th>Type</th>
+          <th>UrlImage</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let products of usersPaginated">
+          <td>{{products.code}}</td>
+          <td>{{products.name}}</td>
+          <td>{{products.price}}</td>
+          <td>{{products.quantity}}</td>
+          <td>{{products.registerDate}}</td>
+          <td>{{products.status === true ? 'SIM' : 'NÃO'}}</td>
+          <td>{{products.type}}</td>
+          <td>{{products.urlImage}}</td>
+
+          <td style="display: flex;margin-top: 10px; border: none;">
+            <img (click)="alertWithSuccessExcluirProduto(products._id)" matTooltip="excluir usuario"
+              aria-label="Button that displays a tooltip when focused or hovered over" class="excluirIcon"
+              src="https://img.icons8.com/ios-glyphs/256/filled-trash.png" alt="">
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+
+    <mat-paginator #paginator class="demo-paginator" (page)="handlePageEvent($event)" [length]="length"
+    [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" [pageIndex]="pageIndex" aria-label="Select page">
+  </mat-paginator>
+  </div>
+
+
+</div>

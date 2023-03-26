@@ -1,0 +1,64 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
+  width: 200px;
+  height: 200px;
+}
+
+.btn {
+  width: 100%;
+  background: #000;
+}
+
+.card {
+  width: 400px;
+  height: 300px;
+  border-radius: 10px;
+  margin: 2px;
+  width: 22rem !important;
+  border: 1px solid #000000;
+}
+
+h5 {
+  margin: 5px;
+}
+
+.caixa {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  row-gap: 1em;
+  margin-top: 50px;
+}
+
+.card:hover {
+  border: 3px solid #707070;
+}
+
+img {
+  margin-top: 10px;
+}
+
+img:hover {
+  z-index: 90;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 900px) {
+  .card {
+    display: flex;
+    margin: 0px;
+    width: 18rem !important;
+  }
+  .caixa {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    -moz-column-gap: 5px;
+         column-gap: 5px;
+    row-gap: 1em;
+    margin-top: 30px;
+  }
+}/*# sourceMappingURL=card.component.css.map */

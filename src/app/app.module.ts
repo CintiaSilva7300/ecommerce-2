@@ -28,13 +28,15 @@ import { LoginComponent } from './screens/login/login.component';
 import { EditarEnderecoComponent } from './screens/editar-endereco/editar-endereco.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { HomeAdminComponent } from './admin/screens/home-admin/home-admin.component';
-import { SidebarComponent } from './admin/componets/sidebar/sidebar.component';
-import { TabelaUserComponent } from './admin/componets/tabela-user/tabela-user.component';
+import { SidebarComponent } from './admin/components/sidebar/sidebar.component';
+import { TabelaUserComponent } from './admin/components/tabela-user/tabela-user.component';
 import {MatTableModule} from '@angular/material/table';
-import { CardAdminComponent } from './admin/componets/card-admin/card-admin.component';
+import { CardAdminComponent } from './admin/components/card-admin/card-admin.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { ListarProdutosComponent } from './admin/screens/screens/listar-produtos/listar-produtos.component';
+import { CadastrarProdutoComponent } from './admin/screens/screens/cadastrar-produto/cadastrar-produto.component';
 
 //admin
 @NgModule({
@@ -56,6 +58,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     SidebarComponent,
     TabelaUserComponent,
     CardAdminComponent,
+    ListarProdutosComponent,
+    CadastrarProdutoComponent,
   ],
   imports: [
     BrowserModule,

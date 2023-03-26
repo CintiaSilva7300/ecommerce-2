@@ -1,0 +1,104 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.box-parent-login {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+  padding: 20px;
+  color: #060606;
+}
+
+.form-group {
+  width: 100%;
+}
+
+a:hover {
+  color: #070707;
+}
+
+a {
+  color: #070707;
+}
+
+.txt-center {
+  color: #9f9d9d;
+}
+
+.card {
+  width: 400px;
+  border-radius: 10px;
+  height: 400px;
+  margin-right: 100px;
+  border: 1px solid #000000;
+  margin-top: 100px;
+}
+
+.mensageError {
+  background: #faeaee;
+  text-align: center;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.nav {
+  background: rgb(23, 22, 22);
+  color: #ffffff;
+  height: 60px;
+  width: 100%;
+  border: none;
+  flex-wrap: nowrap !important;
+  padding: 5px;
+}
+
+.loginText {
+  margin-right: 205px;
+}
+
+h2 {
+  font-size: 17px;
+  padding: 5px;
+  font-weight: bolder;
+  color: #ffffff;
+  cursor: pointer;
+  margin-left: 142px;
+}
+
+h2:hover {
+  color: #707070;
+}
+
+.routes {
+  text-decoration: none;
+}
+
+.spinner {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  position: absolute;
+  margin-top: 20vh;
+}
+
+@media screen and (max-width: 999px) {
+  .banner {
+    display: none;
+    visibility: visible;
+    visibility: hidden;
+    visibility: collapse;
+  }
+  h2 {
+    margin-left: 180px;
+  }
+  .logo {
+    margin-left: 1px;
+  }
+}/*# sourceMappingURL=login.component.css.map */

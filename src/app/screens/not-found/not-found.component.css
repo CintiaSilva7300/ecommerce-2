@@ -1,0 +1,15 @@
+.body {
+  text-align: center;
+}
+
+.error h1 {
+  color: red;
+  font-size: 250px;
+  margin-top: 300px;
+}
+
+.msg h2 {
+  color: #656565;
+  font-size: 50px;
+  margin-top: 120px;
+}/*# sourceMappingURL=not-found.component.css.map */
