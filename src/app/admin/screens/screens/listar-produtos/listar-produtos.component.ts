@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { UserService } from 'src/app/services/user.service';
 import { environment } from 'src/environments/environment';
@@ -62,8 +62,8 @@ handlePageEvent(e: PageEvent) {
       text: 'Essa ação não será revertida!',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Yes, delete it!',
-      cancelButtonText: 'No, keep it'
+      confirmButtonText: 'Sim, delete!',
+      cancelButtonText: 'Não, cancela!',
     }).then(async (result) => {
       if (result.value) {
         await this.excluirProduto(id)

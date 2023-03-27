@@ -19,6 +19,7 @@ export class PerfilComponent implements OnInit {
   cpf: any
   registerDate: any
   loading: any;
+  loadingSpinner:any
   messageError: any;
   showModal: any
   iconSettings: any;
@@ -33,6 +34,8 @@ export class PerfilComponent implements OnInit {
     this.birthDate = '';
 
     this.loading = false;
+    this.loadingSpinner = false;
+
     this.messageError = "";
 
     this.showModal = false;
@@ -41,6 +44,8 @@ export class PerfilComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loadingSpinner = true
+
     this.http
       .get(`${environment.API_TESTE}/user/userData`).subscribe((resData: any) => {
         this.name = resData.name;
@@ -50,6 +55,8 @@ export class PerfilComponent implements OnInit {
         this.birthDate = new Date(resData.birthDate);
         this.cpf = resData.cpf;
         this.registerDate = resData.registerDate;
+
+        this.loadingSpinner = false
     })
   }
 

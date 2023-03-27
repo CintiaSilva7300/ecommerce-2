@@ -21,8 +21,7 @@ loading: any;
     this.loading = true;
     this.http
     .get(`${environment.API_TESTE}/product/` ).subscribe((resposta: any) => {
-      this.product = resposta
-
+      this.product = resposta;
       console.log(this.product)
       this.loading = false;
     })

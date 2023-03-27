@@ -37,6 +37,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { ListarProdutosComponent } from './admin/screens/screens/listar-produtos/listar-produtos.component';
 import { CadastrarProdutoComponent } from './admin/screens/screens/cadastrar-produto/cadastrar-produto.component';
+import { CuponsComponent } from './components/cupons/cupons.component';
 
 //admin
 @NgModule({
@@ -60,6 +61,7 @@ import { CadastrarProdutoComponent } from './admin/screens/screens/cadastrar-pro
     CardAdminComponent,
     ListarProdutosComponent,
     CadastrarProdutoComponent,
+    CuponsComponent,
   ],
   imports: [
     BrowserModule,

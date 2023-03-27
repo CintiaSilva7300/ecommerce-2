@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, Type } from '@angular/core';
+import { Component, Input, OnInit, Type } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import {PageEvent} from '@angular/material/paginator';
 import Swal from 'sweetalert2';
 import { FormControl } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
+import { Observable, tap } from 'rxjs';
 
 @Component({
   selector: 'app-tabela-user',
@@ -12,7 +13,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./tabela-user.component.sass']
 })
 export class TabelaUserComponent implements OnInit {
-users!: any[];
+users!: any;
 usersPaginated!: any[];
 messageError: any
 
@@ -25,7 +26,7 @@ permission: any;
 loading: any;
 disabled = new FormControl(false);
 
-inputPesquisa: string = '';
+@Input() inputPesquisa: string = '';
 
 handlePageEvent(e: PageEvent) {
   this.pageEvent = e;
@@ -53,7 +54,6 @@ ngOnInit(): void {
       this.length = this.users.length
       this.usersPaginated = this.users.slice(this.pageIndex * this.pageSize, this.pageIndex * this.pageSize + this.pageSize)
       this.loading = false;
-
       // this.permission = localStorage.getItem('permission')?.includes('ADMIN');
     })
 }
@@ -129,19 +129,15 @@ alertWithSuccessTornarAdminUser(id: any){
   })
 }
 
-getSearch() {
-  if (this.inputPesquisa.length > 1) {
-    this.users = this.users.filter((search: any) => {
-      search.name.toLowerCase().includes(this.inputPesquisa.toLowerCase())
-      console.log(search)
-    }
-    );
-  } else {
-    this.http
-    .get(`${environment.API_TESTE}/user` ).subscribe((resposta: any) => {
-      this.users = resposta
-    })
+getSearch(name: any) {
+  if (name) {
+    name = name.toUpperCase();
+
+    this.users = this.users.filter((a: { nome: any; }) =>
+          a.nome.toUpperCase().indexOf(name) >= 0
+      );
   }
+  console.log(name);
 }
 
 }
