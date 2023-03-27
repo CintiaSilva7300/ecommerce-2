@@ -9,17 +9,22 @@ import { environment } from 'src/environments/environment';
 })
 export class CardComponent implements OnInit {
 product!: any[]
+loading: any;
 
   constructor(
     private http: HttpClient
-    ){}
+    ){
+      this.loading = false;
+    }
 
   ngOnInit(): void {
+    this.loading = true;
     this.http
     .get(`${environment.API_TESTE}/product/` ).subscribe((resposta: any) => {
       this.product = resposta
 
       console.log(this.product)
+      this.loading = false;
     })
   }
 
