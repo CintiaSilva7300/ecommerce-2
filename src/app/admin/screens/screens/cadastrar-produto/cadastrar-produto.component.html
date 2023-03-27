@@ -35,14 +35,15 @@
     </div>
 
     <div class="button">
+      <a href="admin/listarProdutos">
+        <input type="button" value="Entrar" style="background-color: rgb(243, 238, 238); color: black" class="btn btn-primary btn-darck btn-block"
+        value="voltar" >
+      </a>
+
       <input
         (click)="cadastrarProduto(form.value)" type="button" value="Entrar" style="background-color: black;" class="btn btn-primary btn-darck btn-block"
       [value]='loading ? "carregando..." : "cadastrar"' >
 
-      <a href="admin/listarProdutos">
-        <input type="button" value="Entrar" style="background-color: rgb(243, 238, 238); color: black;" class="btn btn-primary btn-darck btn-block"
-        [value]='loading ? "carregando..." : "voltar"' >
-      </a>
     </div>
   </form>
 </div>
