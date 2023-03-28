@@ -47,18 +47,19 @@ users: any
 
 
   atualizarEndereco(data: any) {
-    this.loading = true;
+    // this.loading = true;
 
-    this.http.put(`${environment.API_TESTE}/address/`, data).subscribe((result: any) => {
+    // this.http.put(`${environment.API_TESTE}/address/`, data).subscribe((result: any) => {
 
-    console.log('result -> ', data.id)
+    // console.log('result -> ', data.id)
 
-      this.loading = false;
-      this.ngOnInit()
-    }, error => {
-     console.log('ERROR',error)
-     this.loading = false;
-    });
+    //   this.loading = false;
+    //   this.ngOnInit()
+    // }, error => {
+    //  console.log('ERROR',error)
+    //  this.loading = false;
+    // });
+    console.log('editar endereço' )
   }
 
 }
