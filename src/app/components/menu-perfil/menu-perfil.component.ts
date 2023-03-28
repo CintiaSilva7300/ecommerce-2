@@ -19,9 +19,13 @@ complement: any;
 address: any
 messageError: any;
 
+loading: any;
+
   constructor(
     private http: HttpClient,
     ){
+      this.loading = false;
+
       this.name = '';
       this.zipCode = '';
       this.street = '';
@@ -63,4 +67,19 @@ messageError: any;
   //     console.log('testeeeeeeeeeeeee ',res)
   //   })
   // }
+
+  atualizarEndereco(data: any) {
+    this.loading = true;
+
+    this.http.put(`${environment.API_TESTE}/address/`, data).subscribe((result: any) => {
+
+    console.log('result -> ', data.id)
+
+      this.loading = false;
+      this.ngOnInit()
+    }, error => {
+     console.log('ERROR',error)
+     this.loading = false;
+    });
+  }
 }

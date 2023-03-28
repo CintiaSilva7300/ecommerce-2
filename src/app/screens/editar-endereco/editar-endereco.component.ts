@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -8,8 +8,9 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./editar-endereco.component.sass']
 })
 export class EditarEnderecoComponent implements OnInit {
+
 loading: any;
-id:any
+_id:any
 
 name: any;
 zipCode: any;
@@ -20,6 +21,7 @@ city:any;
 uf:any;
 complement: any
 address: any
+users: any
 
   constructor(private http: HttpClient){
     this.loading = false;
@@ -39,15 +41,18 @@ address: any
       this.http
         .get(`${environment.API_TESTE}/address/user` ).subscribe((res: any) => {
           this.address = res
-          console.log('id -> ', this.address)
+          // console.log('id -> ', this.address)
         })
   }
 
 
   atualizarEndereco(data: any) {
     this.loading = true;
-    this.http.put(`${environment.API_TESTE}/address`, data).subscribe((result: any) => {
-    console.log('result -> ', result._id)
+
+    this.http.put(`${environment.API_TESTE}/address/`, data).subscribe((result: any) => {
+
+    console.log('result -> ', data.id)
+
       this.loading = false;
       this.ngOnInit()
     }, error => {

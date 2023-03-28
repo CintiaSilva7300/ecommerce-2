@@ -6,7 +6,8 @@
 export const environment = {
   production: false,
 
-  API_TESTE: 'https://ecommerce-grupohvn-api.onrender.com'
+  API_TESTE: 'https://ecommerce-grupohvn-api.onrender.com',
+  API_ECOMMERCE: 'https://ecommerce-grupohvn-api.onrender.com'
 };
 
 /*

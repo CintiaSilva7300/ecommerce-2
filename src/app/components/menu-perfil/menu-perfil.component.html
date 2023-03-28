@@ -27,22 +27,21 @@
                 <mat-chip-option class="" [selected]="add.isMain" style="background-color: black; width: 40px;"
                   (click)="selectCardsEndereco(add._id)"></mat-chip-option>
 
-                <a href="/editarEndereco">
-                  <img class=""
+                  <img class="" onclick="document.getElementById('modalId').style.display='block'"
                     style="
                     width: 40px;
                     height: 40px;
                     cursor: pointer;"
-                    src="https://img.icons8.com/sf-black-filled/256/pencil.png" alt="">
-                </a>
+                    src="https://img.icons8.com/sf-black-filled/256/pencil.png" alt=""
+                  >
 
-                <img class=""
-                  style="
-                  width: 35px;
-                  height: 35px;
-                  cursor: pointer;"
-                (click)="excluirCardsEndereco(add._id)" src="https://img.icons8.com/ios-glyphs/256/filled-trash.png" alt="">
-
+                  <img class=""
+                    style="
+                    width: 35px;
+                    height: 35px;
+                    cursor: pointer;"
+                  (click)="excluirCardsEndereco(add._id)" src="https://img.icons8.com/ios-glyphs/256/filled-trash.png" alt=""
+                  >
               </mat-chip-listbox>
           </div>
         </div>
@@ -61,4 +60,51 @@
       <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
     </div>
   </div>
+</div>
+
+<!-- modal editar endereço -->
+<div id="modalId" class="modal">
+  <span onclick="document.getElementById('modalId').style.display='none'" class="close" title="Close Modal">&times;</span>
+  <form class="modal-content" >
+    <div class="container">
+      <form method="post" #form="ngForm" (ngSubmit)="atualizarEndereco(form.value)">
+        <div class="form-group">
+          <input class="form-control" value="{{name}}" type="text" placeholder="name" name="name"  ngModel>
+        </div>
+
+        <div class="form-group">
+          <input class="form-control"  type="text" placeholder="cep" name="zipCode" ngModel>
+        </div>
+
+        <div class="form-group">
+          <input class="form-control"  type="text" placeholder="rua" name="street" ngModel>
+        </div>
+
+        <div class="form-group">
+          <input class="form-control"  type="text" placeholder="number" name="number" ngModel>
+        </div>
+
+        <div class="form-group">
+          <input class="form-control"  type="text" placeholder="bairro" name="neighborhood" ngModel>
+        </div>
+
+        <div class="form-group">
+          <input class="form-control"  type="text" placeholder="cidade" name="city" ngModel>
+        </div>
+
+        <div class="form-group">
+          <input class="form-control"  type="text" placeholder="uf" name="uf" ngModel>
+        </div>
+
+        <div class="form-group">
+          <input class="form-control"  type="text" placeholder="complemento" name="complement" ngModel>
+        </div>
+
+
+        <input type="submit" [value]='loading ? "carregando..." : "entrar"' [disabled]="loading"
+        style="background-color: black;" class="btn btn-primary btn-darck btn-block"
+        >
+      </form>
+    </div>
+  </form>
 </div>

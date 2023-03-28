@@ -81,7 +81,7 @@ export class PerfilComponent implements OnInit {
 
   atualizarPerfil(data: any) {
       this.loading = true;
-      this.http.put(`${environment.API_TESTE}/user/userData`, data).subscribe((result: any) => {
+      this.http.put(`${environment.API_TESTE}/user/userData`, data.id,).subscribe((result: any) => {
         this.loading = false;
         this.ngOnInit()
       }, err => {

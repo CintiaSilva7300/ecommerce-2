@@ -12,6 +12,14 @@ font-size: 2em;
   margin-left: 16px;
 }
 
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #999!important;
+}
 
 .titulo{
   display: flex;
