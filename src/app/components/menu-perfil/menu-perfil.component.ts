@@ -61,13 +61,6 @@ loading: any;
     })
   }
 
-  // excluirCardsEnderecott(id: any): void {
-  //   this.http.put(`${environment.API_TESTE}/address/${id}`).subscribe((res: any) => {
-  //     this.ngOnInit()
-  //     console.log('testeeeeeeeeeeeee ',res)
-  //   })
-  // }
-
   atualizarEndereco(data: any) {
     this.loading = true;
 
