@@ -8,11 +8,12 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./editar-endereco.component.sass']
 })
 export class EditarEnderecoComponent implements OnInit {
+@Input()showModal: any;
 
 loading: any;
 _id:any
 
-name: any;
+@Input()addressSelected: any;
 zipCode: any;
 street:any;
 number: any;
@@ -26,7 +27,6 @@ users: any
   constructor(private http: HttpClient){
     this.loading = false;
 
-   this.name = '';
    this.zipCode = '';
    this.street = '';
    this.number = ''
@@ -39,27 +39,17 @@ users: any
 
   ngOnInit(): void {
       this.http
-        .get(`${environment.API_TESTE}/address/user` ).subscribe((res: any) => {
+        .get(`${environment.API_ECOMMERCE}/address/user` ).subscribe((res: any) => {
           this.address = res
-          // console.log('id -> ', this.address)
+          console.log(res)
         })
   }
 
 
   atualizarEndereco(data: any) {
-    // this.loading = true;
+   console.log(data)
 
-    // this.http.put(`${environment.API_TESTE}/address/`, data).subscribe((result: any) => {
-
-    // console.log('result -> ', data.id)
-
-    //   this.loading = false;
-    //   this.ngOnInit()
-    // }, error => {
-    //  console.log('ERROR',error)
-    //  this.loading = false;
-    // });
-    console.log('editar endereço' )
-  }
+   this.http.put(`${environment.API_ECOMMERCE}/address/${data.id}`, data).subscribe((res: any) => {console.log(res.id)})
+}
 
 }

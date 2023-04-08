@@ -36,7 +36,7 @@
         </div>
 
         <label class="labels" for="userLogin">Nome</label>
-        <input class="form-control " type="text" placeholder="name" name="name" value="{{name}}" ngModel>
+        <input class="form-control " type="text" placeholder="name" name="name" [value]="name" ngModel>
 
         <label class="labels" for="userLogin">Email</label>
         <input class="form-control " type="text" placeholder="name" name="email" value="{{email}}" disabled="" ngModel>

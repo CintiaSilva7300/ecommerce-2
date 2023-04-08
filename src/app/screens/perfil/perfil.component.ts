@@ -89,5 +89,4 @@ export class PerfilComponent implements OnInit {
         this.loading = false;
       });
   }
-
 }

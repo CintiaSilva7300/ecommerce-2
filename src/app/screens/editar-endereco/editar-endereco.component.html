@@ -1,9 +1,47 @@
-<header></header>
+<!-- <header></header> -->
+
+<form method="post" #form="ngForm" (ngSubmit)="atualizarEndereco(form.value)" *ngIf="showModal">
+  <div class="form-group">
+    <input class="form-control" [ngModel]="addressSelected.name" value="{{addressSelected.name}}" type="text" placeholder="name" id="name" name="name" minlength="2" required >
+
+    <div class="inputValid" *ngIf="(form.controls['name']?.invalid && form.controls['name']?.touched) || form.controls['name']?.dirty">
+      <span *ngIf="form.controls['name']?.errors?.['required']">O campo nome deve ser preenchido!</span>
+      <span *ngIf="form.controls['name']?.errors?.['minlength']">O campo nome de ter no minimo 2 caracteres!</span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <input class="form-control" [ngModel]="addressSelected.zipCode"  value="{{addressSelected.zipCode}}" type="text" placeholder="cep" name="zipCode">
+  </div>
+
+  <div class="form-group">
+    <input class="form-control" [ngModel]="addressSelected.street" value="{{addressSelected.street}}" type="text" placeholder="rua" name="street">
+  </div>
+
+  <div class="form-group">
+    <input class="form-control" [ngModel]="addressSelected.number" value="{{addressSelected.number}}" type="text" placeholder="number" name="number">
+  </div>
+
+  <div class="form-group">
+    <input class="form-control" value="{{addressSelected.neighborhood}}" type="text" placeholder="bairro" name="neighborhood">
+  </div>
+
+  <div class="form-group">
+    <input class="form-control" [ngModel]="addressSelected.city" value="{{addressSelected.city}}" type="text" placeholder="cidade" name="city">
+  </div>
+
+  <div class="form-group">
+    <input class="form-control" [ngModel]="addressSelected.uf" value="{{addressSelected.uf}}" type="text" placeholder="uf" name="uf">
+  </div>
+
+  <div class="form-group">
+    <input class="form-control" [ngModel]="addressSelected.complement" value="{{addressSelected.complement}}" type="text" placeholder="complemento" name="complement">
+  </div>
 
 
-
-
-
-
+  <input type="submit" (click)="atualizarEndereco(form.value)" [value]='loading ? "carregando..." : "atualizar"' [disabled]="loading"
+  style="background-color: black;" class="btn btn-primary btn-darck btn-block"
+  >
+</form>
 
 

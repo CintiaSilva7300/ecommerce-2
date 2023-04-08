@@ -1,0 +1,36 @@
+<header></header>
+<div class="container">
+  <table>
+    <thead>
+        <!-- <h1 class="">Carrinho de compra</h1> -->
+          <th>Nome</th>
+          <th>Qtd</th>
+          <th>Preço</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <td>{{product.name}}</td>
+          <div class="qtd" style="display: flex; margin-left: 100px;">
+            <h1 (click)="removeProducts(product)" data-toggle="tooltip" title="remover" style="cursor: pointer;">-</h1>
+            <h1 style="padding-left: 10px; padding-right: 10px;">{{product.qtd}}</h1>
+            <h1 (click)="addProducts(product)" data-toggle="tooltip" title="adicionar" style="cursor: pointer;">+</h1>
+          </div>
+          <td>{{formatPrice(product.price)}}</td>
+        </tr>
+        <tr>
+      </tbody>
+    </table>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-body">
+          <h1 class="card-title">Resumo</h1>
+          <h2 class="card-title">{{formatPrice(total)}}</h2>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <p (click)="totalCarrinho()" class="btn btn-primary" >Go somewhere</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
