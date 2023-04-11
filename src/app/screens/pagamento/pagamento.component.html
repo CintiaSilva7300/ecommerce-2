@@ -1,0 +1,104 @@
+<header></header>
+
+<div class="container">
+  <mat-stepper #stepper>
+    <mat-step errorMessage="Name is required.">
+      <form>
+        <ng-template style="background: red;" matStepLabel>Minha cesta</ng-template>
+        <div appearance="fill">
+
+
+          <h1>Resumo do pedido</h1>
+
+          <div id="table-container">
+            <table>
+              <thead style="color:black">
+                <tr>
+                  <th>codigo</th>
+                  <th>produto</th>
+                  <th>name</th>
+                  <th>preço</th>
+                  <th>tipo</th>
+                  <th>quantidade</th>
+                  <th>ação</th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let product of  product">
+                <tr>
+                  <td style="text-align: start">{{product.code}}</td>
+
+                  <td style="">
+                    <img src="{{product.urlImage}}">
+                  </td>
+
+                  <td style="width:22em">{{product.name}}</td>
+
+                  <td>{{formatPrice(product.price)}}</td>
+
+                  <td>{{product.type}}</td>
+                  <td>{{product.qtd}}</td>
+                  <td>
+                    <img matTooltip="remover produto" style=" width: 25px;height: 25px; cursor: pointer;"
+                      src="https://img.icons8.com/ios-glyphs/256/filled-trash.png" alt="">
+                  </td>
+                </tr>
+
+              </tbody>
+              <tbody>
+                <tr>
+                  <td colspan="4"></td>
+                  <td style="display: flex">
+                    <button routerLink="/carrinho" class="btn btn-primary btn-darck btn-block"style="background: #000; margin-top: 10px; width: 150px; margin-right: 10px;">
+                    voltar para carrinho
+                    </button>
+
+                    <button class="btn btn-primary btn-darck btn-block"
+                      style="background-color: black; margin-top: 10px; width: 150px">Add
+                    </button>
+
+
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+        <button class="matStepperNext" mat-button matStepperNext>proximo ></button>
+      </form>
+
+    </mat-step>
+    <mat-step errorMessage="Address is required.">
+      <form>
+        <ng-template matStepLabel>Endereço de entrega</ng-template>
+        <label>Endereço pricipal de entrega</label>
+        <div appearance="fill" *ngFor="let address of address">
+          <div *ngIf="address.isMain === true">
+            <p >{{address.name}}</p>
+            <p >{{address.zipCode}}</p>
+            <p >{{address.street}}</p>
+            <p >{{address.number}}</p>
+            <p >{{address.neighborhood}}</p>
+            <p >{{address.city}}</p>
+            <p >{{address.uf}}</p>
+            <p >{{address.complement}}</p>
+
+          </div>
+        </div>
+        <!-- <div> -->
+          <p>Go to a different step to see the error state</p>
+          <button class="matStepperNext" mat-button matStepperPrevious>voltar</button>
+          <button class="matStepperNext" mat-button matStepperNext>proximo ></button>
+        <!-- </div> -->
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button class="matStepperNext" mat-button matStepperPrevious>voltar</button>
+        <button mat-button>Reset</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+</div>

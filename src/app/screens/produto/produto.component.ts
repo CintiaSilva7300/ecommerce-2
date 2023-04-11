@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, NgModule, OnInit } from '@angular/core';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
@@ -57,7 +57,7 @@ msg: string = 'esse produto ja foi adicionado ao carrinho'
     }else{
       const products = JSON.parse(produtsLocalStorage)
 
-      console.log('aaaaaaaaaaaaaaaa',products)
+      // console.log('aaaaaaaaaaaaaaaa',products)
       const productsExist = products.find((item: any) => item.code == this.product.code)
       if(!productsExist){
         products.push(this.product);
