@@ -4,21 +4,12 @@
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
       <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
     </ol>
 
     <!--  slides -->
     <div class="carousel-inner">
-      <div class="item active">
-        <img src="https://tm.ibxk.com.br/2022/06/03/03104446536143.jpg?ims=1120x420" alt="Los Angeles" style="width:100%;">
-      </div>
-
-      <div class="item">
-        <img src="https://thumbs.dreamstime.com/z/programador-penoso-trabalhando-em-tecnologias-de-c%C3%B3digo-programa%C3%A7%C3%A3o-pc-para-desktop-ou-design-site-na-office-software-166959987.jpg" alt="Los Angeles" style="width:100%;">
-      </div>
-
-      <div class="item">
-        <img src="https://tm.ibxk.com.br/2022/06/03/03104446536143.jpg?ims=1120x420" alt="Los Angeles" style="width:100%;">
+      <div class="item {{carrosel.metadatas[0].key === item.key ? 'active' : ''}}" *ngFor="let item of carrosel.metadatas">
+        <img src="{{item.key}}" alt="Los Angeles" style="width:100%;">
       </div>
     </div>
 

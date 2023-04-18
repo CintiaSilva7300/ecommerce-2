@@ -1,0 +1,64 @@
+<header></header>
+<app-sidebar></app-sidebar>
+
+<div class="container">
+
+  <div class="container">
+    <div class="col-md-8 border-right">
+
+      <form method="post" class="form" #form="ngForm" (ngSubmit)="cadastrarConfiguracion(form.value)">
+        <div class="d-flex align-items-center ">
+          <h4 class="text-right">Cadastrar Configurações</h4>
+        </div>
+
+        <label class="labels" for="userLogin">Nome</label>
+        <input class="form-control " type="text" placeholder="name" name="name"  [(ngModel)]="name">
+
+        <label class="labels" for="userLogin">Codigo</label>
+        <input class="form-control " type="text" placeholder="code" name="code" [(ngModel)]="code">
+
+        <label class="labels">Tipo</label>
+        <input type="text" class="form-control" placeholder="type" name="type" [(ngModel)]="type">
+
+        <label class="labels">Descrição: </label>
+        <input type="text" class="form-control" placeholder="description" name="description" [(ngModel)]="description">
+
+        <h2 style="margin-top: 20px;">Informações adicionais</h2>
+
+        <div class="info" style="display: flex;">
+          <input type="text" class="form-control" placeholder="chave" name="key" [(ngModel)]="key">
+
+          <input type="text" class="form-control" placeholder="valor:" name="value" [(ngModel)]="value">
+
+          <input (click)="adicionarNaLista()" type="button" value="Adicionar" style="background-color: black;"
+            class="btn btn-primary btn-darck btn-block">
+        </div>
+
+        <div *ngIf="!metaDatas; else elseBlock"></div>
+        <ng-template #elseBlock>
+          <table >
+            <thead>
+              <tr>
+                <th>Key</th>
+                <th>Value</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of metaDatas">
+                <td>{{item.key}}</td>
+                <td>{{item.value}}</td>
+                <td (click)="deleteMetaData(item)">Excluir</td>
+              </tr>
+              <tr>
+            </tbody>
+          </table>
+
+        </ng-template>
+
+        <input type="submit" value="Cadastrar" style="background-color: black; margin-top:10px;width: 100px; "
+          class="btn btn-primary btn-darck btn-block">
+      </form>
+    </div>
+
+  </div>

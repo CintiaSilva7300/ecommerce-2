@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -12,8 +13,10 @@ export class EditarEnderecoComponent implements OnInit {
 
 loading: any;
 _id:any
+id:any
 
 @Input()addressSelected: any;
+
 zipCode: any;
 street:any;
 number: any;
@@ -23,8 +26,13 @@ uf:any;
 complement: any
 address: any
 users: any
+name: any
+messageError: any;
 
-  constructor(private http: HttpClient){
+  constructor(
+    private http: HttpClient,
+    private userService: UserService
+    ){
     this.loading = false;
 
    this.zipCode = '';
@@ -34,22 +42,32 @@ users: any
    this.city = '';
    this.uf = '';
    this.complement = '';
-
+   this.messageError = "";
   }
 
   ngOnInit(): void {
-      this.http
-        .get(`${environment.API_ECOMMERCE}/address/user` ).subscribe((res: any) => {
-          this.address = res
-          console.log(res)
-        })
+      // this.http
+      //   .get(`${environment.API_ECOMMERCE}/address/user` ).subscribe((res: any) => {
+      //     this.address = res
+      //     console.log(res)
+      //   })
   }
 
 
   atualizarEndereco(data: any) {
-   console.log(data)
+    this.loading = true;
+    this.http.put(`${environment.API_TESTE}/address/`, data.id).subscribe((result: any) => {
+      this.loading = false;
+      console.log('data ',data)
+      this.ngOnInit()
+    }, err => {
+      this.messageError = err.error.message
+      this.loading = false;
+    });
+    // this.userService.updateAddress(this._id).subscribe((result: any) => {
+    //   console.log('result ',result)
+    // })
+  }
 
-   this.http.put(`${environment.API_ECOMMERCE}/address/${data.id}`, data).subscribe((res: any) => {console.log(res.id)})
 }
 
-}

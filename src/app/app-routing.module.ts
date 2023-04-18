@@ -11,16 +11,33 @@ import { HomeAdminComponent } from './admin/screens/home-admin/home-admin.compon
 import { CardAdminComponent } from './admin/components/card-admin/card-admin.component';
 import { ListarProdutosComponent } from './admin/screens/screens/listar-produtos/listar-produtos.component';
 import { CadastrarProdutoComponent } from './admin/screens/screens/cadastrar-produto/cadastrar-produto.component';
+import { ConfiguracaoAdminComponent } from './admin/screens/configuracao-admin/configuracao-admin.component';
+import { ProdutoComponent } from './screens/produto/produto.component';
+import { FormSettingsComponent } from './admin/screens/form-settings/form-settings.component';
+import { CarrinhDeComprasComponent } from './screens/carrinho-de-compras/carrinho-de-compras.component';
+import { PagamentoComponent } from './screens/pagamento/pagamento.component';
 
 const routes: Routes = [
   {
     path: 'login', component: LoginComponent
   },
   {
+    path: 'product/:code', component: ProdutoComponent
+  },
+  {
+    path: 'carrinho', component: CarrinhDeComprasComponent
+  },
+  {
     path: 'register', component: RegisterComponent
   },
   {
+    path: 'pagamento', component: PagamentoComponent
+  },
+  {
     path: 'admin/users', component: HomeAdminComponent
+  },
+  {
+    path: 'admin/settings', component: FormSettingsComponent
   },
    {
     path: 'admin/home', component: CardAdminComponent
@@ -30,6 +47,9 @@ const routes: Routes = [
   },
   {
     path: 'admin/cadastrarProduto', component: CadastrarProdutoComponent
+  },
+  {
+    path: 'admin/configuracao', component: ConfiguracaoAdminComponent
   },
 
   {

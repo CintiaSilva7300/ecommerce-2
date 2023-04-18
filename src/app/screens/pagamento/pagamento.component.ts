@@ -51,6 +51,7 @@ export class PagamentoComponent implements OnInit {
 
     ngOnInit(): void {
       this.getAddress()
+      // this.removerProduct()
     }
 
     formatPrice(price: number) {
@@ -62,13 +63,15 @@ export class PagamentoComponent implements OnInit {
 
   getAddress() {
     this.http
-    .get(`${environment.API_TESTE}/address/user` ).subscribe((res: any) => {
+    .get(`${environment.API_ECOMMERCE}/address/user` ).subscribe((res: any) => {
       this.address = res
 
      console.log(this.address);
-
-
     })
+  }
 
+  removerProduct(id: any){
+    this.product.splice(this.product.indexOf(id))
+    console.log('product ID ->',this.product)
   }
 }

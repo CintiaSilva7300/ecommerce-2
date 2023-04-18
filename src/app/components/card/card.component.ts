@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -22,7 +22,7 @@ loading: any;
     this.http
     .get(`${environment.API_TESTE}/product/` ).subscribe((resposta: any) => {
       this.product = resposta;
-      console.log(this.product)
+      console.log('qqq',resposta)
       this.loading = false;
     })
   }

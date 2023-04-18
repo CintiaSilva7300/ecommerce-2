@@ -10,6 +10,16 @@
   margin-left: 30px;
 }
 
+.spinner {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  position: absolute;
+  margin-top: 20vh;
+}
+
 .profile-button {
   color: #fff;
 }

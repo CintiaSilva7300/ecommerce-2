@@ -24,16 +24,17 @@
 
 
               <mat-chip-listbox aria-label="Fish selection">
-                <mat-chip-option class="" [selected]="add.isMain" style="background-color: black; width: 40px;"
+                <mat-chip-option class="" [selected]="add.isMain" style="background-color: black; width: 40px;filter: invert(100%);"
                   (click)="selectCardsEndereco(add._id)"></mat-chip-option>
 
-                  <img class="" onclick="document.getElementById('modalId').style.display='block'"
+                  <img class="" (click)="openModal(add)"
                     style="
                     width: 40px;
                     height: 40px;
                     cursor: pointer;"
                     src="https://img.icons8.com/sf-black-filled/256/pencil.png" alt=""
-                  >
+                  > <!-- editar endereço -->
+
 
                   <img class=""
                     style="
@@ -63,41 +64,50 @@
 </div>
 
 <!-- modal editar endereço -->
-<div id="modalId" class="modal">
+<editarEndereco [showModal]="showModal" [addressSelected]="addressSelected" ></editarEndereco>
+
+
+<!-- <div id="modalId" class="modal">
   <span onclick="document.getElementById('modalId').style.display='none'" class="close" title="Close Modal">&times;</span>
   <form class="modal-content" >
     <div class="container">
       <form method="post" #form="ngForm" (ngSubmit)="atualizarEndereco(form.value)">
+
         <div class="form-group">
-          <input class="form-control" value="{{name}}" type="text" placeholder="name" name="name"  ngModel>
+          <input class="form-control" value="{{name}}" type="text" placeholder="name" id="name" name="name" minlength="2" ngModel required>
+
+          <div class="inputValid" *ngIf="(form.controls['name']?.invalid && form.controls['name']?.touched) || form.controls['name']?.dirty">
+            <span *ngIf="form.controls['name']?.errors?.['required']">O campo nome deve ser preenchido!</span>
+            <span *ngIf="form.controls['name']?.errors?.['minlength']">O campo nome de ter no minimo 2 caracteres!</span>
+          </div>
         </div>
 
         <div class="form-group">
-          <input class="form-control"  type="text" placeholder="cep" name="zipCode" ngModel>
+          <input class="form-control" value="{{zipCode}}" type="text" placeholder="cep" name="zipCode" ngModel>
         </div>
 
         <div class="form-group">
-          <input class="form-control"  type="text" placeholder="rua" name="street" ngModel>
+          <input class="form-control" value="{{street}}" type="text" placeholder="rua" name="street" ngModel>
         </div>
 
         <div class="form-group">
-          <input class="form-control"  type="text" placeholder="number" name="number" ngModel>
+          <input class="form-control" value="{{number}}" type="text" placeholder="number" name="number" ngModel>
         </div>
 
         <div class="form-group">
-          <input class="form-control"  type="text" placeholder="bairro" name="neighborhood" ngModel>
+          <input class="form-control" value="{{neighborhood}}" type="text" placeholder="bairro" name="neighborhood" ngModel>
         </div>
 
         <div class="form-group">
-          <input class="form-control"  type="text" placeholder="cidade" name="city" ngModel>
+          <input class="form-control" value="{{city}}" type="text" placeholder="cidade" name="city" ngModel>
         </div>
 
         <div class="form-group">
-          <input class="form-control"  type="text" placeholder="uf" name="uf" ngModel>
+          <input class="form-control" value="{{uf}}" type="text" placeholder="uf" name="uf" ngModel>
         </div>
 
         <div class="form-group">
-          <input class="form-control"  type="text" placeholder="complemento" name="complement" ngModel>
+          <input class="form-control" value="{{complement}}" type="text" placeholder="complemento" name="complement" ngModel>
         </div>
 
 
@@ -107,4 +117,4 @@
       </form>
     </div>
   </form>
-</div>
+</div> -->

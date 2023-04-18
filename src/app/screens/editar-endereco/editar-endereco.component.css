@@ -16,6 +16,11 @@
   width: 50%;
 }
 
+dialog {
+  animation: appear 350ms ease-in 1;
+  max-width: 500px;
+}
+
 @media screen and (max-width: 900px) {
   .endereco {
     width: 100%;
@@ -27,4 +32,3 @@
     margin-left: 0px !important;
   }
 }/*# sourceMappingURL=editar-endereco.component.css.map */
-

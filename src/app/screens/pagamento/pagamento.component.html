@@ -18,7 +18,6 @@
                   <th>produto</th>
                   <th>name</th>
                   <th>preço</th>
-                  <th>tipo</th>
                   <th>quantidade</th>
                   <th>ação</th>
                 </tr>
@@ -26,19 +25,14 @@
               <tbody *ngFor="let product of  product">
                 <tr>
                   <td style="text-align: start">{{product.code}}</td>
-
                   <td style="">
                     <img src="{{product.urlImage}}">
                   </td>
-
                   <td style="width:22em">{{product.name}}</td>
-
                   <td>{{formatPrice(product.price)}}</td>
-
-                  <td>{{product.type}}</td>
                   <td>{{product.qtd}}</td>
                   <td>
-                    <img matTooltip="remover produto" style=" width: 25px;height: 25px; cursor: pointer;"
+                    <img matTooltip="remover produto" (click)="removerProduct(product.id)" style=" width: 25px;height: 25px; cursor: pointer;"
                       src="https://img.icons8.com/ios-glyphs/256/filled-trash.png" alt="">
                   </td>
                 </tr>
@@ -55,8 +49,6 @@
                     <button class="btn btn-primary btn-darck btn-block"
                       style="background-color: black; margin-top: 10px; width: 150px">Add
                     </button>
-
-
                   </td>
                 </tr>
               </tbody>

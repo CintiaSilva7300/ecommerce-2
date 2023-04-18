@@ -8,6 +8,12 @@
   cursor: pointer;
 }
 
+.editarIcon {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+
 .tornarAdiminIcon {
   width: 25px;
   height: 25px;
@@ -36,8 +42,8 @@ input {
   width: 50%;
 }
 
-.iconeBuca {
+.iconeBusca {
   width: 40px;
   height: 40px;
   padding: 5px;
-}/*# sourceMappingURL=listar-produtos.component.css.map */
+}/*# sourceMappingURL=configuracao-admin.component.css.map */

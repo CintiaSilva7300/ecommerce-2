@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from "../../environments/environment"
 import { UserCreate } from '../interface/userCreate';
-import { Observable, catchError } from 'rxjs';
+import { Observable, catchError, retry } from 'rxjs';
 import { UserLogin } from '../interface/userLogin';
 
 @Injectable({
@@ -39,7 +39,5 @@ requestOptions = { headers: this.headers };
   }
 
   statusLogin = () => !!localStorage.getItem('token')
-
-
 
 }

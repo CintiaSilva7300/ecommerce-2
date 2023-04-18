@@ -18,9 +18,10 @@ uf: any;
 complement: any;
 address: any
 messageError: any;
-
+id: any
 loading: any;
-
+showModal: any
+addressSelected: any
   constructor(
     private http: HttpClient,
     ){
@@ -34,8 +35,9 @@ loading: any;
       this.city = '';
       this.uf = '';
       this.complement = '';
-
       this.messageError = "";
+
+      this.showModal = false;
   }
 
   ngOnInit(): void {
@@ -46,13 +48,13 @@ loading: any;
   }
 
   selectCardsEndereco(id: any){
-    this.http.put(`${environment.API_TESTE}/address/setMainAddress`, {addressId: id}).subscribe((res: any) => {
+    this.http.put(`${environment.API_ECOMMERCE}/address/setMainAddress`, {addressId: id}).subscribe((res: any) => {
       this.ngOnInit()
     })
   }
 
   excluirCardsEndereco(id: any): void {
-    this.http.delete(`${environment.API_TESTE}/address/${id}`).subscribe((res: any) => {
+    this.http.delete(`${environment.API_ECOMMERCE}/address/${id}`).subscribe((res: any) => {
       this.ngOnInit()
       console.log('testeeeeeeeeeeeee ',res)
     }, err => {
@@ -61,18 +63,28 @@ loading: any;
     })
   }
 
-  atualizarEndereco(data: any) {
-    this.loading = true;
+//   atualizarEndereco(data: any): void { {
+//     this.loading = true;
+//     console.log(data)
+//     this.http.put(`${environment.API_ECOMMERCE}/address/641e641b924aa1ee0d5b64a7`,data).subscribe((result: any) => {
+//       console.log(result)
+//       this.loading = false;
+//       this.ngOnInit()
+//     }, err => {
+//       this.messageError = err.error.message
+//       this.loading = false;
+//     });
+//   }
+// }
 
-    this.http.put(`${environment.API_TESTE}/address/`, data).subscribe((result: any) => {
-
-    console.log('result -> ', data.id)
-
-      this.loading = false;
-      this.ngOnInit()
-    }, error => {
-     console.log('ERROR',error)
-     this.loading = false;
-    });
+  openModal(data: any) {
+    this.addressSelected = data;
+    // this.address = data.id;
+    this.showModal = true;
   }
+
+  closeModal() {
+    this.showModal = false;
+  }
+
 }

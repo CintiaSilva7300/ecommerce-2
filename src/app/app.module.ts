@@ -53,8 +53,18 @@ import { MdbScrollspyModule } from 'mdb-angular-ui-kit/scrollspy';
 import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
 import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
+import { ConfiguracaoAdminComponent } from './admin/screens/configuracao-admin/configuracao-admin.component';
+import { ProdutoComponent } from './screens/produto/produto.component';
+import { FormSettingsComponent } from './admin/screens/form-settings/form-settings.component';
+import { CarrinhDeComprasComponent } from './screens/carrinho-de-compras/carrinho-de-compras.component';
+import {MatStepperModule} from '@angular/material/stepper';
+import { PagamentoComponent } from './screens/pagamento/pagamento.component';
+import {
+  FacebookLoginProvider,
+  SocialLoginModule,
+  SocialAuthServiceConfig,
+} from 'angularx-social-login';
 
-//admin
 @NgModule({
   declarations: [
     AppComponent,
@@ -77,6 +87,11 @@ import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
     ListarProdutosComponent,
     CadastrarProdutoComponent,
     CuponsComponent,
+    ConfiguracaoAdminComponent,
+    ProdutoComponent,
+    FormSettingsComponent,
+    CarrinhDeComprasComponent,
+    PagamentoComponent,
   ],
   imports: [
     BrowserModule,
@@ -109,11 +124,36 @@ import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
     MdbScrollspyModule,
     MdbTabsModule,
     MdbTooltipModule,
-    MdbValidationModule
+    MdbValidationModule,
+    MatStepperModule,
+    SocialLoginModule
   ],
-  providers: [HttpClient,
-    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  // providers: [
+  //   HttpClient,
+  //   {
+  //     provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true
+  //   }
+  // ],
+
+  providers: [
+    HttpClient,
+    {
+          provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true
+        },
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('705852731540516'), //id do app facebook login
+          },
+        ],
+      } as SocialAuthServiceConfig,
+    },
   ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

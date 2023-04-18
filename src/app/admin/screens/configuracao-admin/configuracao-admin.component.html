@@ -1,0 +1,71 @@
+<header></header>
+<app-sidebar></app-sidebar>
+
+
+<div class="container">
+  <div *ngIf="!this.config; else loading" class="container spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <div class="container">
+    <h1 class="titulo">Configurações </h1>
+
+    <div class="buscar">
+      <input class="form-control form-control-lg" type="text" placeholder="Buscar...">
+      <img class="iconeBusca" src="https://img.icons8.com/windows/256/search-more.png">
+
+      <a href="/admin/settings" class="buttonCadastrarP">
+        <input type="button" style="background-color: black; width: 200px;margin-top: 15px;margin-left: 310px;"
+          class="btn btn-primary btn-darck btn-block" value="Nova configuração">
+      </a>
+    </div>
+  </div>
+
+
+  <div class="table-reponsive box">
+    <table id="example" class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Code</th>
+          <th>Descrição</th>
+          <th>Nome</th>
+          <th>Tipo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let config of configPaginated">
+          <td>{{config.code}}</td>
+          <td>{{config.description}}</td>
+          <td>{{config.name}}</td>
+          <td>{{config.type}}</td>
+          <!-- <td>{{config.quantity}}</td>
+          <td>{{config.registerDate}}</td>
+          <td>{{config.status === true ? 'SIM' : 'NÃO'}}</td>
+          <td>{{config.urlImage}}</td> -->
+
+          <td style="display: flex;margin-top: 10px; border: none;">
+            <img (click)="alertWithSuccessExcluirConfiguracao(config._id)" matTooltip="excluir usuario"
+              aria-label="Button that displays a tooltip when focused or hovered over" class="excluirIcon"
+              src="https://img.icons8.com/ios-glyphs/256/filled-trash.png" alt="">
+
+              <!-- <a href="/admin/settings"> -->
+                <img class="editarIcon" (click)="editarConfiguracao(config)"
+                      style=""
+                      src="https://img.icons8.com/sf-black-filled/256/pencil.png" alt="">
+              <!-- </a> -->
+            </td>
+
+
+
+        </tr>
+      </tbody>
+    </table>
+
+    <mat-paginator #paginator class="demo-paginator" (page)="handlePageEvent($event)" [length]="length"
+      [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" [pageIndex]="pageIndex" aria-label="Select page">
+    </mat-paginator>
+  </div>
+
+
+</div>
+
