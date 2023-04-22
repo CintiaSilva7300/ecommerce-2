@@ -32,23 +32,26 @@ export class PagamentoComponent implements OnInit {
   valorFreteSelect: any
 
   @ViewChild("name") nameCard: ElementRef | undefined;
+  @ViewChild("cvc") cvcCard: ElementRef | undefined;
+  @ViewChild("number") numberCard: ElementRef | undefined;
+  @ViewChild("expiry") expiryCard: ElementRef | undefined;
 
 
   constructor(
-    private _formBuilder: FormBuilder,
     private router: Router,
     private http: HttpClient,
     ){
     this.clickBtn = true
-    this.product = this.router.getCurrentNavigation()?.extras.state //esta recebendo o dado pela navegação
-    this.product = history.state[0].product //pegando pela posicion do array
+
+      // this.product = history.state[0].product //pegando pela posicion do array
+      // this.product = this.router.getCurrentNavigation()?.extras.state //esta recebendo o dado pela
+      this.product = JSON.parse(localStorage.getItem('product') as string)
+
     this.total = this.router.getCurrentNavigation()?.extras.state
     this.total = history.state[0].total
 
     this.typoDeEnvio = "";
-    this.valorFreteSelect = ""
-
-    // this.nameCard = 'teste'
+    this.valorFreteSelect = "";
 
     this.name = '';
       this.zipCode = '';
@@ -63,8 +66,7 @@ export class PagamentoComponent implements OnInit {
         this.cep = resposta.zipCode;
         this.reteEPrazo()
       })
-      console.log(this.nameCard)
-  }
+    }
 
     ngOnInit(): void {
       this.getAddress()
@@ -85,7 +87,10 @@ export class PagamentoComponent implements OnInit {
   }
 
   removerProduct(id: any){
-    this.product.splice(this.product.indexOf(id))
+    console.log(this.product)
+    this.product = this.product.filter((prod: any) => prod._id !== id)
+    localStorage.setItem('product', JSON.stringify(this.product))
+    console.log(id)
   }
 
   alterarEnderecoPrincial(){
@@ -95,7 +100,6 @@ export class PagamentoComponent implements OnInit {
   reteEPrazo(){
     this.http.get(`${environment.API_ECOMMERCE}/frete/${this.cep}`).subscribe((resposta: any) => {
       this.data = resposta;
-      console.log('aaaaaaaaaa', this.data.sedex.prazo);
     })
   }
 

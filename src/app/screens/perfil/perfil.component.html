@@ -42,7 +42,7 @@
         <input class="form-control " type="text" placeholder="name" name="email" value="{{email}}" disabled="" ngModel>
 
         <label class="labels" for="userGenre">Sexo</label>
-        <select class="form-control" value="{{genre}}" name="genre">
+        <select class="form-control" value="{{genre}}" name="genre" ngModel>
           <option value="F" selected>Feminino</option>
           <option value="M" selected>Masculino</option>
         </select>
@@ -52,7 +52,7 @@
           placeholder="surname">
 
         <label class="labels">Cpf</label>
-        <input type="text" class="form-control" value="{{cpf}}" placeholder="cpf" name="cpf" disabled="" ngModel>
+        <input type="text" class="form-control" value="{{cpf}}" placeholder="cpf" name="cpf" ngModel>
 
         <label class="labels">Entrou em: </label>
         <input type="text" class="form-control" placeholder="surname" disabled="" value="{{registerDate}}"
