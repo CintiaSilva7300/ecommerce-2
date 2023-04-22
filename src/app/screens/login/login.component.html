@@ -45,27 +45,22 @@
               >
 
             <!-- login com facebook -->
-            <div *ngIf="!isLoggedin">
-              <button type="button" (click)="loginWithFacebook()" class="btn btn-primary btn-darck btn-block"
-              style="background-color: #337ab7; margin-top: 5px;"
-              >Signin with Facebook</button>
-            </div>
+            <form action="">
+              <div *ngIf="!isLoggedin">
+                <button type="button" (click)="loginFacebook()" class="btn btn-primary btn-darck btn-block"
+                style="background-color: #337ab7; margin-top: 5px;"
+                >Signin with Facebook</button>
+
+                <div *ngIf="user">
+                  <input value="{{ user.name }}">
+                  <input value="{{ user.email }}">
+                </div>
+              </div>
+            </form>
 
           <!-- form loginWithFacebook -->
           <div *ngIf="isLoggedin === true">
-            <div class="form-group">
-              <label>First Name</label>
-              <input type="text" class="form-control" [value]="socialUser.firstName" id="firstname" readonly>
-            </div>
-            <div class="form-group">
-              <label>Last Name</label>
-              <input type="text" class="form-control" [value]="socialUser.lastName" id="lastname" readonly>
-            </div>
-            <div class="form-group">
-              <label>Email</label>
-              <input type="text" class="form-control" [value]="socialUser.email" id="email" readonly>
-            </div>
-            <button type="button" (click)="signOut()" class="btn btn-primary">Sign Out</button>
+
           </div>
           <!-- form loginWithFacebook -->
 

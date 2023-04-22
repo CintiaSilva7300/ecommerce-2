@@ -63,20 +63,6 @@ addressSelected: any
     })
   }
 
-//   atualizarEndereco(data: any): void { {
-//     this.loading = true;
-//     console.log(data)
-//     this.http.put(`${environment.API_ECOMMERCE}/address/641e641b924aa1ee0d5b64a7`,data).subscribe((result: any) => {
-//       console.log(result)
-//       this.loading = false;
-//       this.ngOnInit()
-//     }, err => {
-//       this.messageError = err.error.message
-//       this.loading = false;
-//     });
-//   }
-// }
-
   openModal(data: any) {
     this.addressSelected = data;
     // this.address = data.id;

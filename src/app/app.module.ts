@@ -59,12 +59,14 @@ import { FormSettingsComponent } from './admin/screens/form-settings/form-settin
 import { CarrinhDeComprasComponent } from './screens/carrinho-de-compras/carrinho-de-compras.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import { PagamentoComponent } from './screens/pagamento/pagamento.component';
+import {MatInputModule} from '@angular/material/input';
 import {
   FacebookLoginProvider,
+  GoogleLoginProvider,
   SocialLoginModule,
   SocialAuthServiceConfig,
-} from 'angularx-social-login';
-
+} from '@abacritt/angularx-social-login';
+import { CreditCardDirectivesModule } from 'angular-cc-library';
 @NgModule({
   declarations: [
     AppComponent,
@@ -126,32 +128,42 @@ import {
     MdbTooltipModule,
     MdbValidationModule,
     MatStepperModule,
-    SocialLoginModule
+    SocialLoginModule,
+    MatInputModule,
+    CreditCardDirectivesModule
   ],
+
   // providers: [
-  //   HttpClient,
-  //   {
-  //     provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true
-  //   }
+    // {
+    //    provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true
+    // }
   // ],
 
   providers: [
-    HttpClient,
     {
-          provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true
-        },
+      provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true
+    },
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {
         autoLogin: false,
         providers: [
           {
-            id: FacebookLoginProvider.PROVIDER_ID,
-            provider: new FacebookLoginProvider('705852731540516'), //id do app facebook login
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              'triple-water-349101'
+            )
           },
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('705852731540516')
+          }
         ],
+        onError: (err) => {
+          console.error(err);
+        }
       } as SocialAuthServiceConfig,
-    },
+    }
   ],
 
   bootstrap: [AppComponent]

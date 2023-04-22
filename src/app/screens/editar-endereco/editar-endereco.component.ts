@@ -12,11 +12,11 @@ export class EditarEnderecoComponent implements OnInit {
 @Input()showModal: any;
 
 loading: any;
-_id:any
 id:any
 
 @Input()addressSelected: any;
 
+_id:any
 zipCode: any;
 street:any;
 number: any;
@@ -55,10 +55,10 @@ messageError: any;
 
 
   atualizarEndereco(data: any) {
+    console.log('dataaaaaaaaaaaaaaaaaa', data);
     this.loading = true;
-    this.http.put(`${environment.API_TESTE}/address/`, data.id).subscribe((result: any) => {
+    this.http.put(`${environment.API_TESTE}/address/${data._id}`, data).subscribe((result: any) => {
       this.loading = false;
-      console.log('data ',data)
       this.ngOnInit()
     }, err => {
       this.messageError = err.error.message

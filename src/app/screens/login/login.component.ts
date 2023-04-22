@@ -3,69 +3,52 @@ import { HttpClient } from '@angular/common/http';
 import jwt_decode from 'jwt-decode';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
-import {
-  SocialAuthService,
-  FacebookLoginProvider,
-  SocialUser,
-} from 'angularx-social-login';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FacebookLoginProvider,
+  SocialAuthService,
+  SocialUser,
+} from '@abacritt/angularx-social-login';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.sass']
+  styleUrls: ['./login.component.sass'],
 })
 export class LoginComponent implements OnInit {
-//teste login social
 loginForm!: FormGroup;
-socialUser!: SocialUser;
 isLoggedin?: boolean = undefined;
-//teste login social
+user!: SocialUser;
+loading: any;
+messageError: any;
 
+constructor(
+  private http: HttpClient,
+  private route: ActivatedRoute,
+  private router: Router,
+  private authService: SocialAuthService
+) {
+  this.loading = false;
+  this.messageError = '';
+}
 
-  loading: any;
-  messageError: any;
+  ngOnInit(): void {}
 
-  constructor(
-    private http: HttpClient,
-    private route: ActivatedRoute,
-    private router: Router,
+loginFacebook(): void {
+  this.authService.signIn(FacebookLoginProvider.PROVIDER_ID, { scope: 'public_profile' }).then((user) => {
+    this.user = user;
 
-    private formBuilder: FormBuilder,
-    private socialAuthService: SocialAuthService
-    ){
-   this.loading = false;
-   this.messageError = "";
+    const bodyFacebook = {
+      name: user.name,
+      email: user.email,
+      typeLogin: 'facebook'
+    };
+    console.log('aquiiiii -> ',user)
 
-   console.log('isLoggedin ->',this.isLoggedin);
-  }
-
-  ngOnInit(): void {
-    this.loginForm = this.formBuilder.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required],
-    });
-    this.socialAuthService.authState.subscribe((user) => {
-      this.socialUser = user;
-      this.isLoggedin = user != null;
-    });
-  }
-
-  // login social
-  loginWithFacebook(): void {
-    this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID);
-  }
-  signOut(): void {
-    this.socialAuthService.signOut();
-  }
-  // login social
-
-
-  public loginJWT(data: any) {
-      this.loading = true;
-
-      this.http.post(`${environment.API_TESTE}/user/login`, data).subscribe((result:any) => {
-        const decodedToken: any = jwt_decode(result.token)
+    this.http
+      .post(`${environment.API_ECOMMERCE}/user/loginSocial`, bodyFacebook)
+      .subscribe((result: any) => {
+        const decodedToken: any = jwt_decode(result.token);
 
         localStorage.setItem('name', decodedToken.name);
         localStorage.setItem('id', decodedToken.id);
@@ -74,17 +57,38 @@ isLoggedin?: boolean = undefined;
         localStorage.setItem('genre', decodedToken.genre);
         localStorage.setItem('permission', decodedToken.permission);
 
-        this.loading = false;
-
-        if(decodedToken){
+        if (decodedToken) {
           this.router.navigate(['']);
         }
-      }, err => {
-        this.messageError = err.error.message
-        this.loading = false;
       });
+    this.user = user;
+  });
+}
+
+public loginJWT(data: any) {
+  this.loading = true;
+
+  this.http.post(`${environment.API_TESTE}/user/login`, data).subscribe(
+    (result: any) => {
+      const decodedToken: any = jwt_decode(result.token);
+
+      localStorage.setItem('name', decodedToken.name);
+      localStorage.setItem('id', decodedToken.id);
+      localStorage.setItem('email', decodedToken.email);
+      localStorage.setItem('token', result.token);
+      localStorage.setItem('genre', decodedToken.genre);
+      localStorage.setItem('permission', decodedToken.permission);
+
+      this.loading = false;
+
+      if (decodedToken) {
+        this.router.navigate(['']);
+      }
+    },
+    (err) => {
+      this.messageError = err.error.message;
+      this.loading = false;
+    }
+  );
   }
-  }
-
-
-
+}

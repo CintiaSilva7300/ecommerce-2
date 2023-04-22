@@ -30,7 +30,13 @@ permission: any
   }
 
   logout(){
-    localStorage.clear();
+    // localStorage.clear();
+    localStorage.removeItem('token');
+    localStorage.removeItem('permission');
+    localStorage.removeItem('genre');
+    localStorage.removeItem('email');
+    localStorage.removeItem('name');
+    localStorage.removeItem('id');
     window.location.reload();
   }
 
