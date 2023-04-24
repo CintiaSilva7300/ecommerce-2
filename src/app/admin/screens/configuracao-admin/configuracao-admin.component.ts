@@ -86,18 +86,6 @@ alertWithSuccessExcluirConfiguracao(id: any){
   })
 }
 
-// cadastrarProduto(data: any) {
-//   this.loading = true;
-//   this.http.post(`${environment.API_TESTE}/product`, data).subscribe((result: any) => {
-//     console.log('result -> ',result)
-
-//     this.loading = false;
-//   },err => {
-//     console.log(err.error.message)
-//     this.loading = false;
-//   });
-// }
-
 editarConfiguracao(config: any){
   this.router.navigate(['/admin/settings'], {state: config});
 }

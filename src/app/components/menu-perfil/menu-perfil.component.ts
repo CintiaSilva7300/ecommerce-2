@@ -42,7 +42,7 @@ addressSelected: any
 
   ngOnInit(): void {
     this.http
-    .get(`${environment.API_TESTE}/address/user` ).subscribe((res: any) => {
+    .get(`${environment.API_ECOMMERCE}/address/user` ).subscribe((res: any) => {
       this.address = res
     })
   }
@@ -65,7 +65,6 @@ addressSelected: any
 
   openModal(data: any) {
     this.addressSelected = data;
-    // this.address = data.id;
     this.showModal = true;
   }
 

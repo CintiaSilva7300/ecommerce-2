@@ -6,8 +6,10 @@
 export const environment = {
   production: false,
 
-  API_TESTE: 'http://grupohvn.com:4000',
-  API_ECOMMERCE: 'http://grupohvn.com:4000',
+  API_TESTE: 'http://api.grupohvn.com:4000',
+  // API_ECOMMERCE: 'http://grupohvn.com:4000',
+  // API_ECOMMERCE: 'http://www.grupohvn.com:4000/product',
+  API_ECOMMERCE: 'http://api.grupohvn.com:4000',
   FacebookLoginProviderId: '705852731540516'
 };
 

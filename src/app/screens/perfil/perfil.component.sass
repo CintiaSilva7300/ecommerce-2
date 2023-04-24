@@ -1,6 +1,8 @@
 .form-control:focus
     box-shadow: none
     border-color: #000000
+.form-control
+  width: 500px
 
 .profile-button
     background: rgb(0, 0, 0)
@@ -24,8 +26,13 @@
     color: #000000
     cursor: pointer
 
+input
+  font-size: 15px
+  height: 40px
+
+
 .labels
-    font-size: 11px
+    font-size: 13px
 
 .add-experience:hover
     background: #000000
@@ -47,4 +54,97 @@
     display: flex
     justify-content: center
     align-items: center
+
+// tabs
+.season_tabs
+  position: relative
+  min-height: 70vh
+  margin-top: 25px
+
+.season_tab
+  float: left
+  clear: both
+  width: 286px
+
+.season_tab .labelMenu
+  cursor: pointer
+  padding: 15px
+  border: 1px solid #ccc
+  font-size: 15px
+  position: relative
+  width: 264px
+  height: 68px
+  border-radius: 5px
+
+.season_tab [type=radio]
+  display: none
+
+.season_content
+  position: absolute
+  top: 0
+  left: 286px
+  background: #f8f8f8
+  right: 0
+  bottom: 0
+  padding: 10px
+  border: 1px solid #ccc
+  border-radius: 5px
+
+.season_content span
+  animation: 0.5s ease-out 0s 1 slideInFromTop
+
+[type=radio]:checked ~ label
+  background: white
+  border-bottom: 2px solid #070707
+  z-index: 2
+
+[type=radio]:checked ~ label ~ .season_content
+  z-index: 1
+
+// tabs
+.tabs-left
+  border-bottom: none
+  border-right: 1px solid #ddd
+
+.tabs-left>li
+  float: none
+  margin:0px
+
+.tabs-left>li.active>a,
+.tabs-left>li.active>a:hover,
+.tabs-left>li.active>a:focus
+  border-bottom-color: #ddd
+  border-right-color: transparent
+  background:#ededed
+  border:none
+  border-radius:0px
+  margin:0px
+
+.nav-tabs
+  color: #fff
+  text-decoration: none
+
+.nav-tabs>li>a:hover
+  line-height: 1.42857143
+  border: 1px solid transparent
+  color: #000
+  text-decoration: none
+
+// card de pedidos
+
+ .card
+  width: 700px
+  border: 1px solid #ccc
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1)
+  overflow: hidden
+
+.card-content
+  padding: 10px
+
+.card-content h3
+  margin: 0
+  font-size: 18px
+
+.card-content p
+  font-size: 14px
 

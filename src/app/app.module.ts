@@ -60,6 +60,11 @@ import { CarrinhDeComprasComponent } from './screens/carrinho-de-compras/carrinh
 import {MatStepperModule} from '@angular/material/stepper';
 import { PagamentoComponent } from './screens/pagamento/pagamento.component';
 import {MatInputModule} from '@angular/material/input';
+
+import {MatTabsModule} from '@angular/material/tabs';
+
+// import { MatMenuModule } from '@angular/material/menu';
+// import { MatIconModule } from '@angular/material/icon';
 import {
   FacebookLoginProvider,
   GoogleLoginProvider,
@@ -130,7 +135,11 @@ import { CreditCardDirectivesModule } from 'angular-cc-library';
     MatStepperModule,
     SocialLoginModule,
     MatInputModule,
-    CreditCardDirectivesModule
+    CreditCardDirectivesModule,
+    MatTabsModule,
+
+    // MatMenuModule,
+    // MatIconModule
   ],
 
   // providers: [

@@ -17,17 +17,17 @@ export class CarrinhDeComprasComponent implements OnInit {
     private route: ActivatedRoute,
     private http: HttpClient,
     private router: Router
-    ) {}
+  ) {}
 
   ngOnInit(): void {
     const productLocalStorage = localStorage.getItem('product');
     this.products = JSON.parse(productLocalStorage as any);
     this.products = this.products.map((product: any) => {
-
-    product.qtd = 1;
-
-    return product;
+      product.qtd = 1;
+      return product;
     });
+
+    localStorage.setItem('product', JSON.stringify(this.products))
 
     this.totalCarrinho();
     // console.log('aqui ->',this.products);
@@ -42,6 +42,7 @@ export class CarrinhDeComprasComponent implements OnInit {
       this.totalCarrinho();
       return itemLIsta;
     });
+    localStorage.setItem('product', JSON.stringify(this.products))
   }
 
   removeProducts(product: any) {
@@ -52,6 +53,7 @@ export class CarrinhDeComprasComponent implements OnInit {
       this.totalCarrinho();
       return itemLIsta;
     });
+    localStorage.setItem('product', JSON.stringify(this.products))
   }
 
   totalCarrinho() {
@@ -73,9 +75,10 @@ export class CarrinhDeComprasComponent implements OnInit {
     });
   }
 
-  navegandoParaTelaPagemnto(){
-    this.router.navigate(['/pagamento'], {state: [{product: this.products, total: this.total}]});
-
-  //função que pegar os dados do componente atual e manda para o componente de pagamento
+  navegandoParaTelaPagemnto() {
+    this.router.navigate(['/pagamento'], {
+      state: [{ product: this.products, total: this.total }],
+    });
+    //função que pegar os dados do componente atual e manda para o componente de pagamento
   }
 }

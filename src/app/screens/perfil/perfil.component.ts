@@ -5,6 +5,7 @@ import { environment } from "../../../environments/environment"
 import jwt_decode from 'jwt-decode';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Token } from '@angular/compiler';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-perfil',
   templateUrl: './perfil.component.html',
@@ -23,8 +24,13 @@ export class PerfilComponent implements OnInit {
   messageError: any;
   showModal: any
   iconSettings: any;
+  order: any;
 
-  constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router) {
+  constructor(
+      private http: HttpClient,
+      private route: ActivatedRoute,
+      private router: Router
+    ) {
     this.id = '';
     this.name = '';
     this.email = '';
@@ -58,8 +64,16 @@ export class PerfilComponent implements OnInit {
 
         this.loadingSpinner = false
     })
+
+    this.getPedido().subscribe(data => {
+      this.order = data;
+      console.log('order -> ',this.order);
+    });
   }
 
+  getPedido(): Observable<any> {
+    return this.http.get<any>(`${environment.API_ECOMMERCE}/order/user`);
+  }
 
   save(data: any) {
     this.loading = true;

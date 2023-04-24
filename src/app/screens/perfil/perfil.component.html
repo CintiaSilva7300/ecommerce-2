@@ -2,65 +2,148 @@
 
 <modalAddress [showModal]="showModal" />
 
-<div *ngIf="loadingSpinner;else loadingSpinner" class="container spinner">
+<div *ngIf="loadingSpinner; else loadingSpinner" class="container spinner">
   <mat-spinner></mat-spinner>
 </div>
 
-<div class="container rounded bg-white mt-5 mb-5">
-  <div class="row">
-    <div class="col-md-3 border-right">
-      <div class="d-flex flex-column align-items-center text-center p-3 py-5" *ngIf="genre === 'F'; else elseTeste">
-        <img class="rounded-circle mt-5" width="150px" src="https://cdn-icons-png.flaticon.com/512/219/219969.png">
-        <span class="font-weight-bold">{{name}}</span><span class="text-black-50">{{email}}</span><br>
-      </div>
-
-      <div class="">
-        <input (click)="openModal()" type="submit" value="cadastrar novo endereço" style="background-color: black; margin-top: -20px; width: 100%;"
-          class="btn btn-primary btn-darck btn-block"
-        >
-      </div>
-
-      <ng-template #elseTeste>
-        <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-          <img class="rounded-circle mt-5" width="150px" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
-          <span class="font-weight-bold">{{name}}</span><span class="text-black-50">{{email}}</span>
-        </div>
-      </ng-template>
-    </div>
-    <div class="col-md-5 border-right">
-
-      <form method="post" class="form" #form="ngForm" (ngSubmit)="atualizarPerfil(form.value)">
-        <div class="d-flex align-items-center ">
-          <img [src]="iconSettings" class="iconSettings" alt="iconSettings">
-          <h4 class="text-right">Profile Settings</h4>
-        </div>
-
-        <label class="labels" for="userLogin">Nome</label>
-        <input class="form-control " type="text" placeholder="name" name="name" [value]="name" ngModel>
-
-        <label class="labels" for="userLogin">Email</label>
-        <input class="form-control " type="text" placeholder="name" name="email" value="{{email}}" disabled="" ngModel>
-
-        <label class="labels" for="userGenre">Sexo</label>
-        <select class="form-control" value="{{genre}}" name="genre" ngModel>
-          <option value="F" selected>Feminino</option>
-          <option value="M" selected>Masculino</option>
-        </select>
-
-        <label class="labels">Data de nascimento</label>
-        <input type="date" class="form-control" [ngModel]="birthDate | date:'yyyy-MM-dd'" name="birthDate"
-          placeholder="surname">
-
-        <label class="labels">Cpf</label>
-        <input type="text" class="form-control" value="{{cpf}}" placeholder="cpf" name="cpf" ngModel>
-
-        <label class="labels">Entrou em: </label>
-        <input type="text" class="form-control" placeholder="surname" disabled="" value="{{registerDate}}"
-          [ngModel]="registerDate | date :'short'" name="registerDate">
-
-        <input type="submit" value="Entrar" style="background-color: black; margin-top:10px"
-          class="btn btn-primary btn-darck btn-block" [value]='loading ? "carregando..." : "atualizar"'>
-      </form>
-    </div>
-    <menuPerfil ></menuPerfil>
+<div class="container col">
+  <h3 style="margin-top: 10px;">Perfil</h3>
+  <hr />
+  <div class="col-xs-3">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs tabs-left sideways" style="display: block">
+      <li class="active"><a href="#cadastro" data-toggle="tab">Cadastro</a></li>
+      <li><a href="#endereco" data-toggle="tab">Endereços</a></li>
+      <li><a href="#pedidos" data-toggle="tab">Pedidos</a></li>
+      <li><a href="#settings-v" data-toggle="tab">Settings</a></li>
+    </ul>
   </div>
+
+  <div class="col-xs-9">
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div class="tab-pane active" id="cadastro">
+        <!-- inicio -->
+        <div class="container">
+          <div class="row">
+            <div class="col-4">
+              <h1>Dados pessoais</h1>
+              <form
+                method="post"
+                class="form"
+                #form="ngForm"
+                (ngSubmit)="atualizarPerfil(form.value)"
+              >
+                <label class="labels" for="userLogin">Nome</label>
+                <input
+                  class="form-control"
+                  type="text"
+                  placeholder="name"
+                  name="name"
+                  [value]="name"
+                  ngModel
+                />
+
+                <label class="labels" for="userLogin">Email</label>
+                <input
+                  class="form-control"
+                  type="text"
+                  placeholder="name"
+                  name="email"
+                  value="{{ email }}"
+                  disabled=""
+                  ngModel
+                />
+
+                <label class="labels" for="userGenre">Sexo</label>
+                <select
+                  class="form-control"
+                  value="{{ genre }}"
+                  name="genre"
+                  ngModel
+                >
+                  <option value="F" selected>Feminino</option>
+                  <option value="M" selected>Masculino</option>
+                </select>
+
+                <label class="labels">Data de nascimento</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  [ngModel]="birthDate | date : 'yyyy-MM-dd'"
+                  name="birthDate"
+                  placeholder="surname"
+                />
+
+                <label class="labels">Cpf</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  value="{{ cpf }}"
+                  placeholder="cpf"
+                  name="cpf"
+                  ngModel
+                />
+
+                <label class="labels">Entrou em: </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="surname"
+                  disabled=""
+                  value="{{ registerDate | date }}"
+                  [ngModel]="registerDate | date"
+                  name="registerDate"
+                />
+
+                <input
+                  type="submit"
+                  value="Entrar"
+                  style="
+                    background-color: black;
+                    margin-top: 10px;
+                    width: 500px;
+                  "
+                  class="btn btn-primary btn-darck btn-block"
+                  [value]="loading ? 'carregando...' : 'atualizar'"
+                />
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane" id="endereco">
+        <input
+          (click)="openModal()"
+          type="submit"
+          value="registrar endereço"
+          style="
+            background-color: black;
+            margin-top: 0px;
+            width: 30%;
+            margin-left: 485px;
+          "
+          class="btn btn-primary btn-darck btn-block"
+        />
+        <menuPerfil></menuPerfil>
+      </div>
+      <div class="tab-pane" id="pedidos">
+        <div class="card-content" *ngFor="let p of order">
+          <div class="card" style="padding: 10px;border-radius: 10px">
+            <h3>qtd parcelas {{order[0].installments}}</h3>
+            <p>metodo de pagamento {{order[0].paymentMethod}}</p>
+            <p>metodo de envio {{order[0].sendMethod}}</p>
+            <p>staus do pedido {{order[0].status}}</p>
+            <!-- informaçoes do produto -->
+            <p>codigo do produto {{order[0].products[0].code}}</p>
+            <p>nome do pedido {{order[0].products[0].name}}</p>
+            <p>preço do pedido {{order[0].products[0].price}}</p>
+            <p>quantity do pedido {{order[0].products[0].quantity}}</p>
+            <p>data do pedido {{order[0].registerDate | date}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane" id="settings-v">Settings Tab.</div>
+    </div>
+  </div>
+</div>

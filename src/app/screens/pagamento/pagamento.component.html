@@ -278,6 +278,8 @@
         </div>
 
         <div class="form-container">
+          <form (ngSubmit)="pagamento(form)" #form="ngForm">
+
           <div class="field-container">
             <label for="name">Name</label>
             <input id="name" maxlength="20" type="text" value="formCartao" name="name" [(ngModel)]="nameCard">
@@ -293,7 +295,17 @@
           <div class="field-container">
             <label for="securitycode">Security Code</label>
             <input id="securitycode" type="text" pattern="[0-9]*" inputmode="numeric" name="cvc" [(ngModel)]="cvcCard">
+            <!-- <input id="securitycode" type=""  inputmode="numeric" name="installments"> -->
+
+            <select class="form-select" aria-label="Default select example" name="installments" [(ngModel)]="installments">
+              <option selected>Open this select menu</option>
+              <option value="1">1x</option>
+              <option value="2">2x</option>
+              <option value="3">3x</option>
+            </select>
           </div>
+          <button type="submit">pagar</button>
+        </form>
         </div>
       </div>
 

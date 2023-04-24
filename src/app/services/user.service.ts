@@ -39,5 +39,4 @@ requestOptions = { headers: this.headers };
   }
 
   statusLogin = () => !!localStorage.getItem('token')
-
 }
