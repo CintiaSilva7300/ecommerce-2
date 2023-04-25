@@ -14,7 +14,8 @@ import { Observable } from 'rxjs';
 export class PerfilComponent implements OnInit {
   email!: any;
   name!: any;
-  id: any
+  id: any;
+  _id: any;
   genre: any;
   birthDate: any
   cpf: any
@@ -26,11 +27,16 @@ export class PerfilComponent implements OnInit {
   iconSettings: any;
   order: any;
 
+  detalhesMostrados: {[id: string]: boolean} = {};
+
+
+
   constructor(
       private http: HttpClient,
       private route: ActivatedRoute,
       private router: Router
     ) {
+
     this.id = '';
     this.name = '';
     this.email = '';
@@ -102,5 +108,9 @@ export class PerfilComponent implements OnInit {
         this.messageError = err.error.message
         this.loading = false;
       });
+  }
+
+  toggleDetalhes(idOrder: string) {
+    this.detalhesMostrados[idOrder] = !this.detalhesMostrados[idOrder];
   }
 }

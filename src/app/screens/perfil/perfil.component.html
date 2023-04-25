@@ -128,22 +128,32 @@
         <menuPerfil></menuPerfil>
       </div>
       <div class="tab-pane" id="pedidos">
-        <div class="card-content" *ngFor="let p of order">
-          <div class="card" style="padding: 10px;border-radius: 10px">
-            <h3>qtd parcelas {{order[0].installments}}</h3>
-            <p>metodo de pagamento {{order[0].paymentMethod}}</p>
-            <p>metodo de envio {{order[0].sendMethod}}</p>
-            <p>staus do pedido {{order[0].status}}</p>
-            <!-- informaçoes do produto -->
-            <p>codigo do produto {{order[0].products[0].code}}</p>
-            <p>nome do pedido {{order[0].products[0].name}}</p>
-            <p>preço do pedido {{order[0].products[0].price}}</p>
-            <p>quantity do pedido {{order[0].products[0].quantity}}</p>
-            <p>data do pedido {{order[0].registerDate | date}}</p>
+        <h3>Compras</h3>
+          <div class="card" *ngFor="let orders of order" style="padding: 10px;border-radius: 10px">
+            <div class="detalhesPagamento" >
+              <h3>qtd parcelas {{orders.installments}}</h3>
+              <p>metodo de pagamento {{orders.paymentMethod}}</p>
+              <p>metodo de envio {{orders.sendMethod}}</p>
+              <p>staus do pedido {{orders.status}}</p>
+              <button (click)="toggleDetalhes(order._id)">ver mais...</button>
+            </div>
+
           </div>
-        </div>
+
+          <div class="card">
+            <div *ngFor="let p of order" id="detalhes-{{order._id}}" class="detalhes-order" [ngClass]="{'escondido': !detalhesMostrados[id]}">
+              <p>codigo do produto {{p.products[0].code}}</p>
+              <p>nome do pedido {{p.products[0].name}}</p>
+              <p>preço do pedido {{p.products[0].price}}</p>
+              <p>quantity do pedido {{p.products[0].quantity}}</p>
+              <p>data do pedido {{p.registerDate | date}}</p>
+            </div>
+          </div>
       </div>
       <div class="tab-pane" id="settings-v">Settings Tab.</div>
     </div>
   </div>
 </div>
+
+
+

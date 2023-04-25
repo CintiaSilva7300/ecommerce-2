@@ -64,9 +64,6 @@ messageError: any;
       this.messageError = err.error.message
       this.loading = false;
     });
-    // this.userService.updateAddress(this._id).subscribe((result: any) => {
-    //   console.log('result ',result)
-    // })
   }
 
 }

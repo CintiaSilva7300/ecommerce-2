@@ -98,7 +98,7 @@ import { CreditCardDirectivesModule } from 'angular-cc-library';
     ProdutoComponent,
     FormSettingsComponent,
     CarrinhDeComprasComponent,
-    PagamentoComponent,
+    PagamentoComponent
   ],
   imports: [
     BrowserModule,
