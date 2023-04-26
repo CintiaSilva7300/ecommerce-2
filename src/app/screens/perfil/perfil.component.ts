@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../services/user.service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from "../../../environments/environment"
-import jwt_decode from 'jwt-decode';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Token } from '@angular/compiler';
 import { Observable } from 'rxjs';
 @Component({
   selector: 'app-perfil',
@@ -15,7 +11,6 @@ export class PerfilComponent implements OnInit {
   email!: any;
   name!: any;
   id: any;
-  _id: any;
   genre: any;
   birthDate: any
   cpf: any
@@ -27,16 +22,9 @@ export class PerfilComponent implements OnInit {
   iconSettings: any;
   order: any;
 
-  detalhesMostrados: {[id: string]: boolean} = {};
-
-
-
   constructor(
-      private http: HttpClient,
-      private route: ActivatedRoute,
-      private router: Router
+      private http: HttpClient
     ) {
-
     this.id = '';
     this.name = '';
     this.email = '';
@@ -44,14 +32,10 @@ export class PerfilComponent implements OnInit {
     this.cpf = '';
     this.registerDate = '';
     this.birthDate = '';
-
     this.loading = false;
     this.loadingSpinner = false;
-
     this.messageError = "";
-
     this.showModal = false;
-
     this.iconSettings = '/assets/img/settings.png';
   }
 
@@ -108,9 +92,5 @@ export class PerfilComponent implements OnInit {
         this.messageError = err.error.message
         this.loading = false;
       });
-  }
-
-  toggleDetalhes(idOrder: string) {
-    this.detalhesMostrados[idOrder] = !this.detalhesMostrados[idOrder];
   }
 }

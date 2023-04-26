@@ -304,7 +304,7 @@
               <option value="3">3x</option>
             </select>
           </div>
-          <button type="submit">pagar</button>
+          <button type="submit" mat-button matStepperNext>pagar</button>
         </form>
         </div>
       </div>
@@ -320,8 +320,34 @@
     </mat-step>
 
     <mat-step>
-      <ng-template matStepLabel>Done</ng-template>
-      <p>You are now done.</p>
+      <ng-template matStepLabel>Obrigado</ng-template>
+      <div class="agradecimento">
+        <div class="center">
+          <div class="card">
+            <div class="header">
+              <h1>Obrigado...</h1>
+            </div>
+            <div class="icon">
+              <p style="margin-top: 20px">Parabéns!!!</p>
+            </div>
+            <div class="bodyText">
+              <h5 style="font-weight:500; color: #7c8082;">Compra realizada!</h5>
+            </div>
+
+            <button routerLink="/perfil" class="btn btn-primary btn-darck btn-block" style="
+              background: #000;
+              margin-top: 5px;
+              width: 145px;
+              margin-left: 135px;
+            ">
+            ver meus pedidos...
+          </button>
+          </div>
+
+        </div>
+
+
+      </div>
       <div>
         <button class="matStepperNext" mat-button matStepperPrevious>
           voltar

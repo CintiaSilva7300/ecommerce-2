@@ -29,6 +29,7 @@ messageError: any;
       console.log(err.error.message)
       this.messageError = err.error.message
       this.loading = false;
+      this.showModal = true;
     });
   }
 

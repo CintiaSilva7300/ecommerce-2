@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnInit, Type } from '@angular/core';
+import { Component, Input, OnInit, Pipe, Type } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import {PageEvent} from '@angular/material/paginator';
 import Swal from 'sweetalert2';
@@ -12,7 +12,9 @@ import { Observable, tap } from 'rxjs';
   templateUrl: './tabela-user.component.html',
   styleUrls: ['./tabela-user.component.sass']
 })
+
 export class TabelaUserComponent implements OnInit {
+
 users!: any;
 usersPaginated!: any[];
 messageError: any
