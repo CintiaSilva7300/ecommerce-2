@@ -22,11 +22,11 @@
 
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="perfil">Profile</a>
-            <a class="dropdown-item" href="">Home</a>
-            <a class="dropdown-item" href="admin/home" *ngIf="permission;">Admin</a>
-            <a class="dropdown-item" href="carrinho" *ngIf="permission;">Carrinho</a>
-            <a class="dropdown-item" href="#" (click)="logout()">Sair</a>
+            <a class="dropdown-item" href="perfil" matTooltip="ir para perfil">Profile</a>
+            <a class="dropdown-item" href="" matTooltip="home">Home</a>
+            <a class="dropdown-item" href="admin/home" *ngIf="permission;" matTooltip="admin">Admin</a>
+            <a class="dropdown-item" href="carrinho" *ngIf="permission;" matTooltip="carrinho">Carrinho</a>
+            <a class="dropdown-item" href="#" (click)="logout()" matTooltip="sair">Sair</a>
           </div>
         </li>
       </ul>
