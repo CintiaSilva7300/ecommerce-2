@@ -40,13 +40,6 @@
   border: solid 1px #000000;
 }
 
-.iconSettings {
-  width: 30px;
-  height: 30px;
-  margin-top: -6px !important;
-  padding: 5px;
-}
-
 .text-right {
   margin-top: 10px;
 }
@@ -57,5 +50,5 @@
     justify-content: center;
     align-items: center;
   }
-}/*# sourceMappingURL=perfil.component.css.map */
+}
 

@@ -11,6 +11,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./listar-produtos.component.sass']
 })
 export class ListarProdutosComponent implements OnInit {
+inputPesquisa: string = '';
 length = 1;
 pageSize = 10;
 pageIndex = 0;
@@ -82,4 +83,13 @@ handlePageEvent(e: PageEvent) {
     })
   }
 
+  filtrarProduto() {
+    if (this.inputPesquisa.length > 1) {
+      this.usersPaginated = this.usersPaginated.filter((search: any) =>
+        search.name.toLowerCase().includes(this.inputPesquisa.toLowerCase())
+      );
+    } else {
+      return this.ngOnInit();
+    }
+  }
 }

@@ -132,32 +132,47 @@
       </div>
       <div class="tab-pane" id="pedidos">
         <h3>Compras</h3>
-          <div class="card" *ngFor="let orders of order" style="padding: 10px;border-radius: 10px; margin: 10px;">
-            <div class="detalhesPagamento" >
-              <h3>qtd parcelas {{orders.installments}}</h3>
-              <p>metodo de pagamento {{orders.paymentMethod}}</p>
-              <p>metodo de envio {{orders.sendMethod}}</p>
-              <p>staus do pedido {{orders.status}}</p>
-              <!-- <button (click)="toggleDetalhes(order.products._id)">ver mais...</button> -->
+
+        <div class="card-deck">
+          <div *ngFor="let order of order" class="card">
+            <div class="card-header">
+              Valor: R$ {{ order.total }} <br>
+              Data: {{ order.registerDate | date: 'dd/MM/yyyy' }}
             </div>
-
-            <!-- <div class="card"> -->
-              <div id="detalhes" class="detalhes-order">
-                <p>codigo do produto {{orders.products.code}}</p>
-                <p>nome do pedido {{orders.products.name}}</p>
-                <p>preço do pedido {{orders.products.price}}</p>
-                <p>quantity do pedido {{orders.products.quantity}}</p>
-                <p>data do pedido {{orders.registerDate | date}}</p>
+            <div class="card-body">
+              <button (click)="showDetails(order)" class="btn btn-primary">
+                Detalhes do Pedido
+              </button>
+              <div *ngIf="order.showDetails">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Codigo</th>
+                      <th>Produto</th>
+                      <th>Valor</th>
+                      <th>Quantidade</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let product of order.products">
+                      <td>{{ product.code }}</td>
+                      <td>{{ product.name }}</td>
+                      <td>R$ {{ product.price }}</td>
+                      <td>{{ product.quantity }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <button (click)="closeDetails(order)" class="btn btn-primary">
+                  minimizar...
+                </button>
               </div>
-            <!-- </div> -->
+            </div>
           </div>
-          <!-- matTooltip="remover produto" -->
-
+        </div>
       </div>
       <div class="tab-pane" id="settings-v">Settings Tab.</div>
     </div>
   </div>
 </div>
-
 
 

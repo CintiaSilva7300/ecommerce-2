@@ -6,11 +6,15 @@
   <h1 class="titulo">Listar usuarios </h1>
 
     <div class="buscar">
-      <input class="form-control form-control-lg" type="text" placeholder="Buscar...">
+      <input class="form-control form-control-lg" type="search" placeholder="Buscar..."
+      (ngModelChange)="filtrarProduto()" [(ngModel)]="inputPesquisa"
+      >
 
       <img class="iconeBuca" src="https://img.icons8.com/windows/256/search-more.png">
     </div>
 </div>
+
+
 
 <div class="table-reponsive box">
   <table id="example" class="table table-bordered">

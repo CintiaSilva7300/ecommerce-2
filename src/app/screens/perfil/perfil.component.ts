@@ -93,4 +93,12 @@ export class PerfilComponent implements OnInit {
         this.loading = false;
       });
   }
+
+  showDetails(order: any) {
+    order.showDetails = true;
+  }
+
+  closeDetails(order: any){
+    order.showDetails = false;
+  }
 }

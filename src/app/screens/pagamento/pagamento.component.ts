@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { catchError, map, tap } from 'rxjs/operators';
@@ -40,7 +40,8 @@ export class PagamentoComponent implements OnInit {
 
   constructor(
       private router: Router,
-      private http: HttpClient
+      private http: HttpClient,
+      private cdRef: ChangeDetectorRef,
     ) {
     this.clickBtn = true;
     this.product = JSON.parse(localStorage.getItem('product') as string);

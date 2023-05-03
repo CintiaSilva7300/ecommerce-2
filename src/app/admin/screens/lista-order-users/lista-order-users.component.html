@@ -1,0 +1,54 @@
+<header></header>
+<app-sidebar></app-sidebar>
+
+<div *ngIf="!this.order; else loading" class="container spinner">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div class="container">
+  <h1 class="titulo">Lista orders</h1>
+
+    <div class="buscar">
+      <input class="form-control form-control-lg" type="search" placeholder="Buscar..."
+      (ngModelChange)="filtrarProduto()" [(ngModel)]="inputPesquisa"
+      >
+      <img class="iconeBuca" src="https://img.icons8.com/windows/256/search-more.png">
+    </div>
+</div>
+
+
+
+<div class="conatiner table-reponsive box">
+  <table id="example" class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>total</th>
+        <th>Data da comprar</th>
+        <th>status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let orders of ordersPaginated">
+        <td>{{orders.user.name}}</td>
+        <td>{{orders.user.email}}</td>
+        <td>{{orders.total}}</td>
+        <td>{{orders.user.birthDate}}</td>
+        <td>{{orders.status}}</td>
+
+        <td style="display: flex;margin-top: 10px; border: none;">
+          <img  matTooltip="status" (click)="openDialog(orders._id)"
+            aria-label="Button that displays a tooltip when focused or hovered over" class="statusIcon"
+            src="https://img.icons8.com/ios-filled/256/circled-chevron-up.png" alt="">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <mat-paginator #paginator class="demo-paginator" (page)="handlePageEvent($event)" [length]="length"
+    [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" [pageIndex]="pageIndex" aria-label="Select page">
+  </mat-paginator>
+</div>
+
+

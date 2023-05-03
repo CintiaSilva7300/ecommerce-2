@@ -14,6 +14,7 @@ import { Observable, tap } from 'rxjs';
 })
 
 export class TabelaUserComponent implements OnInit {
+inputPesquisa: string = '';
 
 users!: any;
 usersPaginated!: any[];
@@ -27,8 +28,6 @@ pageEvent!: PageEvent;
 permission: any;
 loading: any;
 disabled = new FormControl(false);
-
-@Input() inputPesquisa: string = '';
 
 handlePageEvent(e: PageEvent) {
   this.pageEvent = e;
@@ -131,15 +130,13 @@ alertWithSuccessTornarAdminUser(id: any){
   })
 }
 
-getSearch(name: any) {
-  if (name) {
-    name = name.toUpperCase();
-
-    this.users = this.users.filter((a: { nome: any; }) =>
-          a.nome.toUpperCase().indexOf(name) >= 0
-      );
+filtrarProduto() {
+  if (this.inputPesquisa.length > 1) {
+    this.usersPaginated = this.usersPaginated.filter((search: any) =>
+      search.name.toLowerCase().includes(this.inputPesquisa.toLowerCase())
+    );
+  } else {
+    return this.ngOnInit()
   }
-  console.log(name);
 }
-
 }

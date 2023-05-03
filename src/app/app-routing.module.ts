@@ -9,13 +9,15 @@ import { EditarEnderecoComponent } from './screens/editar-endereco/editar-endere
 import { HomeComponent } from './screens/home/home.component';
 import { HomeAdminComponent } from './admin/screens/home-admin/home-admin.component';
 import { CardAdminComponent } from './admin/components/card-admin/card-admin.component';
-import { ListarProdutosComponent } from './admin/screens/screens/listar-produtos/listar-produtos.component';
-import { CadastrarProdutoComponent } from './admin/screens/screens/cadastrar-produto/cadastrar-produto.component';
+import { ListarProdutosComponent } from './admin/screens/listar-produtos/listar-produtos.component';
+import { CadastrarProdutoComponent } from './admin/screens/cadastrar-produto/cadastrar-produto.component';
 import { ConfiguracaoAdminComponent } from './admin/screens/configuracao-admin/configuracao-admin.component';
 import { ProdutoComponent } from './screens/produto/produto.component';
 import { FormSettingsComponent } from './admin/screens/form-settings/form-settings.component';
 import { CarrinhDeComprasComponent } from './screens/carrinho-de-compras/carrinho-de-compras.component';
 import { PagamentoComponent } from './screens/pagamento/pagamento.component';
+import { ListaOrderUsersComponent } from './admin/screens/lista-order-users/lista-order-users.component';
+import { CuponsComponent } from './components/cupons/cupons.component';
 
 const routes: Routes = [
   {
@@ -51,7 +53,12 @@ const routes: Routes = [
   {
     path: 'admin/configuracao', component: ConfiguracaoAdminComponent
   },
-
+  {
+    path: 'admin/listaOrders', component: ListaOrderUsersComponent
+  },
+  {
+    path: 'cupons', component: CuponsComponent
+  },
   {
     path: 'perfil', component: PerfilComponent,
     canActivate:[AuthorizedRoutesGuard]

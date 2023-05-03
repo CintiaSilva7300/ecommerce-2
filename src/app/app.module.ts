@@ -35,8 +35,8 @@ import { CardAdminComponent } from './admin/components/card-admin/card-admin.com
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import { ListarProdutosComponent } from './admin/screens/screens/listar-produtos/listar-produtos.component';
-import { CadastrarProdutoComponent } from './admin/screens/screens/cadastrar-produto/cadastrar-produto.component';
+import { ListarProdutosComponent } from './admin/screens/listar-produtos/listar-produtos.component';
+import { CadastrarProdutoComponent } from './admin/screens/cadastrar-produto/cadastrar-produto.component';
 import { CuponsComponent } from './components/cupons/cupons.component';
 import { MdbAccordionModule } from 'mdb-angular-ui-kit/accordion';
 import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
@@ -69,6 +69,9 @@ import {
   SocialAuthServiceConfig,
 } from '@abacritt/angularx-social-login';
 import { CreditCardDirectivesModule } from 'angular-cc-library';
+import { ListaOrderUsersComponent } from './admin/screens/lista-order-users/lista-order-users.component';
+import { ModalStatusOrderComponent } from './admin/screens/lista-order-users/modal-status-order/modal-status-order.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
 @NgModule({
   declarations: [
     AppComponent,
@@ -96,6 +99,8 @@ import { CreditCardDirectivesModule } from 'angular-cc-library';
     FormSettingsComponent,
     CarrinhDeComprasComponent,
     PagamentoComponent,
+    ListaOrderUsersComponent,
+    ModalStatusOrderComponent,
 
   ],
   imports: [
@@ -136,8 +141,7 @@ import { CreditCardDirectivesModule } from 'angular-cc-library';
     CreditCardDirectivesModule,
     MatTabsModule,
 
-    // MatMenuModule,
-    // MatIconModule
+    MatFormFieldModule
   ],
 
   // providers: [

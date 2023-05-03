@@ -1,0 +1,12 @@
+
+<h1>Editar status do pedido</h1>
+<div class="container"  >
+  <div class="selectDiv" >
+    <form #form="ngForm">
+      <select name="select" id="select" name="status" ngModel>
+        <option *ngFor="let status of configStatus" value="{{status.key}}">{{status.value}}</option>
+      </select>
+      <button (click)="atualizarStatus(form.value)"  type="submit">teste</button>
+    </form>
+  </div>
+</div>
