@@ -1,47 +1,30 @@
-<h1 *ngIf="messageError">mensagem de erro ao apagar endereço principal {{messageError}}</h1>
-<!-- <hr> -->
-<div class=" col-md-12">
-  <h1>Endereços</h1>
+<h1 *ngIf="messageError">
+  mensagem de erro ao apagar endereço principal {{ messageError }}
+</h1>
 
-  <div class="tab-content">
-    <div  class="tab-pane fade in active">
-      <div class="cards">
+<editarEndereco [showModal]="showModal" [addressSelected]="addressSelected"></editarEndereco>
 
-        <div class="card bg-light" style="height:21rem" *ngFor="let add of address">
-          <div class="card-header">{{add.name}}</div>
-          <div class="card-body">
-            <p class="card-text">{{add.zipCode}} - {{add.street}}</p>
-            <p class="card-text">{{add.number}} - {{add.neighborhood}}</p>
-            <p class="card-text">{{add.city}} - {{add.uf}}</p>
-            <p class="card-text">{{add.complement}} </p>
+<h1>Endereçossss</h1>
 
-              <mat-chip-listbox aria-label="Fish selection">
-                <mat-chip-option class="" [selected]="add.isMain" style="background-color: black; width: 40px;filter: invert(100%);"
-                  (click)="selectCardsEndereco(add._id)"></mat-chip-option>
+<div class="card" *ngFor="let add of address" style="margin-top: 5px">
+  <div class="card-header">{{ add.name }}</div>
+  <div class="card-body" style="borde: 1px solid #000">
+    <p class="card-text">{{ add.zipCode }} - {{ add.street }}</p>
+    <p class="card-text">{{ add.number }} - {{ add.neighborhood }}</p>
+    <p class="card-text">{{ add.city }} - {{ add.uf }}</p>
+    <p class="card-text">{{ add.complement }}</p>
 
-                  <img class="" (click)="openModal(add)"
-                    style="
-                    width: 40px;
-                    height: 40px;
-                    cursor: pointer;"
-                    src="https://img.icons8.com/sf-black-filled/256/pencil.png" alt=""
-                  > <!-- editar endereço -->
+    <mat-chip-listbox aria-label="Fish selection">
+      <mat-chip-option class="" [selected]="add.isMain"
+        style="background-color: black; width: 40px; filter: invert(100%)"
+        (click)="selectCardsEndereco(add._id)"></mat-chip-option>
 
+      <img (click)="openModal(add)" style="width: 40px; height: 40px; cursor: pointer"
+        src="https://img.icons8.com/sf-black-filled/256/pencil.png" alt="" />
+      <!-- editar endereço -->
 
-                  <img class=""
-                    style="
-                    width: 35px;
-                    height: 35px;
-                    cursor: pointer;"
-                  (click)="excluirCardsEndereco(add._id)" src="https://img.icons8.com/ios-glyphs/256/filled-trash.png" alt=""
-                  >
-              </mat-chip-listbox>
-          </div>
-        </div>
-      </div>
-    </div>
+      <img style="width: 35px; height: 35px; cursor: pointer" (click)="excluirCardsEndereco(add._id)"
+        src="https://img.icons8.com/ios-glyphs/256/filled-trash.png" alt="" />
+    </mat-chip-listbox>
+  </div>
 </div>
-
-<!-- modal editar endereço -->
-<editarEndereco [showModal]="showModal" [addressSelected]="addressSelected" ></editarEndereco>
-

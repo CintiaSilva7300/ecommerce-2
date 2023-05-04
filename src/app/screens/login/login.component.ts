@@ -43,7 +43,6 @@ loginFacebook(): void {
       email: user.email,
       typeLogin: 'facebook'
     };
-    console.log('aquiiiii -> ',user)
 
     this.http
       .post(`${environment.API_ECOMMERCE}/user/loginSocial`, bodyFacebook)
@@ -68,7 +67,7 @@ loginFacebook(): void {
 public loginJWT(data: any) {
   this.loading = true;
 
-  this.http.post(`${environment.API_TESTE}/user/login`, data).subscribe(
+  this.http.post(`${environment.API_ECOMMERCE}/user/login`, data).subscribe(
     (result: any) => {
       const decodedToken: any = jwt_decode(result.token);
 

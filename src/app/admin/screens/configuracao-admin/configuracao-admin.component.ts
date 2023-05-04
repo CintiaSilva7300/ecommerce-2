@@ -52,7 +52,7 @@ ngOnInit(): void {
 
 
 async excluirConfiguracao(id: any) {
-  this.http.delete(`${environment.API_TESTE}/product/${id}`).subscribe((resposta: any) => {
+  this.http.delete(`${environment.API_ECOMMERCE}/product/${id}`).subscribe((resposta: any) => {
     this.ngOnInit()
     console.log(resposta)
   }, err => {

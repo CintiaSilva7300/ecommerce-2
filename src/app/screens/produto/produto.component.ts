@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Input, NgModule, OnInit } from '@angular/core';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Products } from 'src/app/interface/products';
+import { UserService } from 'src/app/services/user.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -13,7 +15,7 @@ export class ProdutoComponent implements OnInit {
 horizontalPosition: MatSnackBarHorizontalPosition = 'start';
 verticalPosition: MatSnackBarVerticalPosition = 'bottom';
 
-product!: any
+product!: Products
 loading: any;
 cep!: string;
 data!: any
@@ -23,7 +25,7 @@ msg: string = 'esse produto ja foi adicionado ao carrinho'
     private http: HttpClient,
     private router: Router,
     private route: ActivatedRoute,
-    private _snackBar: MatSnackBar
+    private getproducts: UserService
 
     ){
       this.loading = false;
@@ -42,10 +44,11 @@ msg: string = 'esse produto ja foi adicionado ao carrinho'
       this.product = resposta;
       this.loading = false;
     })
+    // console.log('1111111111111111111',this.getproducts.getProducts())
   }
 
   calculaFreteEPrazo(){
-    this.http.get(`${environment.API_ECOMMERCE}/frete/${this.cep}`).subscribe((resposta: any) => {
+    this.http.get(`${environment.API_ECOMMERCE}/frete/${this.cep}`).subscribe((resposta: object) => {
       this.data = resposta;
     })
   }
@@ -57,13 +60,12 @@ msg: string = 'esse produto ja foi adicionado ao carrinho'
     }else{
       const products = JSON.parse(produtsLocalStorage)
 
-      // console.log('aaaaaaaaaaaaaaaa',products)
-      const productsExist = products.find((item: any) => item.code == this.product.code)
+      const productsExist = products.find((item: string | any) => item.code == this.product.code)
       if(!productsExist){
         products.push(this.product);
         localStorage.setItem('product', JSON.stringify(products))
       }else{
-        console.log(this.msg);
+        // console.log(this.msg)
       }
     }
   }

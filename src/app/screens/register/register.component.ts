@@ -30,7 +30,7 @@ genre:any
   save(data: any) {
     this.loading = true;
 
-    this.http.post(`${environment.API_TESTE}/user/register`, data).subscribe((result: any) => {
+    this.http.post(`${environment.API_ECOMMERCE}/user/register`, data).subscribe((result: any) => {
       const decodedToken: any = jwt_decode(result.token)
 
         localStorage.setItem('token', result.token);

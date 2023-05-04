@@ -21,7 +21,7 @@ messageError: any;
 
   save(data: any) {
     this.loading = true;
-    this.http.post(`${environment.API_TESTE}/address/register`, data).subscribe((result: any) => {
+    this.http.post(`${environment.API_ECOMMERCE}/address/register`, data).subscribe((result: any) => {
         this.loading = false;
         this.showModal = false
         window.location.reload();

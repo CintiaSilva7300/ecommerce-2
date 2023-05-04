@@ -48,7 +48,7 @@ ngOnInit(): void {
   this.loading = true;
 
   this.http
-    .get(`${environment.API_TESTE}/user` ).subscribe((resposta: any) => {
+    .get(`${environment.API_ECOMMERCE}/user` ).subscribe((resposta: any) => {
       this.users = resposta
 
 
@@ -60,7 +60,7 @@ ngOnInit(): void {
 }
 
 async excluirUsuario(id: any) {
-  this.http.delete(`${environment.API_TESTE}/user/${id}`).subscribe((resposta: any) => {
+  this.http.delete(`${environment.API_ECOMMERCE}/user/${id}`).subscribe((resposta: any) => {
     this.ngOnInit()
     console.log(resposta)
   }, err => {
@@ -70,7 +70,7 @@ async excluirUsuario(id: any) {
 }
 
 async tonarUserAdmin(id: any) {
-  this.http.post(`${environment.API_TESTE}/user/setAdminInUser/${id}`, id).subscribe((result: any) => {
+  this.http.post(`${environment.API_ECOMMERCE}/user/setAdminInUser/${id}`, id).subscribe((result: any) => {
     console.log('result -> ',result)
     this.ngOnInit()
   }, err => {

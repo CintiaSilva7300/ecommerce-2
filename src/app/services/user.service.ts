@@ -9,7 +9,6 @@ import { UserLogin } from '../interface/userLogin';
   providedIn: 'root'
 })
 export class UserService {
-
 auth_token = `
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MTUwOWE4N2Y3YWFiOTBlMjM3ZTIyMyIsImVtYWlsIjoiY2ludGlhc2lsdmE3MzAwQGdtYWlsLmNvbSIsIm5hbWUiOiJDaW50aWEgU2lsdmEiLCJpYXQiOjE2NzkxMDAzMzB9.9i3AQb19NJm9MigOsTa62A5dViH40KlQAjyRLOu6_Dw
 `;
@@ -26,17 +25,21 @@ requestOptions = { headers: this.headers };
 
   create(user: UserCreate): Observable<UserCreate> {
     return this.http
-      .post<UserCreate>(`${environment.API_TESTE}/user/register`, user)
+      .post<UserCreate>(`${environment.API_ECOMMERCE}/user/register`, user)
   }
 
   login(user: UserLogin): Observable<any> {
-    let api = `${environment.API_TESTE}/user/login`;
+    let api = `${environment.API_ECOMMERCE}/user/login`;
     return this.http.post(api, user).pipe();
 }
 
   getUserToken(){
-    return this.http.get<any[]>(`${environment.API_TESTE}/user/userData`);
+    return this.http.get<any[]>(`${environment.API_ECOMMERCE}/user/userData`);
   }
 
   statusLogin = () => !!localStorage.getItem('token')
+
+  getProducts() {
+    return this.http.get<any[]>(`${environment.API_ECOMMERCE}/product` ).subscribe((res: any) => {console.log('res',res);})
+  }
 }

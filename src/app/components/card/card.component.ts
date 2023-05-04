@@ -20,9 +20,8 @@ loading: any;
   ngOnInit(): void {
     this.loading = true;
     this.http
-    .get(`${environment.API_TESTE}/product/` ).subscribe((resposta: any) => {
+    .get(`${environment.API_ECOMMERCE}/product/` ).subscribe((resposta: any) => {
       this.product = resposta;
-      console.log('qqq',resposta)
       this.loading = false;
     })
   }

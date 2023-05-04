@@ -20,7 +20,7 @@ loading: any;
 
   cadastrarProduto(data: any) {
     this.loading = true;
-    this.http.post(`${environment.API_TESTE}/product`, data).subscribe((result: any) => {
+    this.http.post(`${environment.API_ECOMMERCE}/product`, data).subscribe((result: any) => {
       console.log('result -> ',result)
 
       this.loading = false;

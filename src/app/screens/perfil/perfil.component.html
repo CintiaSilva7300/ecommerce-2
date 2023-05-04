@@ -140,7 +140,11 @@
               Data: {{ order.registerDate | date: 'dd/MM/yyyy' }}
             </div>
             <div class="card-body">
-              <button (click)="showDetails(order)" class="btn btn-primary">
+              <button  style="
+                  background-color: black;
+                  margin-top: 0px;
+                  width: 20%;"
+                  (click)="showDetails(order)" class="btn btn-primary btn-darck btn-block">
                 Detalhes do Pedido
               </button>
               <div *ngIf="order.showDetails">
@@ -162,9 +166,6 @@
                     </tr>
                   </tbody>
                 </table>
-                <button (click)="closeDetails(order)" class="btn btn-primary">
-                  minimizar...
-                </button>
               </div>
             </div>
           </div>
@@ -174,5 +175,4 @@
     </div>
   </div>
 </div>
-
 

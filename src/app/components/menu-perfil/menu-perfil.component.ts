@@ -56,10 +56,8 @@ addressSelected: any
   excluirCardsEndereco(id: any): void {
     this.http.delete(`${environment.API_ECOMMERCE}/address/${id}`).subscribe((res: any) => {
       this.ngOnInit()
-      console.log('testeeeeeeeeeeeee ',res)
     }, err => {
       this.messageError = err.error.message
-      console.log('errroooo',err)
     })
   }
 

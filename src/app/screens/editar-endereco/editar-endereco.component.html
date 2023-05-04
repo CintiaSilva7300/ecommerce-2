@@ -6,7 +6,7 @@
 
     <div class="inputValid" *ngIf="(form.controls['name']?.invalid && form.controls['name']?.touched) || form.controls['name']?.dirty">
       <span *ngIf="form.controls['name']?.errors?.['required']">O campo nome deve ser preenchido!</span>
-      <span *ngIf="form.controls['name']?.errors?.['minlength']">O campo nome de ter no minimo 2 caracteres!</span>
+      <span *ngIf="form.controls['name']?.errors?.['minlength']">O campo nome deve ter no minimo 2 caracteres!</span>
     </div>
   </div>
   <input class="form-control" hidden [ngModel]="addressSelected._id"  value="{{addressSelected._id}}" type="text" name="_id">

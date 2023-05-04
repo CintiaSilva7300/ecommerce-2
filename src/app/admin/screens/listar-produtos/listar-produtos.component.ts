@@ -39,7 +39,7 @@ handlePageEvent(e: PageEvent) {
     this.loading = true;
 
     this.http
-    .get(`${environment.API_TESTE}/product/` ).subscribe((resposta: any) => {
+    .get(`${environment.API_ECOMMERCE}/product/` ).subscribe((resposta: any) => {
       this.product = resposta
 
       this.length = this.product.length
@@ -49,7 +49,7 @@ handlePageEvent(e: PageEvent) {
   }
 
   async excluirProduto(id: any) {
-    this.http.delete(`${environment.API_TESTE}/product/${id}`).subscribe((resposta: any) => {
+    this.http.delete(`${environment.API_ECOMMERCE}/product/${id}`).subscribe((resposta: any) => {
       this.ngOnInit()
       console.log(resposta)
     }, err => {

@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
   templateUrl: './perfil.component.html',
   styleUrls: ['./perfil.component.sass']
 })
+
 export class PerfilComponent implements OnInit {
   email!: any;
   name!: any;
@@ -21,6 +22,7 @@ export class PerfilComponent implements OnInit {
   showModal: any
   iconSettings: any;
   order: any;
+  flag!: boolean;
 
   constructor(
       private http: HttpClient
@@ -43,7 +45,7 @@ export class PerfilComponent implements OnInit {
     this.loadingSpinner = true
 
     this.http
-      .get(`${environment.API_TESTE}/user/userData`).subscribe((resData: any) => {
+      .get(`${environment.API_ECOMMERCE}/user/userData`).subscribe((resData: any) => {
         this.name = resData.name;
         this.id = resData.id;
         this.email = resData.email;
@@ -67,7 +69,7 @@ export class PerfilComponent implements OnInit {
 
   save(data: any) {
     this.loading = true;
-    this.http.post(`${environment.API_TESTE}/address/register`, data).subscribe((result: any) => {
+    this.http.post(`${environment.API_ECOMMERCE}/address/register`, data).subscribe((result: any) => {
       this.loading = false;
     }, err => {
       this.messageError = err.error.message
@@ -95,10 +97,6 @@ export class PerfilComponent implements OnInit {
   }
 
   showDetails(order: any) {
-    order.showDetails = true;
-  }
-
-  closeDetails(order: any){
-    order.showDetails = false;
+    order.showDetails = this.flag = !this.flag;
   }
 }

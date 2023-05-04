@@ -55,9 +55,8 @@ messageError: any;
 
 
   atualizarEndereco(data: any) {
-    console.log('dataaaaaaaaaaaaaaaaaa', data);
     this.loading = true;
-    this.http.put(`${environment.API_TESTE}/address/${data._id}`, data).subscribe((result: any) => {
+    this.http.put(`${environment.API_ECOMMERCE}/address/${data._id}`, data).subscribe((result: any) => {
       this.loading = false;
       this.ngOnInit()
     }, err => {

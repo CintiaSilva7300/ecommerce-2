@@ -72,6 +72,7 @@ import { CreditCardDirectivesModule } from 'angular-cc-library';
 import { ListaOrderUsersComponent } from './admin/screens/lista-order-users/lista-order-users.component';
 import { ModalStatusOrderComponent } from './admin/screens/lista-order-users/modal-status-order/modal-status-order.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { jvIfDirective } from './jv.if.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -101,7 +102,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     PagamentoComponent,
     ListaOrderUsersComponent,
     ModalStatusOrderComponent,
-
+    jvIfDirective
   ],
   imports: [
     BrowserModule,
@@ -140,8 +141,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatInputModule,
     CreditCardDirectivesModule,
     MatTabsModule,
-
-    MatFormFieldModule
+    MatFormFieldModule,
   ],
 
   // providers: [
