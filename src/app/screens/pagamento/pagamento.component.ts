@@ -33,6 +33,8 @@ export class PagamentoComponent implements OnInit {
   valorFreteSelect: any;
   installments: any;
 
+  iconeCartao: any;
+
   @ViewChild('name') nameCard: ElementRef | undefined;
   @ViewChild('cvc') cvcCard: ElementRef | undefined;
   @ViewChild('number') numberCard: ElementRef | undefined;
@@ -60,6 +62,8 @@ export class PagamentoComponent implements OnInit {
     this.city = '';
     this.uf = '';
     this.complement = '';
+
+    this.iconeCartao = '/assets/img/iconeCartão.png';
 
     this.http
       .get(`${environment.API_ECOMMERCE}/address/default`)
@@ -164,4 +168,42 @@ export class PagamentoComponent implements OnInit {
       console.log('response',response); // Manipula a resposta da solicita??o POST como uma promessa
     });
   }
+
+  pagamentoBoleto() {
+    const productCarrinho = JSON.parse(localStorage.getItem('product') as any);
+    const produtosFormatados = productCarrinho.map((p: any) => {
+      return { code: p.code, quantity: p.qtd };
+    });
+
+    const enderecoDefault = JSON.parse(localStorage.getItem('enderecoDefault') as any);
+
+    const typoEnvioFormat = JSON.parse(localStorage.getItem('typoEnvio') as any);
+
+    const body = {
+      payment: {
+        paymentMethod: 'boletobancario',
+      },
+      address: {
+        id: enderecoDefault[0]._id,
+        sendMethod: typoEnvioFormat,
+      },
+      products: produtosFormatados,
+    };
+
+      this.http.post(`${environment.API_ECOMMERCE}/order/process`, body)
+      .pipe(
+      tap((response: any) => console.log('response 1',response)), // Faz algo com a resposta sem modific?-la
+      map(response => response['data']), // Extrai os dados da resposta
+      catchError(error => {
+        console.log('erro',error);
+        return of(null); // Retorna um valor nulo se ocorrer um erro
+      })
+    )
+    .toPromise()
+    .then(response => {
+      console.log('response',response); // Manipula a resposta da solicita??o POST como uma promessa
+    });
+  }
+
+
 }
