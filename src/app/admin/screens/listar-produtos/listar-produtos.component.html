@@ -7,7 +7,7 @@
   </div>
 
   <div class="container">
-    <h1 class="titulo">Listar prodtos </h1>
+    <h1 class="titulo">Listar produtos</h1>
 
     <div class="buscar">
       <input class="form-control form-control-lg" type="text" placeholder="Buscar..."
@@ -37,20 +37,25 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let products of usersPaginated">
-          <td>{{products.code}}</td>
-          <td>{{products.name}}</td>
-          <td>{{products.price}}</td>
-          <td>{{products.quantity}}</td>
-          <td>{{products.registerDate}}</td>
-          <td>{{products.status === true ? 'SIM' : 'NÃO'}}</td>
-          <td>{{products.type}}</td>
-          <td>{{products.urlImage}}</td>
+        <tr *ngFor="let product of usersPaginated">
+          <td>{{product.code}}</td>
+          <td>{{product.name}}</td>
+          <td>{{product.price}}</td>
+          <td>{{product.quantity}}</td>
+          <td>{{product.registerDate}}</td>
+          <td>{{product.status === true ? 'SIM' : 'NÃO'}}</td>
+          <td>{{product.type}}</td>
+          <td>{{product.urlImage}}</td>
 
-          <td style="display: flex;margin-top: 10px; border: none;">
-            <img (click)="alertWithSuccessExcluirProduto(products._id)" matTooltip="excluir usuario"
+          <td style="display: flex;margin-top: 0px; border: none;">
+            <img (click)="alertWithSuccessExcluirProduto(product._id)" matTooltip="excluir usuario"
               aria-label="Button that displays a tooltip when focused or hovered over" class="excluirIcon"
               src="https://img.icons8.com/ios-glyphs/256/filled-trash.png" alt="">
+          </td>
+          <td style="margin-top: 10px; border: none;">
+            <img matTooltip="editar usuario" (click)="goToPageEdit(product)"
+            aria-label="Button that displays a tooltip when focused or hovered over"
+             class="editarIcon" src="https://img.icons8.com/sf-black-filled/256/pencil.png" alt="">
           </td>
 
         </tr>
@@ -61,6 +66,4 @@
       [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" [pageIndex]="pageIndex" aria-label="Select page">
     </mat-paginator>
   </div>
-
-
 </div>

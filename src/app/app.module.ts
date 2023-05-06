@@ -73,6 +73,7 @@ import { ListaOrderUsersComponent } from './admin/screens/lista-order-users/list
 import { ModalStatusOrderComponent } from './admin/screens/lista-order-users/modal-status-order/modal-status-order.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { jvIfDirective } from './jv.if.directive';
+import {MatSidenavModule} from '@angular/material/sidenav';
 @NgModule({
   declarations: [
     AppComponent,
@@ -142,6 +143,7 @@ import { jvIfDirective } from './jv.if.directive';
     CreditCardDirectivesModule,
     MatTabsModule,
     MatFormFieldModule,
+    MatSidenavModule
   ],
 
   // providers: [

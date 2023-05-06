@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
@@ -30,7 +31,8 @@ handlePageEvent(e: PageEvent) {
 
   constructor(
     private http: HttpClient,
-    public userService: UserService
+    public userService: UserService,
+    private router: Router
   ){
     this.loading = false;
   }
@@ -91,5 +93,11 @@ handlePageEvent(e: PageEvent) {
     } else {
       return this.ngOnInit();
     }
+  }
+
+  goToPageEdit(product: any): void {
+    this.router.navigate(['admin/cadastrarProduto'], {state: product});
+
+    console.log('chegou aqui',product);
   }
 }

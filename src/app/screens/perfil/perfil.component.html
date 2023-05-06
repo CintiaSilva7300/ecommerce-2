@@ -138,15 +138,11 @@
             <div class="card-header">
               Valor: R$ {{ order.total }} <br>
               Data: {{ order.registerDate | date: 'dd/MM/yyyy' }}
+              <img style="margin-top: -30px; height: 20px; width: 20px; cursor: pointer;" (click)="showDetails(order)" [src]="iconSeta">
             </div>
             <div class="card-body">
-              <button  style="
-                  background-color: black;
-                  margin-top: 0px;
-                  width: 20%;"
-                  (click)="showDetails(order)" class="btn btn-primary btn-darck btn-block">
-                Detalhes do Pedido
-              </button>
+
+
               <div *ngIf="order.showDetails">
                 <table class="table">
                   <thead>

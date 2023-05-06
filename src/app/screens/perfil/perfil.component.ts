@@ -21,6 +21,7 @@ export class PerfilComponent implements OnInit {
   messageError: any;
   showModal: any
   iconSettings: any;
+  iconSeta:any;
   order: any;
   flag!: boolean;
 
@@ -39,6 +40,8 @@ export class PerfilComponent implements OnInit {
     this.messageError = "";
     this.showModal = false;
     this.iconSettings = '/assets/img/settings.png';
+
+    this.iconSeta = '/assets/img/seta.png';
   }
 
   ngOnInit(): void {

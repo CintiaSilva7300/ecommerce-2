@@ -12,8 +12,9 @@ export class ModalStatusOrderComponent implements OnInit{
 configStatus: any
 id: any
 
-  constructor(private http: HttpClient,
-    @Inject(MAT_DIALOG_DATA) public data: any
+  constructor(
+      private http: HttpClient,
+      @Inject(MAT_DIALOG_DATA) public data: any
     ){}
     ngOnInit(): void {
       this.id = this.data.id;

@@ -1,30 +1,70 @@
-<h1 *ngIf="messageError">
+<!-- <h1 *ngIf="messageError">
   mensagem de erro ao apagar endereço principal {{ messageError }}
-</h1>
+</h1> -->
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container"  >
+  <div class="selectDiv" *ngIf="messageError">
+    mensagem de erro ao apagar endereço principal {{ messageError }}
+    <!-- <form #form="ngForm"> -->
+      <!-- <select name="select" id="select" name="status" ngModel>
+        <option *ngFor="let status of configStatus" value="{{status.key}}">{{status.value}}</option>
+      </select>
+      <button (click)="atualizarStatus(form.value)"  type="submit">teste</button> -->
+    <!-- </form> -->
+  </div>
+</div>
+
 
 <editarEndereco [showModal]="showModal" [addressSelected]="addressSelected"></editarEndereco>
 
-<h1>Endereçossss</h1>
+<h1>Endereços cadastrados</h1>
 
 <div class="card" *ngFor="let add of address" style="margin-top: 5px">
-  <div class="card-header">{{ add.name }}</div>
+  <div class="card-header" (click)="selectCardsEndereco(add._id)" matTooltip="selecionar" style="background-color: white; cursor: pointer;">{{ add.name }}
+    <div style="display: flex; margin-left: 90%;margin-top: -20px;">
+      <mat-chip-option
+        [selected]="add.isMain!"
+        style="background-color: black; width: 40px; filter: invert(100%); ">
+      </mat-chip-option>
+    </div>
+  </div>
   <div class="card-body" style="borde: 1px solid #000">
     <p class="card-text">{{ add.zipCode }} - {{ add.street }}</p>
     <p class="card-text">{{ add.number }} - {{ add.neighborhood }}</p>
     <p class="card-text">{{ add.city }} - {{ add.uf }}</p>
     <p class="card-text">{{ add.complement }}</p>
 
-    <mat-chip-listbox aria-label="Fish selection">
-      <mat-chip-option class="" [selected]="add.isMain"
-        style="background-color: black; width: 40px; filter: invert(100%)"
-        (click)="selectCardsEndereco(add._id)"></mat-chip-option>
-
       <img (click)="openModal(add)" style="width: 40px; height: 40px; cursor: pointer"
         src="https://img.icons8.com/sf-black-filled/256/pencil.png" alt="" />
-      <!-- editar endereço -->
 
       <img style="width: 35px; height: 35px; cursor: pointer" (click)="excluirCardsEndereco(add._id)"
-        src="https://img.icons8.com/ios-glyphs/256/filled-trash.png" alt="" />
-    </mat-chip-listbox>
+        src="https://img.icons8.com/ios-glyphs/256/filled-trash.png"/>
   </div>
 </div>

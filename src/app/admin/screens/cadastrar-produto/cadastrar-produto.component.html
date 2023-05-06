@@ -5,33 +5,33 @@
   <h1>Cadastrar produto</h1>
 
 
-  <form method="post" #form="ngForm" >
+  <form >
     <div class="form-group">
-      <input class="form-control"  type="text" placeholder="name" name="name" ngModel>
+      <input class="form-control"  type="text" placeholder="name" name="name" [(ngModel)]="name">
     </div>
 
     <div class="form-group">
-      <input class="form-control"  type="text" placeholder="code" name="code" ngModel>
+      <input class="form-control"  type="text" placeholder="code" name="code" [(ngModel)]="code">
     </div>
 
     <div class="form-group">
-      <input class="form-control"  type="text" placeholder="price" name="price" ngModel>
+      <input class="form-control"  type="text" placeholder="price" name="price" [(ngModel)]="price">
     </div>
 
     <div class="form-group">
-      <input class="form-control"  type="text" placeholder="type" name="type" ngModel>
+      <input class="form-control"  type="text" placeholder="type" name="type" [(ngModel)]="type">
     </div>
 
     <div class="form-group">
-      <input class="form-control"  type="text" placeholder="quantity" name="quantity" ngModel>
+      <input class="form-control"  type="text" placeholder="quantity" name="quantity" [(ngModel)]="quantity">
     </div>
 
     <div class="form-group">
-      <input class="form-control"  type="text" placeholder="img" name="urlImage" ngModel>
+      <input class="form-control"  type="text" placeholder="img" name="urlImage" [(ngModel)]="urlImage">
     </div>
 
     <div class="form-group">
-      <input class="form-control"  type="text" placeholder="status" name="status" ngModel>
+      <input class="form-control"  type="text" placeholder="status" name="status" [(ngModel)]="status">
     </div>
 
     <div class="button">
@@ -40,10 +40,8 @@
         value="voltar" >
       </a>
 
-      <input
-        (click)="cadastrarProduto(form.value)" type="button" value="Entrar" style="background-color: black;" class="btn btn-primary btn-darck btn-block"
-      [value]='loading ? "carregando..." : "cadastrar"' >
-
+      <input (click)="cadastrarProduto()" type="button" value="Entrar" style="background-color: black;" class="btn btn-primary btn-darck btn-block"
+      [value]='loading ? "carregando..." : id ? "Editar" : "cadastrar"' >
     </div>
   </form>
 </div>

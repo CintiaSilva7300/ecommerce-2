@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent {
+showFiller = true;
+flag!: boolean;
 
+  openSidebar(){
+    this.flag = !this.flag;
+  }
 }
