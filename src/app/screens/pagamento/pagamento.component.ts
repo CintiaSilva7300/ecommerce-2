@@ -176,7 +176,6 @@ export class PagamentoComponent implements OnInit {
     });
 
     const enderecoDefault = JSON.parse(localStorage.getItem('enderecoDefault') as any);
-
     const typoEnvioFormat = JSON.parse(localStorage.getItem('typoEnvio') as any);
 
     const body = {
@@ -199,8 +198,7 @@ export class PagamentoComponent implements OnInit {
         return of(null); // Retorna um valor nulo se ocorrer um erro
       })
     )
-    .toPromise()
-    .then(response => {
+    .toPromise().then(response => {
       console.log('response',response); // Manipula a resposta da solicita??o POST como uma promessa
     });
   }

@@ -15,9 +15,9 @@ import { Observable, tap } from 'rxjs';
 
 export class TabelaUserComponent implements OnInit {
 inputPesquisa: string = '';
-
-users!: any;
 usersPaginated!: any[];
+users!: any[];
+
 messageError: any
 
 length = 1;
@@ -131,12 +131,18 @@ alertWithSuccessTornarAdminUser(id: any){
 }
 
 filtrarProduto() {
-  if (this.inputPesquisa.length > 1) {
-    this.usersPaginated = this.usersPaginated.filter((search: any) =>
-      search.name.toLowerCase().includes(this.inputPesquisa.toLowerCase())
-    );
-  } else {
-    return this.ngOnInit()
-  }
+  this.http.get(`${environment.API_ECOMMERCE}/user` ).subscribe((resposta: any) => {
+    this.users = resposta
+
+    if (this.inputPesquisa.length > 1) {
+      this.users = this.users.filter((search: any) =>
+        search.name.toLowerCase().includes(this.inputPesquisa.toLowerCase())
+      );
+    } else {
+       this.users;
+    }
+  })
 }
+
 }
+
