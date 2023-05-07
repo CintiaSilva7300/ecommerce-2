@@ -37,7 +37,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let product of usersPaginated">
+        <tr *ngFor="let product of usersPaginated of product">
           <td>{{product.code}}</td>
           <td>{{product.name}}</td>
           <td>{{product.price}}</td>

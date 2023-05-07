@@ -8,10 +8,11 @@
   </div>
 
   <div class="container">
-    <h1 class="titulo">Configurações </h1>
+    <h1 class="titulo">Configurações</h1>
 
     <div class="buscar">
-      <input class="form-control form-control-lg" type="text" placeholder="Buscar...">
+      <input class="form-control form-control-lg" type="text" placeholder="Buscar..."
+      (ngModelChange)="filtrarProduto()" [(ngModel)]="inputPesquisa">
       <img class="iconeBusca" src="https://img.icons8.com/windows/256/search-more.png">
 
       <a href="/admin/settings" class="buttonCadastrarP">
@@ -33,7 +34,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let config of configPaginated">
+        <tr *ngFor="let config of configPaginated of config">
           <td>{{config.code}}</td>
           <td>{{config.description}}</td>
           <td>{{config.name}}</td>

@@ -86,18 +86,19 @@ handlePageEvent(e: PageEvent) {
   }
 
   filtrarProduto() {
-    if (this.inputPesquisa.length > 1) {
-      this.usersPaginated = this.usersPaginated.filter((search: any) =>
-        search.name.toLowerCase().includes(this.inputPesquisa.toLowerCase())
-      );
-    } else {
-      return this.ngOnInit();
-    }
+    this.http.get(`${environment.API_ECOMMERCE}/product/` ).subscribe((resposta: any) => {
+      this.product = resposta
+      if (this.inputPesquisa.length > 0) {
+        this.product = this.product.filter((search: any) =>
+          search.name.toLowerCase().includes(this.inputPesquisa.toLowerCase())
+        );
+      } else if(this.inputPesquisa.length == 1){
+        this.product;
+      }
+    })
   }
 
   goToPageEdit(product: any): void {
     this.router.navigate(['admin/cadastrarProduto'], {state: product});
-
-    console.log('chegou aqui',product);
   }
 }

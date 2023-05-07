@@ -19,6 +19,7 @@ pageEvent!: PageEvent;
 configPaginated!: any[];
 loading: any;
 config: any
+inputPesquisa: any = '';
 
 handlePageEvent(e: PageEvent) {
   this.pageEvent = e;
@@ -88,5 +89,20 @@ alertWithSuccessExcluirConfiguracao(id: any){
 
 editarConfiguracao(config: any){
   this.router.navigate(['/admin/settings'], {state: config});
+}
+
+filtrarProduto() {
+  this.http
+  .get(`${environment.API_ECOMMERCE}/setting/` ).subscribe((resposta: any) => {
+    this.config = resposta
+
+    if (this.inputPesquisa.length > 1) {
+      this.config = this.config.filter((search: any) =>
+        search.name.toLowerCase().includes(this.inputPesquisa.toLowerCase())
+      );
+    } else {
+      this.config;
+    }
+  })
 }
 }
