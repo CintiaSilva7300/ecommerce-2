@@ -1,0 +1,11 @@
+<h1>Gerar boleto de pagamento</h1>
+<div class="container"  >
+  <div class="selectDiv" >
+    <form #form="ngForm">
+
+      <input type="text" name="userId" [(ngModel)]="id" style="display: none;">
+      <input type="number" name="select" name="amount" placeholder="valor do boleto" [(ngModel)]="amount">
+      <button (click)="linkPagamento(form.value)"  type="submit">teste</button>
+    </form>
+  </div>
+</div>

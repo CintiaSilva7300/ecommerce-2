@@ -1,0 +1,41 @@
+<header></header>
+<app-sidebar />
+
+<div class="container">
+
+  <div class="container">
+    <div class="col-md-8 border-right">
+
+      <form method="post" class="form" #form="ngForm">
+        <div class="d-flex align-items-center ">
+          <h1 class="text-right">Perfil do Usuario</h1>
+        </div>
+        <label class="labels" for="userLogin">Nome</label>
+        <input class="form-control " type="text" placeholder="name" name="name" [(ngModel)]="user.name" [disabled]="true">
+
+        <label class="labels" for="userLogin">Data de nascimento</label>
+        <input class="form-control " type="text" placeholder="name" name="birthDate" ngModel="{{user.birthDate | date}}"  [disabled]="true">
+
+        <label class="labels" for="userLogin">Cpf</label>
+        <input class="form-control " type="text" placeholder="code" name="cpf" [(ngModel)]="user.cpf" [disabled]="true">
+
+        <label class="labels">Email</label>
+        <input type="text" class="form-control" placeholder="type" name="email" [(ngModel)]="user.email" [disabled]="true">
+
+        <label class="labels">Genero</label>
+        <input type="text" class="form-control" placeholder="type" name="genre" [(ngModel)]="user.genre" [disabled]="true">
+
+        <div style="display: flex">
+          <input type="submit" value="voltar" (click)="voltar()" style="background-color: black; margin-top:10px;width: 600px;  margin-right: 10px;"
+            class="btn btn-primary btn-darck btn-block">
+
+          <input type="submit" value="Criar link de pagamento" (click)="openDialog(user._id)" style="background-color: black; margin-top:10px;width: 600px; "
+            class="btn btn-primary btn-darck btn-block">
+          <!-- <input (click)="linkPagamento(form.value)" type="submit" value="Criar link de pagamento" style="background-color: black; margin-top:10px;width: 600px; "
+            class="btn btn-primary btn-darck btn-block"> -->
+        </div>
+      </form>
+    </div>
+
+  </div>
+
