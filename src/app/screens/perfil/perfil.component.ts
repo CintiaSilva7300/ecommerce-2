@@ -22,7 +22,7 @@ export class PerfilComponent implements OnInit {
   showModal: any
   iconSettings: any;
   iconSeta:any;
-  order: any;
+  orders: any;
   flag!: boolean;
 
   constructor(
@@ -61,8 +61,8 @@ export class PerfilComponent implements OnInit {
     })
 
     this.getPedido().subscribe(data => {
-      this.order = data;
-      console.log('order -> ',this.order);
+      this.orders = data;
+      console.log('orders -> ',this.orders);
     });
   }
 
@@ -99,7 +99,7 @@ export class PerfilComponent implements OnInit {
       });
   }
 
-  showDetails(order: any) {
-    order.showDetails = this.flag = !this.flag;
+  showDetails(orders: any) {
+    orders.showDetails = this.flag = !this.flag;
   }
 }

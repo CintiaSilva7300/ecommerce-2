@@ -16,9 +16,10 @@ id: any
       private http: HttpClient,
       @Inject(MAT_DIALOG_DATA) public data: any
     ){}
-    ngOnInit(): void {
+
+  ngOnInit(): void {
       this.id = this.data.id;
-    this.getConfigStatus()
+      this.getConfigStatus()
   }
 
   getConfigStatus() {
@@ -30,6 +31,5 @@ id: any
     body.status
     this.http.put(`${environment.API_ECOMMERCE}/order/status/${this.id}`, body).subscribe((status: any) => {
       this.getConfigStatus()
-
   })}
 }

@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnInit, Pipe, Type } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import {PageEvent} from '@angular/material/paginator';
 import Swal from 'sweetalert2';
 import { FormControl } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
-import { Observable, tap } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tabela-user',
@@ -17,7 +17,7 @@ export class TabelaUserComponent implements OnInit {
 inputPesquisa: string = '';
 usersPaginated!: any[];
 users!: any[];
-
+iconPerfil: string;
 messageError: any
 
 length = 1;
@@ -38,10 +38,14 @@ handlePageEvent(e: PageEvent) {
 
   constructor(
     private http: HttpClient,
-    public userService: UserService
+    public userService: UserService,
+    private router: Router
     ){
     this.loading = false;
     this.messageError = '';
+
+
+    this.iconPerfil = '/assets/img/usuario-de-perfil.png';
   }
 
 ngOnInit(): void {
@@ -50,7 +54,6 @@ ngOnInit(): void {
   this.http
     .get(`${environment.API_ECOMMERCE}/user` ).subscribe((resposta: any) => {
       this.users = resposta
-
 
       this.length = this.users.length
       this.usersPaginated = this.users.slice(this.pageIndex * this.pageSize, this.pageIndex * this.pageSize + this.pageSize)
@@ -136,12 +139,28 @@ filtrarProduto() {
 
     if (this.inputPesquisa.length > 1) {
       this.users = this.users.filter((search: any) =>
-        search.name.toLowerCase().includes(this.inputPesquisa.toLowerCase())
+        search.name.toLowerCase().includes(this.inputPesquisa.toLowerCase()) ||
+        search.cpf.toLowerCase().includes(this.inputPesquisa.toLowerCase()) ||
+        search.email.toLowerCase().includes(this.inputPesquisa.toLowerCase())
       );
-    } else {
+
+    }
+    else {
        this.users;
     }
   })
+}
+async goToProfileUser(id: any){
+  this.http
+    .get(`${environment.API_ECOMMERCE}/user/${id}` ).subscribe((resposta: any) => {
+      if(resposta){
+        this.router.navigate(['/admin/perfil-user'], {
+          state:  resposta ,
+        });
+      }
+      return;
+    })
+
 }
 }
 

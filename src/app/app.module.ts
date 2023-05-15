@@ -75,6 +75,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { jvIfDirective } from './jv.if.directive';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatIconModule} from '@angular/material/icon';
+import { ProfileUserComponent } from './admin/screens/profile-user/profile-user.component';
+import { ModalProfileUserComponent } from './admin/screens/profile-user/modal-profile-user/modal-profile-user.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -104,7 +106,9 @@ import {MatIconModule} from '@angular/material/icon';
     PagamentoComponent,
     ListaOrderUsersComponent,
     ModalStatusOrderComponent,
-    jvIfDirective
+    jvIfDirective,
+    ProfileUserComponent,
+    ModalProfileUserComponent
   ],
   imports: [
     BrowserModule,

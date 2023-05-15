@@ -91,7 +91,7 @@ handlePageEvent(e: PageEvent) {
       if (this.inputPesquisa.length > 0) {
         this.product = this.product.filter((search: any) =>
           search.name.toLowerCase().includes(this.inputPesquisa.toLowerCase())
-        );
+        )
       } else if(this.inputPesquisa.length == 1){
         this.product;
       }

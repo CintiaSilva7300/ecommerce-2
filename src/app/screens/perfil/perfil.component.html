@@ -134,11 +134,11 @@
         <h3>Compras</h3>
 
         <div class="card-deck">
-          <div *ngFor="let order of order" class="card">
-            <div class="card-header">
+          <div *ngFor="let order of orders" class="card">
+            <div class="card-header"  (click)="showDetails(order)" style="cursor:n-resize;">
               Valor: R$ {{ order.total }} <br>
               Data: {{ order.registerDate | date: 'dd/MM/yyyy' }}
-              <img style="margin-top: -30px; height: 20px; width: 20px; cursor: pointer;" (click)="showDetails(order)" [src]="iconSeta">
+              <!-- <img style="margin-top: -30px; height: 20px; width: 20px; cursor: pointer;" (click)="showDetails(order)" [src]="iconSeta"> -->
             </div>
             <div class="card-body">
 
@@ -147,6 +147,7 @@
                 <table class="table">
                   <thead>
                     <tr>
+                      <th>Image</th>
                       <th>Codigo</th>
                       <th>Produto</th>
                       <th>Valor</th>
@@ -155,13 +156,22 @@
                   </thead>
                   <tbody>
                     <tr *ngFor="let product of order.products">
+                      <td>
+                        <img [src]="product.urlImage" alt="" width="50px" height="50px">
+                      </td>
                       <td>{{ product.code }}</td>
                       <td>{{ product.name }}</td>
                       <td>R$ {{ product.price }}</td>
                       <td>{{ product.quantity }}</td>
+
                     </tr>
                   </tbody>
                 </table>
+                <tbody>
+                  <tr>
+                    <p>Metodo de pagamento: {{order.paymentMethod}}</p>
+                  </tr>
+                </tbody>
               </div>
             </div>
           </div>

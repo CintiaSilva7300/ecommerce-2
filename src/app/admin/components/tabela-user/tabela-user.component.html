@@ -9,7 +9,6 @@
       <input class="form-control form-control-lg" type="search" placeholder="Buscar..."
       (ngModelChange)="filtrarProduto()" [(ngModel)]="inputPesquisa"
       >
-
       <img class="iconeBuca" src="https://img.icons8.com/windows/256/search-more.png">
     </div>
 </div>
@@ -31,7 +30,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of usersPaginated of users">
+      <tr *ngFor="let user of usersPaginated of users" >
         <td>{{user.name}}</td>
         <td>{{user.email}}</td>
         <td>{{user.cpf}}</td>
@@ -40,7 +39,10 @@
         <td>{{user.registerDate}}</td>
         <td>{{user?.permission?.includes('ADMIN') ? 'Sim' : 'Não'}}</td>
 
-        <td style="display: flex;margin-top: 10px; border: none;">
+        <td style="display: flex;margin-top: 10px; border: none; margin: 2px;">
+          <img (click)="goToProfileUser(user._id)" matTooltip="perfil do usuario"
+            aria-label="Button that displays a tooltip when focused or hovered over" class="userIcon"
+            [src]="iconPerfil" alt="">
           <img (click)="alertWithSuccessTornarAdminUser(user._id)" matTooltip="tornar usuario admin"
             aria-label="Button that displays a tooltip when focused or hovered over" class="tornarAdiminIcon"
             src="https://img.icons8.com/ios-filled/256/circled-chevron-up.png" alt="">

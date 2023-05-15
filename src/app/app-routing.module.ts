@@ -18,6 +18,7 @@ import { CarrinhDeComprasComponent } from './screens/carrinho-de-compras/carrinh
 import { PagamentoComponent } from './screens/pagamento/pagamento.component';
 import { ListaOrderUsersComponent } from './admin/screens/lista-order-users/lista-order-users.component';
 import { CuponsComponent } from './components/cupons/cupons.component';
+import { ProfileUserComponent } from './admin/screens/profile-user/profile-user.component';
 
 const routes: Routes = [
   {
@@ -52,6 +53,9 @@ const routes: Routes = [
   },
   {
     path: 'admin/configuracao', component: ConfiguracaoAdminComponent
+  },
+  {
+    path: 'admin/perfil-user', component: ProfileUserComponent
   },
   {
     path: 'admin/listaOrders', component: ListaOrderUsersComponent
