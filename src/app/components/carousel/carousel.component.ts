@@ -15,7 +15,7 @@ carrosel: any
   }
 
   ngOnInit(): void {
-    this.http.get(`${environment.API_ECOMMERCE}/setting/12778`).subscribe((data) => {
+    this.http.get(`${environment.API_ECOMMERCE}/setting/SETTING_CAROUSEL_02`).subscribe((data) => {
       this.carrosel = data
     })
   }
