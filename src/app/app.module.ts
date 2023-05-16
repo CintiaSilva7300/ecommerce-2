@@ -77,6 +77,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatIconModule} from '@angular/material/icon';
 import { ProfileUserComponent } from './admin/screens/profile-user/profile-user.component';
 import { ModalProfileUserComponent } from './admin/screens/profile-user/modal-profile-user/modal-profile-user.component';
+
 @NgModule({
   declarations: [
     AppComponent,

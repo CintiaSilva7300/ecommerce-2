@@ -9,6 +9,7 @@ import {
   SocialAuthService,
   SocialUser,
 } from '@abacritt/angularx-social-login';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -16,17 +17,20 @@ import {
   styleUrls: ['./login.component.sass'],
 })
 export class LoginComponent implements OnInit {
-loginForm!: FormGroup;
 isLoggedin?: boolean = undefined;
 user!: SocialUser;
 loading: any;
 messageError: any;
 
+horizontalPosition: MatSnackBarHorizontalPosition = 'start';
+verticalPosition: MatSnackBarVerticalPosition = 'bottom';
+
 constructor(
   private http: HttpClient,
   private route: ActivatedRoute,
   private router: Router,
-  private authService: SocialAuthService
+  private authService: SocialAuthService,
+  private _snackBar: MatSnackBar
 ) {
   this.loading = false;
   this.messageError = '';
@@ -57,6 +61,7 @@ loginFacebook(): void {
         localStorage.setItem('permission', decodedToken.permission);
 
         if (decodedToken) {
+          this.openSnackBar()
           this.router.navigate(['']);
         }
       });
@@ -81,6 +86,7 @@ public loginJWT(data: any) {
       this.loading = false;
 
       if (decodedToken) {
+        this.openSnackBar()
         this.router.navigate(['']);
       }
     },
@@ -89,5 +95,12 @@ public loginJWT(data: any) {
       this.loading = false;
     }
   );
+  }
+
+  openSnackBar() { //alert
+    this._snackBar.open(`Login realizado com sucesso!`,`Ok!`, {
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+    });
   }
 }

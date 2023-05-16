@@ -12,9 +12,6 @@
   <div class="banner">
     <div class="card">
       <img src="https://pbs.twimg.com/media/EsvYoawXIAAolyF.jpg" class="card-img-top" alt="...">
-      <!-- <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-      </div> -->
     </div>
   </div>
 
@@ -25,7 +22,6 @@
 
         <div *ngIf="messageError; else elseBlock" class="mensageError">{{messageError}}</div>
         <ng-template #elseBlock></ng-template>
-
         <fieldset>
 
           <div class="form-group ls-login-user">
@@ -40,17 +36,17 @@
 
           <a href="#" class="ls-login-forgot">Esqueci minha senha</a>
 
-            <input type="submit" (click)="loginJWT(form.value)" [value]='loading ? "carregando..." : "entrar"' [disabled]="loading"
+            <input type="submit" (click)="loginJWT(form.value)" (click)="openSnackBar()"
+              [value]='loading ? "carregando..." : "entrar"' [disabled]="loading"
               style="background-color: black; margin-right: 5px;" class="btn btn-primary btn-darck btn-block"
-              >
+            >
 
             <!-- login com facebook -->
             <form action="">
               <div *ngIf="!isLoggedin">
-                <button type="button" (click)="loginFacebook()" class="btn btn-primary btn-darck btn-block"
+                <button type="button" (click)="loginFacebook()" (click)="openSnackBar()"class="btn btn-primary btn-darck btn-block"
                 style="background-color: #337ab7; margin-top: 5px;"
                 >Signin with Facebook</button>
-
                 <div *ngIf="user">
                   <input value="{{ user.name }}">
                   <input value="{{ user.email }}">
@@ -59,9 +55,7 @@
             </form>
 
           <!-- form loginWithFacebook -->
-          <div *ngIf="isLoggedin === true">
-
-          </div>
+          <div *ngIf="isLoggedin === true"></div>
           <!-- form loginWithFacebook -->
 
           <p class="txt-center ls-login-signup">Não possui um usuário no Grupohvn?
@@ -72,9 +66,3 @@
     </div>
   </div>
 </div>
-
-
-<!-- //teste login social facebook -->
-
-
-
