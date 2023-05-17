@@ -26,7 +26,7 @@
         <th>BirthDate</th>
         <th>RegisterDate</th>
         <th>Admin</th>
-        <th>Açãoes</th>
+        <th>Ações</th>
       </tr>
     </thead>
     <tbody>
@@ -35,8 +35,8 @@
         <td>{{user.email}}</td>
         <td>{{user.cpf}}</td>
         <td>{{user.genre?.includes('M') ? 'Masculino' : 'Feminino'}}</td>
-        <td>{{user.birthDate}}</td>
-        <td>{{user.registerDate}}</td>
+        <td>{{user.birthDate | date}}</td>
+        <td>{{user.registerDate | date}}</td>
         <td>{{user?.permission?.includes('ADMIN') ? 'Sim' : 'Não'}}</td>
 
         <td style="display: flex;margin-top: 10px; border: none; margin: 2px;">

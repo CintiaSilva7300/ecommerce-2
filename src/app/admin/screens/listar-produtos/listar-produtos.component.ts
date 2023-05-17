@@ -101,4 +101,11 @@ handlePageEvent(e: PageEvent) {
   goToPageEdit(product: any): void {
     this.router.navigate(['admin/cadastrarProduto'], {state: product});
   }
+
+  formatPrice(price: number) {
+    return price.toLocaleString('pt-br', {
+      style: 'currency',
+      currency: 'BRL',
+    });
+  }
 }

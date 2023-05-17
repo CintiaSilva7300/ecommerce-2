@@ -56,7 +56,6 @@ import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { ConfiguracaoAdminComponent } from './admin/screens/configuracao-admin/configuracao-admin.component';
 import { ProdutoComponent } from './screens/produto/produto.component';
 import { FormSettingsComponent } from './admin/screens/form-settings/form-settings.component';
-import { CarrinhDeComprasComponent } from './screens/carrinho-de-compras/carrinho-de-compras.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import { PagamentoComponent } from './screens/pagamento/pagamento.component';
 import {MatInputModule} from '@angular/material/input';
@@ -103,7 +102,6 @@ import { ModalProfileUserComponent } from './admin/screens/profile-user/modal-pr
     ConfiguracaoAdminComponent,
     ProdutoComponent,
     FormSettingsComponent,
-    CarrinhDeComprasComponent,
     PagamentoComponent,
     ListaOrderUsersComponent,
     ModalStatusOrderComponent,

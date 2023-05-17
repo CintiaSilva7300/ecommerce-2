@@ -69,4 +69,11 @@ msg: string = 'esse produto ja foi adicionado ao carrinho'
       }
     }
   }
+
+  navegandoParaTelaPagemnto() {
+    this.router.navigate(['/pagamento'], {
+      state: [{ product: this.product}],
+    });
+    //fun??o que pegar os dados do componente atual e manda para o componente de pagamento
+  }
 }

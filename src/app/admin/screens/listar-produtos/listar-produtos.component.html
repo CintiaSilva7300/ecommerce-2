@@ -40,9 +40,9 @@
         <tr *ngFor="let product of usersPaginated of product">
           <td>{{product.code}}</td>
           <td>{{product.name}}</td>
-          <td>{{product.price}}</td>
+          <td>{{ formatPrice(product.price)}}</td>
           <td>{{product.quantity}}</td>
-          <td>{{product.registerDate}}</td>
+          <td>{{product.registerDate | date}}</td>
           <td>{{product.status === true ? 'SIM' : 'NÃO'}}</td>
           <td>{{product.type}}</td>
           <td>{{product.urlImage}}</td>

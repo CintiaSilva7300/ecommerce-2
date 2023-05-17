@@ -4,11 +4,11 @@
 
 <div class="container" >
   <div class="caixa" >
-    <div class="card" *ngFor="let products of product" routerLink="product/{{products.code}}">
-      <img src="{{products.urlImage}}" class="card-img-top" alt="...">
+    <div class="card" *ngFor="let products of product" routerLink="product/{{ products.code }}">
+      <!-- <h5>code:{{ products.code }}</h5> -->
+      <img src="{{ products.urlImage }}" class="card-img-top" alt="...">
       <div class="card-body" >
-        <h5 class="card-title"  matTooltip="{{products.name}}">{{products.name}}</h5>
-        <!-- <button type="button" routerLink="product/{{products.code}}" class="btn btn-primary">Comprar</button> -->
+        <h5 class="card-title"  matTooltip="">{{ products.name }}</h5>
       </div>
     </div>
   </div>

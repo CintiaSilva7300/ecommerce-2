@@ -14,7 +14,6 @@ import { CadastrarProdutoComponent } from './admin/screens/cadastrar-produto/cad
 import { ConfiguracaoAdminComponent } from './admin/screens/configuracao-admin/configuracao-admin.component';
 import { ProdutoComponent } from './screens/produto/produto.component';
 import { FormSettingsComponent } from './admin/screens/form-settings/form-settings.component';
-import { CarrinhDeComprasComponent } from './screens/carrinho-de-compras/carrinho-de-compras.component';
 import { PagamentoComponent } from './screens/pagamento/pagamento.component';
 import { ListaOrderUsersComponent } from './admin/screens/lista-order-users/lista-order-users.component';
 import { CuponsComponent } from './components/cupons/cupons.component';
@@ -26,9 +25,6 @@ const routes: Routes = [
   },
   {
     path: 'product/:code', component: ProdutoComponent
-  },
-  {
-    path: 'carrinho', component: CarrinhDeComprasComponent
   },
   {
     path: 'register', component: RegisterComponent

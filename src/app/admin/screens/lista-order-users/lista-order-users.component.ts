@@ -69,10 +69,16 @@ getConfigStatus() {
 }
 
 openDialog(id: any) {
-  this.dialog.open(ModalStatusOrderComponent, {
+  this.dialog.open(ModalStatusOrderComponent, {//abre o mordal do componente ModalStatusOrderComponent
     data: {id: id},
-  }); //abre o mordal do componente ModalStatusOrderComponent
+  });
   console.log('id orders ->',id)
+}
 
+formatPrice(price: number) {
+  return price.toLocaleString('pt-br', {
+    style: 'currency',
+    currency: 'BRL',
+  });
 }
 }

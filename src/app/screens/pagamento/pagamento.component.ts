@@ -24,10 +24,11 @@ export class PagamentoComponent implements OnInit {
   clickBtn: boolean; //alterando pelo click no bot?o alterar endere?o principal
   product!: any;
   total: any;
+  totalPrice: number = 0;
   cep!: string;
   data!: any;
   bodyLocalStorage: any;
-
+  qtd: number = 0;
   prazoFrete: any;
   typoDeEnvio: any;
   valorFreteSelect: any;
@@ -73,11 +74,18 @@ export class PagamentoComponent implements OnInit {
 
         localStorage.setItem('enderecoDefault', JSON.stringify([resposta]));
       });
-
   }
 
   ngOnInit(): void {
     this.getAddress();
+    const productLocalStorage = localStorage.getItem('product');
+    this.product = JSON.parse(productLocalStorage as any);
+    this.product = this.product.map((product: any) => {
+      product.qtd = 1;
+      return product;
+    });
+    localStorage.setItem('product', JSON.stringify(this.product))
+    this.totalCarrinho();
   }
 
   formatPrice(price: number) {
@@ -99,6 +107,8 @@ export class PagamentoComponent implements OnInit {
     console.log(this.product);
     this.product = this.product.filter((prod: any) => prod._id !== id);
     localStorage.setItem('product', JSON.stringify(this.product));
+    this.total = this.product;
+    // return this.product = this.total;
   }
 
   alterarEnderecoPrincial() {
@@ -197,11 +207,40 @@ export class PagamentoComponent implements OnInit {
         console.log('erro',error);
         return of(null); // Retorna um valor nulo se ocorrer um erro
       })
-    )
-    .toPromise().then(response => {
+    ).toPromise().then(response => {
       console.log('response',response); // Manipula a resposta da solicita??o POST como uma promessa
     });
   }
 
+  removeProducts(product: any) {
+    this.product = this.product.map((itemLIsta: any) => {
+      if (itemLIsta.code === product.code && product.qtd > 1) {
+        itemLIsta.qtd -= 1;
+      }
+      this.totalCarrinho();
+      return itemLIsta;
+    });
+    localStorage.setItem('product', JSON.stringify(this.product))
+  }
 
+  addProducts(product: any) {
+    this.product = this.product.map((itemLIsta: any) => {
+      if (itemLIsta.code === product.code) {
+        itemLIsta.qtd += 1;
+      }
+      this.totalCarrinho();
+      return itemLIsta;
+    });
+    localStorage.setItem('product', JSON.stringify(this.product))
+  }
+
+  totalCarrinho() {
+    let total = 0;
+    this.product.forEach((itemLIsta: any) => {
+      total += itemLIsta.price * itemLIsta.qtd;
+      console.log('aaqui -> ',itemLIsta.qtd);
+      this.total = total;
+    });
+    return total;
+  }
 }

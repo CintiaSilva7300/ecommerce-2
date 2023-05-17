@@ -2,26 +2,36 @@
 
 <!-- <h1>{{msg}}</h1> -->
 
-
 <div class="container">
   <div class="row">
     <div class="col-8">
       <div class="caixa">
         <div class="card">
+          <img
+            [src]="product.urlImage"
+            class="card-img-top"
+            alt="..."
+            [ngModel]=""
+          />
 
-          <img [src]="product.urlImage" class="card-img-top" alt="..." [ngModel]="">
-
-          <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+          <link
+            rel="stylesheet"
+            href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+          />
           <div class="conteudo">
-
             <div class="estrelas">
-
               <div class="titulo">
-                <h1>{{product.name}}</h1>
-                <h4 style="color: rgb(144, 144, 144);">{{product.code}}</h4>
+                <h1>{{ product.name }}</h1>
+                <h4 style="color: rgb(144, 144, 144)">{{ product.code }}</h4>
               </div>
 
-              <input type="radio" id="cm_star-empty" name="fb" value="" checked />
+              <input
+                type="radio"
+                id="cm_star-empty"
+                name="fb"
+                value=""
+                checked
+              />
               <label for="cm_star-1"><i class="fa"></i></label>
               <input type="radio" id="cm_star-1" name="fb" value="1" />
               <label for="cm_star-2"><i class="fa"></i></label>
@@ -32,12 +42,13 @@
               <input type="radio" id="cm_star-4" name="fb" value="4" />
               <label for="cm_star-5"><i class="fa"></i></label>
               <input type="radio" id="cm_star-5" name="fb" value="5" />
-              <hr class="border-top my-3">
+              <hr class="border-top my-3" />
 
               <p>
-                Fácil Computadores - Com 30 anos de excelência atuando no Brasil,
-                criamos soluções completas na área de informática. Nossos computadores são
-                equipados com os mais recentes processadores de alta velocidade, maximizando sua produção.
+                Fácil Computadores - Com 30 anos de excelência atuando no
+                Brasil, criamos soluções completas na área de informática.
+                Nossos computadores são equipados com os mais recentes
+                processadores de alta velocidade, maximizando sua produção.
               </p>
 
               <p><strong>cor:</strong> preto</p>
@@ -50,46 +61,53 @@
     <div class="col-4">
       <div class="caixa">
         <div class="card">
-
           <div class="card-body">
             <h5 class="card-title" [ngModel]=""></h5>
-            <h1 style="font-weight: 410;">R$ {{product.price}}</h1>
-            <hr class="border-top my-3">
+            <h1 style="font-weight: 410">R$ {{ product.price }}</h1>
+            <hr class="border-top my-3" />
 
             <p>Calcula frete e prazo:</p>
-            <div class="input-group" style="display: flex; flex-direction: row;" >
+            <div class="input-group" style="display: flex; flex-direction: row">
+              <input
+                type="text"
+                class="form-control"
+                style="width: 0px"
+                [(ngModel)]="cep"
+              />
 
-              <input  type="text" class="form-control" style="width: 0px;" [(ngModel)]="cep">
-
-              <div class="input-group-append" style="margin: -5px; margin-left: 2px;">
-
-                <button (click)="calculaFreteEPrazo()" class="btn btn-primary btn-darck btn-block"
-                  style="background-color: black; width: 40px;margin:5px" type="button">
+              <div
+                class="input-group-append"
+                style="margin: -5px; margin-left: 2px"
+              >
+                <button
+                  (click)="calculaFreteEPrazo()"
+                  class="btn btn-primary btn-darck btn-block"
+                  style="background-color: black; width: 40px; margin: 5px"
+                  type="button"
+                >
                   ok
                 </button>
               </div>
-
             </div>
 
             <div *ngIf="cep; else elseBlock">
-              <div style="margin-top: 10px;">
-                pac: {{data.pac.prazo}}
-                pac: {{data.pac.valor}}
-                <br>
-                sedex: {{data.sedex.prazo}}
-                sedex: {{data.sedex.valor}}
+              <div style="margin-top: 10px">
+                pac: {{ data.pac.prazo }} pac: {{ data.pac.valor }}
+                <br />
+                sedex: {{ data.sedex.prazo }} sedex: {{ data.sedex.valor }}
               </div>
-
             </div>
-              <ng-template #elseBlock><p></p></ng-template>
-
-              <a href="carrinho">
-                <input (click)="setProduct()" type="submit" value="Entrar" style="background-color: black; margin-top:10px"
-                  class="btn btn-primary btn-darck btn-block" value="ADICIONAR NO CARRINHO">
-              </a>
+            <ng-template #elseBlock><p></p></ng-template>
+            <input
+              (click)="setProduct()"
+              (click)="navegandoParaTelaPagemnto()"
+              value="Entrar"
+              style="background-color: black; margin-top: 10px"
+              class="btn btn-primary btn-darck btn-block"
+              value="ADICIONAR NO CARRINHO"
+            />
           </div>
         </div>
-
       </div>
     </div>
   </div>

@@ -6,7 +6,10 @@
       <form>
         <ng-template style="background: red" matStepLabel>Minha cesta</ng-template>
         <div appearance="fill">
-          <h1>Resumo do pedido</h1>
+          <div style="display: flex;">
+            <h1>Resumo do pedido/</h1>
+            <h1>total da ordem <strong> {{ formatPrice(total) }}</strong></h1>
+          </div>
 
           <div id="table-container">
             <table>
@@ -17,7 +20,7 @@
                   <th>name</th>
                   <th>preço</th>
                   <th>quantidade</th>
-                  <th>ação</th>
+                  <th>Excluir</th>
                 </tr>
               </thead>
               <tbody *ngFor="let p of product">
@@ -28,25 +31,37 @@
                   </td>
                   <td style="width: 22em">{{ p.name }}</td>
                   <td>{{ formatPrice(p.price) }}</td>
-                  <td>{{ p.qtd }} quantidade</td>
+                  <td>
+                    <div class="qtd" style="display: flex; margin-left: 100px">
+                      <h1 (click)="removeProducts(p)" data-toggle="tooltip" title="remover" style="cursor: pointer">
+                        -
+                      </h1>
+                      <h1 style="padding-left: 10px; padding-right: 10px">
+                        {{ p.qtd }}
+                      </h1>
+                      <h1 (click)="addProducts(p)" data-toggle="tooltip" title="adicionar" style="cursor: pointer">
+                        +
+                      </h1>
+                    </div>
+                  </td>
                   <td>
                     <img matTooltip="remover produto" (click)="removerProduct(p._id)"
                       style="width: 25px; height: 25px; cursor: pointer"
                       src="https://img.icons8.com/ios-glyphs/256/filled-trash.png" alt="" />
                   </td>
-                </tr>
               </tbody>
+
               <tbody>
                 <tr>
                   <td colspan="4"></td>
                   <td style="display: flex">
-                    <button routerLink="/carrinho" class="btn btn-primary btn-darck btn-block" style="
+                    <button routerLink="" class="btn btn-primary btn-darck btn-block" style="
                         background: #000;
                         margin-top: 10px;
                         width: 150px;
                         margin-right: 10px;
                       ">
-                      voltar para carrinho
+                      voltar para home
                     </button>
 
                     <a routerLink="/">

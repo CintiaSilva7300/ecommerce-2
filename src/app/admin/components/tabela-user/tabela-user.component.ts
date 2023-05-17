@@ -109,25 +109,25 @@ alertWithSuccessExcluirUser(id: any){
 
 alertWithSuccessTornarAdminUser(id: any){
   Swal.fire({
-    title: 'Are you sure want to remove?',
-    text: 'You will not be able to recover this file!',
+    title: 'Deseja tornar este usuario admiministrador',
+    text: 'Ele terá acesso de administrador!',
     icon: 'warning',
     showCancelButton: true,
-    confirmButtonText: 'Yes, delete it!',
-    cancelButtonText: 'No, keep it'
+    confirmButtonText: 'Sim, tornar-lo admin!',
+    cancelButtonText: 'Não, cancela'
   }).then(async (result) => {
     if (result.value) {
       await this.tonarUserAdmin(id)
       Swal.fire(
-        'Deleted!',
-        'Your imaginary file has been deleted.',
+        'Sucesso!',
+        'Essa conta foi alterada para ser admin.',
         'success'
       )
     } else if (result.dismiss === Swal.DismissReason.cancel) {
       Swal.fire(
-        'Cancelled',
-        'Your imaginary file is safe :)',
-        'error'
+        'Ação cancelada!',
+        'Essa conta não foi modificada.',
+        'success'
       )
     }
   })
